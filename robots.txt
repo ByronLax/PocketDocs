@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pocketdocs.byronchakma2016.workers.dev/sitemap.xml
