@@ -1,0 +1,8 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Resetting…</title>
+<style>body{font:16px system-ui,sans-serif;max-width:420px;margin:15vh auto;padding:0 20px;text-align:center;color:#10201b}small{color:#62736c}</style></head><body>
+<h2>Refreshing the app…</h2><p id="m">Clearing the old copy.</p><small>Your saved documents and profile are kept.</small>
+<script>
+(async()=>{try{const rs=await navigator.serviceWorker.getRegistrations();for(const r of rs)await r.unregister();}catch(e){}
+try{const ks=await caches.keys();for(const k of ks)await caches.delete(k);}catch(e){}
+document.getElementById('m').textContent='Done. Opening the newest version…';setTimeout(()=>location.replace('index.html'),900);})();
+</script></body></html>
