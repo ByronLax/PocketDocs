@@ -6,7 +6,7 @@
 <meta property="og:title" content="PocketDocs — Online PDF, PrintFit & Document Tools">
 <meta property="og:description" content="Straighten document photos, merge, split, convert, compress, sign, redact and export PDFs right in your browser with zero uploads.">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#e12d39">
+<meta name="theme-color" content="#2563eb">
 <meta name="color-scheme" content="light dark">
 <script>(function(){try{var st=JSON.parse(localStorage.getItem("prd_settings")||"{}");var t=st.theme||"auto";var d=t==="dark"||(t==="auto"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(t==="dark"||(t==="auto"&&d))document.documentElement.setAttribute("data-theme","dark");else if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}try{var ua=navigator.userAgent||"";var isMob=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Kindle|Silk/i.test(ua)||(/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1)||(window.matchMedia&&window.matchMedia("(pointer: coarse)").matches&&!window.matchMedia("(any-pointer: fine)").matches);document.documentElement.setAttribute("data-desktop",isMob?"0":"1");}catch(e){}})();</script>
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -14,35 +14,35 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap">
 <style>
 :root{
  color-scheme:light dark;--sys-scheme:light;box-sizing:border-box;
- --bg:#f5f6fa;--card:#ffffff;--soft:#eef1f6;--fg:#171923;--mut:#5b6475;
- --acc:#e12d39;--acc-h:#c81e2b;--acc-txt:#c81e2b;--on:#ffffff;--bd:#e2e6ef;
- --sh:0 1px 2px rgba(15,23,42,.04),0 10px 26px -14px rgba(15,23,42,.10);
- --sh-hv:0 6px 14px -4px rgba(15,23,42,.07),0 18px 34px -14px rgba(225,45,57,.16);
- --nav-bg:rgba(255,255,255,.92);
- --font-disp:"Bricolage Grotesque","Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+ --bg:#f6f8fc;--card:#ffffff;--soft:#eef2f8;--fg:#0f172a;--mut:#526077;
+ --acc:#2563eb;--acc-h:#1d4ed8;--acc-txt:#2563eb;--on:#ffffff;--bd:#e2e8f0;
+ --sh:0 1px 2px rgba(15,23,42,.04),0 10px 26px -14px rgba(15,23,42,.08);
+ --sh-hv:0 10px 24px -8px rgba(37,99,235,.18),0 4px 12px -2px rgba(15,23,42,.06);
+ --nav-bg:rgba(255,255,255,.90);
+ --font-disp:"Outfit","Inter",-apple-system,BlinkMacSystemFont,sans-serif;
 }
 html{scroll-padding-top:76px;scroll-behavior:smooth}
 @media (prefers-color-scheme:dark){
  :root{--sys-scheme:dark}
  :root:not([data-theme="light"]){
-  color-scheme:dark;--bg:#0f1218;--card:#171c26;--soft:#1f2633;--fg:#f2f4f8;--mut:#9aa3b4;
-  --acc:#e12d39;--acc-h:#c81e2b;--acc-txt:#fb7185;--on:#ffffff;--bd:#283142;
+  color-scheme:dark;--bg:#080d18;--card:#111928;--soft:#182338;--fg:#f1f5f9;--mut:#94a3b8;
+  --acc:#2563eb;--acc-h:#1d4ed8;--acc-txt:#60a5fa;--on:#ffffff;--bd:#223047;
   --sh:0 2px 6px rgba(0,0,0,.35),0 14px 30px -14px rgba(0,0,0,.55);
-  --sh-hv:0 12px 28px -10px rgba(0,0,0,.65);
-  --nav-bg:rgba(15,18,24,.92);
+  --sh-hv:0 14px 32px -12px rgba(37,99,235,.28),0 4px 12px -2px rgba(0,0,0,.45);
+  --nav-bg:rgba(8,13,24,.88);
  }
 }
 :root[data-theme="light"]{color-scheme:light}
 :root[data-theme="dark"]{
- color-scheme:dark;--bg:#0f1218;--card:#171c26;--soft:#1f2633;--fg:#f2f4f8;--mut:#9aa3b4;
- --acc:#e12d39;--acc-h:#c81e2b;--acc-txt:#fb7185;--on:#ffffff;--bd:#283142;
+ color-scheme:dark;--bg:#080d18;--card:#111928;--soft:#182338;--fg:#f1f5f9;--mut:#94a3b8;
+ --acc:#2563eb;--acc-h:#1d4ed8;--acc-txt:#60a5fa;--on:#ffffff;--bd:#223047;
  --sh:0 2px 6px rgba(0,0,0,.35),0 14px 30px -14px rgba(0,0,0,.55);
- --sh-hv:0 12px 28px -10px rgba(0,0,0,.65);
- --nav-bg:rgba(15,18,24,.92);
+ --sh-hv:0 14px 32px -12px rgba(37,99,235,.28),0 4px 12px -2px rgba(0,0,0,.45);
+ --nav-bg:rgba(8,13,24,.88);
 }
 #themeseg button{display:inline-flex;align-items:center;justify-content:center;gap:6px}
 #themeseg svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -61,9 +61,18 @@ html.theme-xfade,html.theme-xfade body,html.theme-xfade .site-nav,html.theme-xfa
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
  margin:0;min-height:100dvh;display:flex;flex-direction:column;
- background:radial-gradient(ellipse 95% 420px at 50% 0%,color-mix(in srgb,var(--acc) 7%,transparent),transparent 72%),var(--bg);
- color:var(--fg);font:15.5px/1.52 "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ background:radial-gradient(ellipse 95% 420px at 50% 0%,rgba(37,99,235,.08),transparent 72%),var(--bg);
+ color:var(--fg);font:15px/1.55 "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ font-feature-settings:"cv02","cv03","cv04","cv11";
  padding:0;-webkit-font-smoothing:antialiased;
+}
+:root[data-theme="dark"] body{
+ background:radial-gradient(ellipse 65% 480px at 14% 6%,rgba(37,99,235,.15),transparent 70%),radial-gradient(ellipse 55% 420px at 88% 36%,rgba(99,102,241,.11),transparent 70%),var(--bg);
+}
+@media (prefers-color-scheme:dark){
+ :root:not([data-theme="light"]) body{
+  background:radial-gradient(ellipse 65% 480px at 14% 6%,rgba(37,99,235,.15),transparent 70%),radial-gradient(ellipse 55% 420px at 88% 36%,rgba(99,102,241,.11),transparent 70%),var(--bg);
+ }
 }
 .site-wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:clamp(16px,3vw,40px)}
 
@@ -74,36 +83,51 @@ body{
  border-bottom:1px solid var(--bd);
 }
 .sn-inner{
- display:flex;align-items:center;justify-content:space-between;gap:24px;
- height:60px;max-width:1440px;margin-inline:auto;padding:env(safe-area-inset-top,0px) clamp(16px,3vw,40px) 0;
+ display:flex;align-items:center;justify-content:space-between;gap:10px;
+ height:60px;max-width:1440px;margin-inline:auto;padding:env(safe-area-inset-top,0px) clamp(14px,3vw,40px) 0;
 }
+@media (min-width:640px){.sn-inner{gap:20px}}
 @media (min-width:900px){.sn-inner{height:64px;gap:32px}}
-.sn-left{display:flex;align-items:center;gap:10px;min-width:0}
+.sn-left{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 auto}
+@media (min-width:900px){.sn-left{flex:0 1 auto;gap:10px}}
 .sn-brand{
- font-family:var(--font-disp);font-size:21px;font-weight:800;letter-spacing:-.03em;
- color:var(--fg);text-decoration:none;white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;
+ font-family:var(--font-disp);font-size:clamp(17px,4.3vw,20px);font-weight:700;letter-spacing:-.02em;
+ color:var(--fg);text-decoration:none;white-space:nowrap;min-width:0;display:inline-flex;align-items:center;gap:8px;
 }
-.sn-brand span{color:var(--acc-txt)}
+.sn-brand img{width:26px;height:26px;border-radius:8px;display:block;flex:none;box-shadow:0 2px 6px rgba(37,99,235,.22)}
+@media (min-width:640px){.sn-brand img{width:28px;height:28px}}
+.sn-brand span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sn-brand em{font-style:normal;color:var(--acc-txt)}
 .sn-links{display:none;align-items:center;gap:24px}
 @media (min-width:900px){.sn-links{display:flex}}
 .sn-links button{
  background:transparent;color:var(--mut);border:0;border-radius:0;width:auto;padding:8px 2px;
- font-size:14.5px;font-weight:600;white-space:nowrap;flex-shrink:0;position:relative;
+ font-size:14.5px;font-weight:500;white-space:nowrap;flex-shrink:0;position:relative;
  transition:color .15s ease;
 }
 .sn-links button:hover{background:transparent;color:var(--fg)}
-.sn-links button.on{color:var(--acc-txt)}
+.sn-links button.on{color:var(--acc-txt);font-weight:600}
 .sn-links button.on::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--acc);border-radius:2px}
-.sn-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.sn-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+@media (min-width:640px){.sn-actions{gap:8px}}
+.sn-theme{
+ width:36px;height:36px;padding:0;display:grid;place-items:center;border-radius:10px;flex:none;
+ background:var(--soft);color:var(--fg);border:1px solid var(--bd);transition:background .15s,border-color .15s;
+}
+.sn-theme:hover{background:color-mix(in srgb,var(--acc) 10%,var(--soft));border-color:color-mix(in srgb,var(--acc) 45%,transparent)}
 .sn-cta{
- display:inline-flex;align-items:center;gap:8px;width:auto;padding:7px 14px 7px 8px;border-radius:10px;
- background:var(--soft);color:var(--fg);border:1px solid var(--bd);font-size:13.5px;font-weight:650;white-space:nowrap;flex-shrink:0;
+ display:inline-flex;align-items:center;gap:8px;width:auto;padding:5px 12px 5px 6px;border-radius:10px;
+ background:var(--soft);color:var(--fg);border:1px solid var(--bd);font-size:13.5px;font-weight:600;white-space:nowrap;flex-shrink:0;
 }
 .sn-cta:hover{background:color-mix(in srgb,var(--acc) 10%,var(--soft));border-color:color-mix(in srgb,var(--acc) 45%,transparent);color:var(--fg)}
-.bar-av{width:26px;height:26px;border-radius:50%;background:var(--acc);color:var(--on);font-size:11.5px;font-weight:750;display:grid;place-items:center;flex:none}
-#menu{width:40px;height:40px;padding:0;display:grid;place-items:center;border-radius:10px;flex:none;background:transparent;color:var(--fg);border:1px solid var(--bd)}
+.bar-av{width:26px;height:26px;border-radius:50%;background:var(--acc);color:var(--on);font-size:11.5px;font-weight:700;display:grid;place-items:center;flex:none}
+#menu{width:36px;height:36px;padding:0;display:grid;place-items:center;border-radius:10px;flex:none;background:transparent;color:var(--fg);border:1px solid var(--bd)}
 #menu:hover{background:var(--soft)}
-@media (min-width:900px){#menu{display:none!important}}
+@media (max-width:500px){
+ #nav_prof_lbl{display:none}
+ .sn-cta{width:36px;height:36px;padding:0;justify-content:center}
+}
+@media (min-width:900px){#menu{display:none!important}.sn-theme,.sn-cta{height:38px}.sn-theme{width:38px}}
 
 /* Mobile Slide-Out Website Menu */
 #drawer{
@@ -139,17 +163,17 @@ body{
 .page-head[hidden]{display:none!important}
 .page-crumb{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px}
 .page-crumb button{width:auto;padding:6px 12px;font-size:13px;border-radius:8px;font-weight:600}
-.page-head h1{font-family:var(--font-disp);font-size:clamp(26px,3.6vw,38px);line-height:1.12;margin:0;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
-.page-sub{margin:8px auto 0;color:var(--mut);font-size:15.5px;line-height:1.5;max-width:60ch}
-h2{font-size:16px;margin:0;font-weight:700;letter-spacing:-.01em}
+.page-head h1{font-family:var(--font-disp);font-size:clamp(26px,3.6vw,38px);line-height:1.14;margin:0;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+.page-sub{margin:8px auto 0;color:var(--mut);font-size:15px;line-height:1.55;max-width:60ch}
+h2{font-size:16px;margin:0;font-weight:600;letter-spacing:-.01em}
 p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 
-/* Landing Hero & Tool Grid (iLovePDF-inspired) */
+/* Landing Hero & Tool Grid */
 .hero-band{text-align:center;max-width:860px;margin:clamp(8px,2vw,20px) auto clamp(22px,3vw,34px)}
-.hero-kicker{font-size:13px;font-weight:600;color:var(--mut);margin:0 0 10px;letter-spacing:.01em}
-.hero-kicker .hello-nm{color:var(--acc-txt);font-weight:700}
-.hero-title{font-family:var(--font-disp);font-size:clamp(2.05rem,4vw,3.35rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin:0 auto 14px;max-width:24ch;text-wrap:balance;color:var(--fg)}
-.hero-lead{font-size:clamp(15px,1.5vw,17.5px);line-height:1.6;color:var(--mut);max-width:62ch;margin:0 auto 22px}
+.hero-kicker{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 10px;letter-spacing:.005em}
+.hero-kicker .hello-nm{color:var(--acc-txt);font-weight:600}
+.hero-title{font-family:var(--font-disp);font-size:clamp(2rem,3.9vw,3.25rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:0 auto 14px;max-width:24ch;text-wrap:balance;color:var(--fg)}
+.hero-lead{font-size:clamp(14.5px,1.4vw,16.5px);line-height:1.62;color:var(--mut);max-width:60ch;margin:0 auto 22px}
 .hero-controls{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:740px;margin:0 auto}
 .tsearch{position:relative;width:100%;max-width:560px}
 .tsearch svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--mut);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:1}
@@ -230,6 +254,18 @@ p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 .tfav.on{color:var(--acc-txt)}
 .tfav.on svg{fill:currentColor;stroke:currentColor}
 
+/* Recent Documents Quick Strip on Home */
+.home-recent{margin-top:26px}
+.home-recent[hidden]{display:none!important}
+.hr-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.hr-item{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:14px;background:var(--card);border:1px solid var(--bd);box-shadow:var(--sh);transition:border-color .16s,transform .16s}
+.hr-item:hover{border-color:color-mix(in srgb,var(--acc) 48%,var(--bd));transform:translateY(-2px)}
+.hr-thumb{width:40px;height:48px;border-radius:8px;background:var(--soft);border:1px solid var(--bd);display:grid;place-items:center;overflow:hidden;flex:none;color:var(--acc-txt)}
+.hr-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.hr-meta{flex:1;min-width:0}
+.hr-meta b{display:block;font-size:13.5px;font-weight:700;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hr-meta span{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+
 /* Editorial Website Sections Below Tool Grid */
 .home-extra{margin-top:clamp(44px,6vw,76px);display:flex;flex-direction:column;gap:clamp(44px,6vw,72px)}
 .home-extra[hidden]{display:none!important}
@@ -240,22 +276,22 @@ p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 .wb-media-fb{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;color:var(--mut);background:linear-gradient(135deg,var(--soft),var(--card))}
 .wb-media.broken img{display:none}.wb-media.broken .wb-media-fb{display:flex}
 .wb-copy{display:flex;flex-direction:column;justify-content:center;gap:16px}
-.wb-copy h2{font-family:var(--font-disp);font-size:clamp(24px,2.8vw,34px);line-height:1.15;letter-spacing:-.025em;font-weight:800;margin:0;text-wrap:balance}
-.wb-copy p{margin:0;color:var(--mut);font-size:15.5px;line-height:1.6}
+.wb-copy h2{font-family:var(--font-disp);font-size:clamp(24px,2.8vw,33px);line-height:1.16;letter-spacing:-.02em;font-weight:700;margin:0;text-wrap:balance}
+.wb-copy p{margin:0;color:var(--mut);font-size:15px;line-height:1.62}
 .wb-list{display:grid;gap:14px;margin:4px 0}
 .wb-item{padding-top:12px;border-top:1px solid var(--bd)}
-.wb-item b{display:block;font-size:15px;font-weight:700;color:var(--fg);margin-bottom:3px}
-.wb-item span{font-size:14px;color:var(--mut);line-height:1.5}
+.wb-item b{display:block;font-size:15px;font-weight:600;color:var(--fg);margin-bottom:3px}
+.wb-item span{font-size:14px;color:var(--mut);line-height:1.55}
 .wb-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
 .wb-acts button{width:auto;padding:11px 20px;font-size:14.5px;border-radius:10px}
 
 .proof-band{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:clamp(28px,4vw,44px) 0}
 .proof-hd{max-width:620px;margin-bottom:26px}
-.proof-hd h2{font-family:var(--font-disp);font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.02em;margin:0 0 8px}
+.proof-hd h2{font-family:var(--font-disp);font-size:clamp(22px,2.6vw,29px);font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
 .proof-hd p{margin:0;color:var(--mut);font-size:15px;line-height:1.55}
 .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px 28px}
-.proof-stat b{display:block;font-family:var(--font-disp);font-size:clamp(24px,2.5vw,32px);font-weight:800;letter-spacing:-.02em;color:var(--acc-txt);font-variant-numeric:tabular-nums;margin-bottom:4px}
-.proof-stat span{display:block;font-size:14.5px;font-weight:700;color:var(--fg);margin-bottom:4px}
+.proof-stat b{display:block;font-family:var(--font-disp);font-size:clamp(24px,2.5vw,31px);font-weight:700;letter-spacing:-.02em;color:var(--acc-txt);font-variant-numeric:tabular-nums;margin-bottom:4px}
+.proof-stat span{display:block;font-size:14.5px;font-weight:600;color:var(--fg);margin-bottom:4px}
 .proof-stat small{display:block;font-size:13.5px;color:var(--mut);line-height:1.5}
 
 /* Shared Tool UI Controls & Cards */
@@ -545,7 +581,7 @@ select,input[type=number]{min-width:0;max-width:100%}
  <div class="sn-inner">
   <div class="sn-left">
    <button class="g ic" id="menu" aria-controls="drawer" aria-label="Open menu"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-   <a href="#home" class="sn-brand" id="nav_logo">Pocket<span>Docs</span></a>
+   <a href="#home" class="sn-brand" id="nav_logo"><img src="icon-192.png" alt=""><span>Pocket<em>Docs</em></span></a>
   </div>
   <nav class="sn-links" aria-label="Primary">
    <button type="button" data-v="home" id="nav_all">All Tools</button>
@@ -556,6 +592,7 @@ select,input[type=number]{min-width:0;max-width:100%}
    <button type="button" data-v="settings" id="nav_set">Settings</button>
   </nav>
   <div class="sn-actions">
+   <button type="button" class="sn-theme" id="nav_theme" aria-label="Toggle theme" title="Toggle light or dark theme"><svg id="nav_theme_ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></svg></button>
    <button type="button" class="sn-cta" id="nav_profile" aria-label="Profile"><span class="bar-av" id="bar_av">?</span><span id="nav_prof_lbl">Profile</span></button>
   </div>
  </div>
@@ -606,20 +643,25 @@ select,input[type=number]{min-width:0;max-width:100%}
   <div id="fav_sec" style="margin:0 0 22px" hidden><div class="sec-hd" style="margin-bottom:8px"><h2>Pinned shortcuts</h2><span id="fav_cnt">0 pinned</span></div><div class="fav-empty" id="fav_empty" hidden>Tap ♥ on any tool to pin it here.</div><div class="fav-bar" id="fav_grid"></div></div>
   <div class="tools-bar"><div class="sec-hd"><h2>Document &amp; PDF Tools</h2><span id="tools_cnt">12 tools</span></div></div>
   <div class="tgrid">
-   <button type="button" class="tcard" id="open_ms" data-cat="pdf" data-kw="merge combine join split extract pages pdf multiple"><div class="tcard-hd"><span class="tic" style="background:#e12d39"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><b>Merge &amp; Split PDF</b></div><small>Combine multiple PDFs or images in any order, or extract and split specific pages.</small><span class="tcta">Open tool →</span></button>
-   <button type="button" class="tcard" id="open_comp" data-cat="id pdf" data-kw="compress shrink reduce size kb mb resize quality upload limit"><div class="tcard-hd"><span class="tic" style="background:#16a34a"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg></span><b>Compress &amp; Resize</b></div><small>Shrink PDFs and photos to meet exact KB or MB upload size limits.</small><span class="tcta">Open tool →</span></button>
+   <button type="button" class="tcard" id="open_ms" data-cat="pdf" data-kw="merge combine join split extract pages pdf multiple"><div class="tcard-hd"><span class="tic" style="background:#7c3aed"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><b>Merge &amp; Split PDF</b></div><small>Combine multiple PDFs or images in any order, or extract and split specific pages.</small><span class="tcta">Open tool →</span></button>
+   <button type="button" class="tcard" id="open_comp" data-cat="id pdf" data-kw="compress shrink reduce size kb mb resize quality upload limit"><div class="tcard-hd"><span class="tic" style="background:#059669"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg></span><b>Compress &amp; Resize</b></div><small>Shrink PDFs and photos to meet exact KB or MB upload size limits.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_conv" data-cat="pdf" data-kw="convert pdf word docx jpg png webp txt markdown html csv json format change"><div class="tcard-hd"><span class="tic" style="background:#0284c7"><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3M17 17H7l3 3"/><path d="M17 7v4M7 17v-4"/></svg></span><b>File Converter</b></div><small>Convert PDF, Word (.docx), JPG, PNG, WebP, Markdown, CSV, and JSON.</small><span class="tcta">Open tool →</span></button>
-   <button type="button" class="tcard" id="open_prd" data-cat="id" data-kw="aadhaar pan voter id card driving licence certificate passbook print size mm cm inches crop straighten"><div class="tcard-hd"><span class="tic" style="background:#ea580c"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></svg></span><b>PrintFit</b></div><small>Straighten ID cards, certificates, and photos to exact millimeter print sizes on A4.</small><span class="tcta">Open tool →</span></button>
+   <button type="button" class="tcard" id="open_prd" data-cat="id" data-kw="aadhaar pan voter id card driving licence certificate passbook print size mm cm inches crop straighten"><div class="tcard-hd"><span class="tic" style="background:#2563eb"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h4"/></svg></span><b>PrintFit</b></div><small>Straighten ID cards, certificates, and photos to exact millimeter print sizes on A4.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_ocr" data-cat="pdf" data-kw="ocr text extract searchable pdf scan image read words copy hindi tamil"><div class="tcard-hd"><span class="tic" style="background:#4f46e5"><svg viewBox="0 0 24 24"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M7 9h10M7 12h10M7 15h6"/></svg></span><b>OCR Scanner</b></div><small>Extract editable text from scanned PDFs and photos, or build searchable PDFs.</small><span class="tcta">Open tool →</span></button>
-   <button type="button" class="tcard" id="open_sign" data-cat="pdf" data-kw="sign signature stamp draw pdf image document multiple"><div class="tcard-hd"><span class="tic" style="background:#7c3aed"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><b>Sign &amp; Stamp</b></div><small>Draw signatures in custom ink colors and place them anywhere on your PDF pages.</small><span class="tcta">Open tool →</span></button>
+   <button type="button" class="tcard" id="open_sign" data-cat="pdf" data-kw="sign signature stamp draw pdf image document multiple"><div class="tcard-hd"><span class="tic" style="background:#6366f1"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><b>Sign &amp; Stamp</b></div><small>Draw signatures in custom ink colors and place them anywhere on your PDF pages.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_pp" data-cat="id" data-kw="passport photo visa 35x45 2x2 sheet tile print crop dpi"><div class="tcard-hd"><span class="tic" style="background:#db2777"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span><b>Passport Photo</b></div><small>Tile 35×45 mm or 2×2 in photos onto 4×6, 5×7, or A4 sheets with precision crop.</small><span class="tcta">Open tool →</span></button>
-   <button type="button" class="tcard" id="open_red" data-cat="sec pdf" data-kw="redact mask hide blur pixelate checkered black out sensitive private"><div class="tcard-hd"><span class="tic" style="background:#b91c1c"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><b>Redact &amp; Mask</b></div><small>Permanently black out, blur, or pixelate sensitive numbers across PDF pages.</small><span class="tcta">Open tool →</span></button>
+   <button type="button" class="tcard" id="open_red" data-cat="sec pdf" data-kw="redact mask hide blur pixelate checkered black out sensitive private"><div class="tcard-hd"><span class="tic" style="background:#e11d48"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></span><b>Redact &amp; Mask</b></div><small>Permanently black out, blur, or pixelate sensitive numbers across PDF pages.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_lock" data-cat="sec pdf" data-kw="pdf lock unlock password protect encrypt decrypt security"><div class="tcard-hd"><span class="tic" style="background:#0f766e"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><b>PDF Lock &amp; Unlock</b></div><small>Encrypt PDFs with password protection or remove passwords from PDFs you own.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_meta" data-cat="sec" data-kw="metadata exif gps strip remove privacy clean photo pdf"><div class="tcard-hd"><span class="tic" style="background:#334155"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Metadata Stripper</b></div><small>Inspect and remove hidden EXIF GPS coordinates, camera tags, and PDF author info.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_qr" data-cat="biz" data-kw="qr code barcode generate scan wifi upi link"><div class="tcard-hd"><span class="tic" style="background:#0891b2"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM17 17h4v4h-4zM14 20h2"/></svg></span><b>QR Studio</b></div><small>Generate crisp QR codes for links, Wi-Fi, and UPI payments, or scan from files.</small><span class="tcta">Open tool →</span></button>
    <button type="button" class="tcard" id="open_inv" data-cat="biz" data-kw="invoice receipt bill payment pdf maker gst tax"><div class="tcard-hd"><span class="tic" style="background:#d97706"><svg viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span><b>Invoice &amp; Receipt</b></div><small>Build itemized PDF invoices and payment receipts with tax, discounts, and signature.</small><span class="tcta">Open tool →</span></button>
   </div>
   <div class="fav-empty" id="tool_empty" hidden style="margin-top:14px;text-align:center">No matching tools found. Try searching "merge", "compress", "print", or "sign".</div>
+ </div>
+
+ <div class="home-recent" id="home_recent" hidden>
+  <div class="sec-hd"><h2>Recent documents</h2><button type="button" class="g sm" id="hr_all" style="padding:5px 10px">View all →</button></div>
+  <div class="hr-grid" id="home_recent_grid"></div>
  </div>
 
  <div class="home-extra" id="home_extra">
@@ -658,7 +700,7 @@ select,input[type=number]{min-width:0;max-width:100%}
 
   <section class="wb-split rev" aria-label="Cross-device and offline support">
    <div class="wb-media">
-    <img src="/src/assets/images/offline_devices_1795526221828.jpg" alt="Desktop monitor, tablet, and smartphone displaying crisp document pages" referrerPolicy="no-referrer" onerror="this.parentElement.classList.add('broken')">
+    <img src="/src/assets/images/offline_devices_blue_1795527582249.jpg" alt="Desktop monitor, tablet, and smartphone displaying crisp document pages" referrerPolicy="no-referrer" onerror="this.parentElement.classList.add('broken')">
     <div class="wb-media-fb"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><b>Desktop, Tablet &amp; Mobile Ready</b></div>
    </div>
    <div class="wb-copy">
@@ -2104,15 +2146,18 @@ function applyTheme(animate){
   if(SET.theme==='auto'){if(sysDark)r.setAttribute('data-theme','dark');else r.removeAttribute('data-theme');}
   else r.setAttribute('data-theme',SET.theme);
   document.querySelectorAll('#themeseg button').forEach(b=>b.className=b.dataset.t===SET.theme?'on':'');
-  const tb=$('theme_badge'),th=$('theme_hint'),tl=$('theme_toggle_lbl'),ti=$('theme_toggle_ic');
+  const tb=$('theme_badge'),th=$('theme_hint'),tl=$('theme_toggle_lbl'),ti=$('theme_toggle_ic'),nti=$('nav_theme_ic'),ntb=$('nav_theme');
+  const iconSvg=dark?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>':'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
   if(tb)tb.textContent=SET.theme==='auto'?('System · '+(dark?'Dark':'Light')):('Manual · '+(dark?'Dark':'Light'));
   if(tl)tl.textContent=dark?'Switch to Light theme':'Switch to Dark theme';
-  if(ti)ti.innerHTML=dark?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>':'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  if(ti)ti.innerHTML=iconSvg;
+  if(nti)nti.innerHTML=iconSvg;
+  if(ntb)ntb.setAttribute('aria-label',dark?'Switch to Light theme':'Switch to Dark theme');
   if(th){
    let inFrame=false;try{inFrame=window.self!==window.top;}catch(e){inFrame=true;}
    th.textContent=SET.theme==='auto'?(inFrame?('Browser reports '+(dark?'Dark':'Light')+' inside this preview frame. Use the button above to override manually.'):('Following browser/system ('+(dark?'Dark':'Light')+'). If this stays Light when phone Dark mode is on, set your browser Theme to System default or use the button above.')):('Manually set to '+(dark?'Dark':'Light')+' theme (overriding system preference).');
   }
-  const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=dark?'#0f1218':'#e12d39';
+  const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=dark?'#080d18':'#2563eb';
  };
  if(animate&&prevDark!==dark&&!document.hidden&&!reduce){
   if(typeof document.startViewTransition==='function'){
@@ -2127,7 +2172,7 @@ function applyTheme(animate){
   let veil=document.getElementById('theme_veil');
   if(!veil){veil=document.createElement('div');veil.id='theme_veil';document.body.appendChild(veil);}
   veil.style.transition='none';
-  veil.style.background=prevDark?'#0f1218':'#f5f6fa';
+  veil.style.background=prevDark?'#080d18':'#f6f8fc';
   veil.style.opacity='0.48';
   r.classList.add('theme-xfade');
   void r.offsetWidth;
@@ -2142,8 +2187,9 @@ function applyTheme(animate){
  commit();
 }
 document.querySelectorAll('#themeseg button').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.t;saveSet();applyTheme(true);});
-const _themeToggle=$('theme_toggle');
-if(_themeToggle)_themeToggle.onclick=()=>{const isDark=SET.theme==='dark'||(SET.theme==='auto'&&isSysDark());SET.theme=isDark?'light':'dark';saveSet();applyTheme(true);};
+const flipTheme=()=>{const isDark=SET.theme==='dark'||(SET.theme==='auto'&&isSysDark());SET.theme=isDark?'light':'dark';saveSet();applyTheme(true);};
+const _themeToggle=$('theme_toggle');if(_themeToggle)_themeToggle.onclick=flipTheme;
+const _navTheme=$('nav_theme');if(_navTheme)_navTheme.onclick=flipTheme;
 const _mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)');if(_mq){const onSysChg=()=>applyTheme(true);if(_mq.addEventListener)_mq.addEventListener('change',onSysChg);else if(_mq.addListener)_mq.addListener(onSysChg);}
 window.addEventListener('focus',()=>applyTheme());window.addEventListener('pageshow',()=>applyTheme());document.addEventListener('visibilitychange',()=>{if(!document.hidden)applyTheme();});
 applyTheme();
@@ -2353,6 +2399,7 @@ if(_fGrid&&'MutationObserver'in window)new MutationObserver(renderSiteFoot).obse
    c.hidden=!vis;if(vis)shown++;
   });
   if($('home_extra'))$('home_extra').hidden=!!(q||activeCat!=='all');
+  if($('home_recent'))$('home_recent').hidden=!!(q||activeCat!=='all')||!window._hasRecents;
   if($('tools_cnt'))$('tools_cnt').textContent=q?(shown+' matching'):(shown+' tool'+(shown===1?'':'s'));
   if($('tool_empty'))$('tool_empty').hidden=shown>0;
   fitToolGrid(true);
@@ -2361,6 +2408,13 @@ if(_fGrid&&'MutationObserver'in window)new MutationObserver(renderSiteFoot).obse
  applyCat();
  $('tool_q').addEventListener('input',applyCat);
  if($('tool_q_clr'))$('tool_q_clr').onclick=()=>{$('tool_q').value='';applyCat();$('tool_q').focus();};
+ $('tool_q').addEventListener('keydown',e=>{if(e.key==='Escape'&&$('tool_q').value){$('tool_q').value='';applyCat();}});
+ document.addEventListener('keydown',e=>{
+  if(e.key!=='/'||e.ctrlKey||e.metaKey||e.altKey)return;
+  if($('v-home').hidden)return;
+  const t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable))return;
+  e.preventDefault();$('tool_q').focus();
+ });
  const buildSlideList=()=>[...document.querySelectorAll('#v-home .tgrid .tcard')].map(c=>({
   el:c,
   name:(c.querySelector('b')?.textContent||'').trim(),
@@ -2801,6 +2855,24 @@ async function renderHist(){
  try{recs=await tx('readonly',s=>s.getAll());}catch(e){h.textContent='History is not available in this browser.';return;}
  recs.sort((a,b)=>b.ts-a.ts);
  if($('home_docs'))$('home_docs').textContent=recs.length?('My documents ('+recs.length+')'):'My documents';
+ const hrg=$('home_recent_grid'),hr=$('home_recent');
+ window._hasRecents=recs.length>0;
+ if(hrg&&hr){
+  hrg.innerHTML='';
+  recs.slice(0,3).forEach(r=>{
+   const item=document.createElement('div');item.className='hr-item';
+   const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
+   const u=tb?URL.createObjectURL(tb):'';
+   const tool=r.tool||'PrintFit';
+   const when=new Date(r.ts).toLocaleDateString([],{month:'short',day:'numeric'})+' · '+(r.ext||'pdf').toUpperCase();
+   item.innerHTML='<div class="hr-thumb">'+(u?'<img src="'+u+'" alt="">':'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>')+'</div><div class="hr-meta"><b>'+tool+'</b><span>'+when+(r.paper?' · '+r.paper:'')+'</span></div><button type="button" class="g sm">View</button>';
+   item.querySelector('button').onclick=()=>openDoc(r);
+   hrg.appendChild(item);
+  });
+  const filtering=!!(($('tool_q')?.value||'').trim()||document.querySelector('#cat_bar button.on')?.dataset.cat!=='all');
+  hr.hidden=!recs.length||filtering;
+ }
+ if($('hr_all'))$('hr_all').onclick=()=>go('docs');
  h.innerHTML=recs.length?'':'<p class="s" style="margin:0">Nothing yet. Documents created with any tool will appear here.</p>';
  recs.forEach(r=>{const d=document.createElement('div');d.className='hi';
   const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
