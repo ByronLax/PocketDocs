@@ -68,10 +68,25 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),li
 .pick.alt{background:var(--soft);color:var(--fg);border:1px solid var(--bd);margin-top:0;font-weight:600}
 .pick input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:200px}
 .pick svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.pick.big{flex-direction:column;gap:4px;padding:26px 14px;background:color-mix(in srgb,var(--acc) 7%,var(--card));color:var(--fg);border:1.6px dashed color-mix(in srgb,var(--acc) 55%,transparent);border-radius:16px}
+.pick.big{flex-direction:column;gap:5px;padding:26px 16px;min-height:158px;max-width:500px;margin-inline:auto;background:color-mix(in srgb,var(--acc) 7%,var(--card));color:var(--fg);border:1.6px dashed color-mix(in srgb,var(--acc) 55%,transparent);border-radius:16px}
 .pick.big svg{width:30px;height:30px;stroke:var(--acc);margin-bottom:4px}
-.pick.big b{font-size:16px}.pick.big small{color:var(--mut);font-size:13px;font-weight:500}
+.pick.big b{font-size:16px}.pick.big small{color:var(--mut);font-size:13px;font-weight:500;max-width:34ch;line-height:1.4}
 .pick.big.over,.dz-bar.over,#dz_done.over{background:color-mix(in srgb,var(--acc) 16%,var(--card));border-color:var(--acc)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 22%,transparent)}
+.dz-col{min-width:0;display:flex;flex-direction:column}
+.dz-col .dz-bar{max-width:500px;width:100%;margin-inline:auto}
+.tool-col{min-width:0;display:flex;flex-direction:column}
+.dz-tips{margin:12px 0 0;padding:11px 13px;border-radius:13px;background:var(--soft);border:1px solid var(--bd);font-size:12.5px;color:var(--mut);display:grid;gap:6px}
+.dz-tips div{display:flex;align-items:center;gap:8px;line-height:1.35}
+.dz-tips svg{width:15px;height:15px;stroke:var(--acc);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dz-tips b{color:var(--fg);font-weight:650}
+.pv-empty-box{padding:26px 18px;border-radius:16px;background:var(--soft);border:1px dashed var(--bd);text-align:center;color:var(--mut);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:164px}
+.pv-empty-box[hidden]{display:none!important}
+.pv-empty-box svg{width:28px;height:28px;stroke:var(--acc);opacity:.8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:2px}
+.pv-empty-box b{font-size:14px;color:var(--fg);font-weight:650}
+.pv-empty-box small{font-size:12.5px;max-width:30ch;line-height:1.45}
+.ms-sum{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-radius:12px;background:var(--soft);border:1px solid var(--bd);font-size:12.5px;font-weight:600;color:var(--mut);margin-top:10px}
+.ms-sum[hidden]{display:none!important}
+.ms-sum button{width:auto!important;min-height:28px!important;padding:4px 10px!important;font-size:12px!important;border-radius:8px!important}
 #dzrow{margin-top:10px}
 canvas{width:100%;display:block;border-radius:12px;touch-action:none;background:var(--soft)}
 .seg{display:flex;background:var(--soft);padding:4px;border-radius:13px;margin-bottom:12px;gap:2px}
@@ -97,8 +112,35 @@ input[type=range]{width:100%;accent-color:var(--acc);margin:2px 0 10px;height:26
 #posr{margin:2px 0 10px}
 .hi{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--bd)}.hi:first-child{border-top:0;padding-top:0}
 .hi img{width:44px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--bd);background:#fff;flex:none}
-.hi .m{flex:1;min-width:0;display:flex;flex-direction:column;font-size:14.5px}.hi .m b{font-weight:650}.hi .m span{color:var(--mut);font-size:13px}
-.hi .ab{display:flex;gap:6px}
+.hi .th{width:46px;height:60px;border-radius:8px;border:1px solid var(--bd);background:var(--card);display:grid;place-items:center;flex:none;overflow:hidden;color:var(--mut);font-size:10px;font-weight:700;letter-spacing:.03em;box-shadow:0 1px 4px rgba(15,23,42,.08);transition:border-color .15s}
+.hi .th.clk{cursor:pointer}
+.hi .th.clk:hover{border-color:var(--acc)}
+.hi .th img{width:100%;height:100%;object-fit:contain;background:#fff;border:0;border-radius:0;display:block}
+.hi .m{flex:1;min-width:0;display:flex;flex-direction:column;font-size:14.5px}.hi .m b{font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hi .m span{color:var(--mut);font-size:13px}
+.hi .ab{display:flex;gap:6px;flex:none}
+.pdf-pv{margin-top:12px;padding:12px;border-radius:14px;background:var(--soft);border:1px solid var(--bd);outline:none}
+.pdf-pv[hidden]{display:none}
+.pdf-pv-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;font-size:13px}
+.pdf-pv-hd b{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--fg)}
+.pdf-pv-hd span{color:var(--mut);font-weight:600;flex:none}
+.pdf-pv-hd .pdf-x{width:auto!important;min-height:28px!important;padding:4px 9px!important;font-size:12px!important;border-radius:8px!important;flex:none}
+.pdf-stage{position:relative;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--card) 65%,var(--soft));border:1px solid var(--bd);border-radius:12px;padding:10px;min-height:170px;margin-bottom:10px}
+.pdf-stage img{display:block;max-width:100%;max-height:290px;width:auto;height:auto;object-fit:contain;background:#fff;border:1px solid var(--bd);border-radius:8px;box-shadow:0 4px 14px rgba(15,23,42,.12);transition:opacity .15s}
+.pdf-stage.busy img{opacity:.55}
+.pdf-stage-msg{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(15,23,42,.8);color:#fff;font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;pointer-events:none;white-space:nowrap}
+.pdf-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.pdf-nav button{width:auto!important;min-width:86px;padding:7px 12px!important;font-size:13px!important;border-radius:10px!important}
+.pdf-pg-ind{font-size:13px;font-weight:700;color:var(--fg);text-align:center;flex:1;white-space:nowrap}
+.pdf-strip{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:thin}
+.pdf-pg{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px;border:0;background:transparent;width:auto!important;border-radius:10px;cursor:pointer;color:var(--mut)}
+.pdf-pg:hover{background:transparent;opacity:.92}
+.pdf-pg img{height:82px;width:auto;min-width:52px;max-width:112px;object-fit:contain;background:#fff;border:2px solid var(--bd);border-radius:8px;box-shadow:0 2px 6px rgba(15,23,42,.10);display:block;transition:border-color .15s,box-shadow .15s}
+.pdf-pg.on img{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in srgb,var(--acc) 26%,transparent)}
+.pdf-pg span{font-size:11.5px;font-weight:600;color:var(--mut)}
+.pdf-pg.on span{color:var(--acc);font-weight:700}
+.pdf-more{flex:none;min-width:70px;height:82px;padding:8px;border-radius:8px;border:1px dashed var(--bd);background:var(--card);display:grid;place-items:center;text-align:center;font-size:12px;font-weight:600;color:var(--mut);cursor:pointer;width:auto!important}
+.pdf-more:hover{background:color-mix(in srgb,var(--acc) 10%,var(--card));border-color:var(--acc);color:var(--acc)}
+.pdf-empty{font-size:13px;color:var(--mut);padding:4px 0}
 #plat .hi .pick{padding:8px 14px;font-size:14px;width:auto}
 #viewer{position:fixed;inset:0;z-index:50;background:var(--soft);overflow:auto;padding:env(safe-area-inset-top,0px) 14px 28px}
 #viewer[hidden]{display:none}
@@ -209,6 +251,17 @@ select,input[type=number]{min-width:0;max-width:100%}
  #drawer{position:sticky;top:18px;height:calc(100dvh - 36px);overflow:auto;border:1px solid var(--bd);border-radius:20px;box-shadow:var(--sh);padding:16px}
  #menu,#dclose,#scrim{display:none!important}
  .bar{margin-top:6px}
+ #dz_done{max-width:520px}
+ #v-inv,#v-docs,#v-profile,#v-settings,#v-help,#v-get{max-width:820px;margin-inline:auto}
+}
+.tool-grid,.tool-split,.dz-split{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:959.98px){.pv-empty-box{display:none!important}}
+@media (min-width:960px){
+ .tool-grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:18px;align-items:start}
+ .tool-grid>.card{margin-top:0!important}
+ .tool-split{grid-template-columns:minmax(0,410px) minmax(0,1fr);gap:20px;align-items:start}
+ .dz-split{grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:18px;align-items:center}
+ .tool-split .pick.big,.tool-split .dz-col .dz-bar,.dz-split .pick.big,.dz-split .dz-col .dz-bar,.tool-grid .pick.big,.tool-grid .dz-col .dz-bar{max-width:100%}
 }
 @media (min-width:1280px){.main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
 #menu,#dclose,#scrim{display:none!important}
@@ -408,13 +461,23 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <div class="dz-acts"><button type="button" class="g sm" id="dz_more">+ Add more</button><button type="button" class="g sm" id="dz_clr">Clear all</button></div>
 </div>
 <div id="dz_box">
-<button type="button" class="pick big" id="dz"><svg viewBox="0 0 24 24"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5"/><path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"/></svg><b>Add documents or photos</b><small>Drag &amp; drop or tap to choose Photos, PDFs, or Files</small></button>
-<div class="three" id="dzrow">
+<div class="dz-split">
+<div class="dz-col">
+<button type="button" class="pick big" id="dz"><svg viewBox="0 0 24 24"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5"/><path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"/></svg><b>Add documents or photos</b><small>Drag &amp; drop, paste (Ctrl+V), or tap to choose</small></button>
+</div>
+<div class="tool-col">
+<div class="three" id="dzrow" style="margin-top:0">
 <label class="pick alt"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg>Photos<input id="f4" type="file" accept="image/*" multiple></label>
 <label class="pick alt"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>Files<input id="f" type="file" accept="application/pdf,.pdf,.txt,*/*" multiple></label>
 <label class="pick alt"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h5L14.5 6H16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" transform="translate(1 0)"/><circle cx="12" cy="12.5" r="3"/></svg>Camera<input id="f2" type="file" accept="image/*" capture="environment"></label>
 </div>
 <label class="lock" style="margin:10px 0 0"><input id="auto_pair" type="checkbox" checked><span>Auto-pair front &amp; back when adding 2+ photos</span></label>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>100% local:</b> Photos &amp; PDFs never leave your device.</span></div>
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Supports ID cards, certificates, JPG, PNG, WebP &amp; multi-page PDFs.</span></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <div id="list" class="col" style="margin-top:14px;margin-bottom:14px"></div>
@@ -484,16 +547,23 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 </section>
 
 <section class="view" id="v-ocr" hidden>
+<div class="tool-grid">
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Choose image, PDF or file</h2></div>
-<button type="button" class="pick big" id="ocr_dz"><svg viewBox="0 0 24 24"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M7 9h10M7 12h10M7 15h6"/></svg><b>Add image, PDF or text file</b><small>Drag &amp; drop or tap to choose Photos, Files, or Camera</small></button>
+<div class="dz-col">
+<button type="button" class="pick big" id="ocr_dz"><svg viewBox="0 0 24 24"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M7 9h10M7 12h10M7 15h6"/></svg><b>Add image, PDF or text file</b><small>Drag &amp; drop, paste (Ctrl+V), or tap to choose</small></button>
 <input id="ocr_f" type="file" accept="application/pdf,.pdf,.txt,.md,.csv,.json,image/*" hidden>
+</div>
 <div class="two" style="margin-top:10px">
 <label class="pick alt"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h5L14.5 6H16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" transform="translate(1 0)"/><circle cx="12" cy="12.5" r="3"/></svg>Camera<input id="ocr_cam" type="file" accept="image/*" capture="environment"></label>
 <div class="field" style="margin:0"><select id="ocr_lang" aria-label="OCR language"><option value="eng" selected>English</option><option value="hin">Hindi</option><option value="tam">Tamil</option><option value="spa">Spanish</option><option value="fra">French</option><option value="deu">German</option><option value="ara">Arabic</option></select></div>
 </div>
 <div class="ocr-bar" id="ocr_bar" hidden><i id="ocr_prog"></i></div>
 <div class="hint" id="ocr_st"></div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Extracts text from scans, photos, PDFs &amp; builds searchable PDFs.</span></div>
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Runs offline in your browser once language data loads.</span></div>
+</div>
 </section>
 <section class="card" style="margin-top:14px">
 <div class="hd"><span class="step">2</span><h2>Searchable PDF &amp; text</h2><span id="ocr_cnt" style="font-size:12.5px;color:var(--mut);font-weight:600"></span></div>
@@ -508,15 +578,24 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 </div>
 <button type="button" class="g sm" id="ocr_clr" style="margin-top:10px;width:100%">Clear</button>
 </section>
+</div>
 </section>
 
 <section class="view" id="v-conv" hidden>
+<div class="tool-grid">
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Choose file(s) to convert</h2></div>
-<button type="button" class="pick big" id="conv_dz"><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3M17 17H7l3 3"/><path d="M17 7v4M7 17v-4"/></svg><b>Add document or image</b><small>Drag &amp; drop or tap · PDF, Word (.docx), Images, TXT, MD, HTML, CSV, JSON</small></button>
+<div class="dz-col">
+<button type="button" class="pick big" id="conv_dz"><svg viewBox="0 0 24 24"><path d="M7 7h10l-3-3M17 17H7l3 3"/><path d="M17 7v4M7 17v-4"/></svg><b>Add document or image</b><small>Drag &amp; drop, paste (Ctrl+V), or tap · PDF, DOCX, Images, TXT, MD, HTML, CSV, JSON</small></button>
 <input id="conv_f" type="file" accept=".pdf,.docx,.txt,.md,.html,.htm,.csv,.json,image/*" multiple hidden>
 <input id="conv_cam" type="file" accept="image/*" capture="environment" hidden>
+</div>
 <div class="hint" id="conv_info" style="margin-top:10px"></div>
+<div id="conv_pv" class="pdf-pv" hidden></div>
+<div class="dz-tips" id="conv_tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><b>Batch images:</b> Drop multiple photos to pack into PDF, DOCX, or ZIP.</span></div>
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Converts PDF pages, Word docs, Markdown, CSV &amp; JSON locally.</span></div>
+</div>
 </section>
 <section class="card" style="margin-top:14px">
 <div class="hd"><span class="step">2</span><h2>Convert &amp; export</h2></div>
@@ -525,23 +604,48 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <div class="hint" id="conv_st" style="margin-top:10px"></div>
 <div id="conv_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="conv_dl" download="converted" href="#">Download file</a><button type="button" class="g" id="conv_save">Save to My documents</button></div><button type="button" class="g sm" id="conv_new" style="margin-top:8px;width:100%">+ Convert another new doc</button></div>
 </section>
+</div>
 </section>
 
 <section class="view" id="v-ms" hidden>
 <section class="card">
 <div class="seg" id="ms_seg"><button type="button" class="on" data-m="merge">Merge PDFs</button><button type="button" data-m="split">Split / Extract</button></div>
 <div id="ms_merge_box">
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
 <button type="button" class="pick big" id="ms_dz"><svg viewBox="0 0 24 24"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5"/><path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"/></svg><b>Add PDFs or images to merge</b><small>Drag &amp; drop or select multiple files in any order</small></button>
 <input id="ms_f" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/*,application/pdf,*/*" multiple hidden>
-<div id="ms_list" style="margin-top:12px"></div>
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Combine PDFs and photos in any order; tap any thumbnail to inspect pages.</span></div>
+</div>
 <button type="button" id="ms_go_merge" style="margin-top:12px" disabled>Merge into one PDF</button>
 </div>
+<div class="tool-col">
+<div class="pv-empty-box" id="ms_m_empty"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><b>Merge queue is empty</b><small>Added PDFs and images appear here. Use ↑ ↓ to reorder or click a thumbnail to preview pages.</small></div>
+<div id="ms_list"></div>
+<div id="ms_m_sum" class="ms-sum" hidden><span id="ms_m_sum_txt"></span><button type="button" class="g sm" id="ms_m_clr">Clear all</button></div>
+<div id="ms_m_pv" class="pdf-pv" hidden></div>
+</div>
+</div>
+</div>
 <div id="ms_split_box" hidden>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
 <button type="button" class="pick big" id="ms_sdz"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><b>Choose a PDF to split</b><small id="ms_sinfo">Drag &amp; drop or select a multi-page PDF file</small></button>
 <input id="ms_sf" type="file" accept="application/pdf,.pdf" hidden>
+</div>
 <div class="field" style="margin-top:12px"><label for="ms_mode">Split mode</label><select id="ms_mode"><option value="range">Extract specific pages (e.g. 1-3, 5)</option><option value="each">Split every page into separate PDFs (.zip)</option></select></div>
 <div class="field" id="ms_rbox"><label for="ms_range">Pages to extract</label><input id="ms_range" type="text" placeholder="e.g. 1-3, 5, 7"></div>
 <button type="button" id="ms_go_split" disabled>Split PDF</button>
+</div>
+<div class="tool-col">
+<div class="pv-empty-box" id="ms_sp_empty"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg><b>No PDF selected yet</b><small>Page thumbnails and Next/Prev navigation appear here so you can check page numbers before extracting.</small></div>
+<div id="ms_sp_pv" class="pdf-pv" style="margin-top:0" hidden></div>
+</div>
+</div>
 </div>
 <div class="hint" id="ms_st" style="margin-top:10px"></div>
 <div id="ms_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="ms_dl" download="document.pdf" href="#">Download</a><button type="button" class="g" id="ms_save">Save to My documents</button></div><button type="button" class="g sm" id="ms_new" style="margin-top:8px;width:100%">+ Create another new doc</button></div>
@@ -550,10 +654,20 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 
 <section class="view" id="v-comp" hidden>
 <section class="card">
-<div class="hd"><span class="step">1</span><h2>Choose image or PDF</h2></div>
-<button type="button" class="pick big" id="comp_dz"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg><b>Select image or PDF</b><small id="comp_info">Drag &amp; drop or select an image or PDF to shrink/resize</small></button>
+<div class="hd"><span class="step">1</span><h2>Compress &amp; Resize</h2></div>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
+<button type="button" class="pick big" id="comp_dz"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg><b>Select image or PDF</b><small id="comp_info">Drag &amp; drop, paste (Ctrl+V), or select a file</small></button>
 <input id="comp_f" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/*,application/pdf,*/*" hidden>
-<details class="typ" open style="margin-bottom:12px"><summary>Compression &amp; size options</summary><div class="typ-body"><div class="two">
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Hit an exact KB/MB target size or adjust quality &amp; max width.</span></div>
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Images &amp; PDFs are re-encoded locally in your browser.</span></div>
+</div>
+</div>
+<div class="tool-col">
+<details class="typ" open style="margin:0 0 12px"><summary>Compression &amp; size options</summary><div class="typ-body"><div class="two">
 <div class="field"><label for="comp_target">Target size (optional)</label><input id="comp_target" type="number" min="0" step="0.1" placeholder="e.g. 100"></div>
 <div class="field"><label for="comp_unit">Unit</label><select id="comp_unit"><option value="KB" selected>KB</option><option value="MB">MB</option></select></div>
 </div>
@@ -564,15 +678,28 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <button type="button" id="comp_go" disabled>Compress file</button>
 <div class="hint" id="comp_st" style="margin-top:10px"></div>
 <div id="comp_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="comp_dl" download="compressed" href="#">Download</a><button type="button" class="g" id="comp_save">Save to My documents</button></div><button type="button" class="g sm" id="comp_new" style="margin-top:8px;width:100%">+ Compress another new doc</button></div>
+</div>
+</div>
 </section>
 </section>
 
 <section class="view" id="v-sign" hidden>
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Document &amp; Signature</h2></div>
-<button type="button" class="pick big" id="sign_dz"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><b>Choose PDF or image to sign</b><small id="sign_info">Drag &amp; drop or select a PDF or photo</small></button>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
+<button type="button" class="pick big" id="sign_dz"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><b>Choose PDF or image to sign</b><small id="sign_info">Drag &amp; drop, paste (Ctrl+V), or select a file</small></button>
 <input id="sign_f" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/*,application/pdf,*/*" hidden>
-<div class="field fs-box" id="sig_pad_box" style="margin-top:12px"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label style="margin:0">Draw your signature</label><button type="button" class="g sm" id="sig_pad_full">Full screen</button></div><canvas id="sig_pad" width="560" height="200" style="border:1px solid var(--bd);background:#fff;border-radius:14px;touch-action:none"></canvas><div class="three" style="margin-top:8px"><button type="button" class="g sm" id="sig_clr">Clear pad</button><button type="button" class="sm" id="sig_add">+ Add to page</button><button type="button" class="g sm" id="sig_del" disabled>Remove selected</button></div></div>
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Draw multiple signatures, pick ink color, and drag directly onto any PDF page.</span></div>
+</div>
+</div>
+<div class="tool-col">
+<div class="field fs-box" id="sig_pad_box" style="margin:0 0 12px"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label style="margin:0">Draw your signature</label><button type="button" class="g sm" id="sig_pad_full">Full screen</button></div><canvas id="sig_pad" width="560" height="200" style="border:1px solid var(--bd);background:#fff;border-radius:14px;touch-action:none"></canvas><div class="three" style="margin-top:8px"><button type="button" class="g sm" id="sig_clr">Clear pad</button><button type="button" class="sm" id="sig_add">+ Add to page</button><button type="button" class="g sm" id="sig_del" disabled>Remove selected</button></div></div>
+</div>
+</div>
 <details class="typ" style="margin-bottom:10px"><summary>Signature color, size &amp; PDF page</summary><div class="typ-body"><div class="field" style="margin:0 0 10px"><label>Ink color</label><div class="sig-cols" id="sig_cols"><button type="button" class="sig-sw on" data-col="#111827" title="Black" aria-label="Black" style="background:#111827"></button><button type="button" class="sig-sw" data-col="#1d4ed8" title="Royal Blue" aria-label="Royal Blue" style="background:#1d4ed8"></button><button type="button" class="sig-sw" data-col="#2563eb" title="Cobalt Blue" aria-label="Cobalt Blue" style="background:#2563eb"></button><button type="button" class="sig-sw" data-col="#dc2626" title="Red" aria-label="Red" style="background:#dc2626"></button><button type="button" class="sig-sw" data-col="#15803d" title="Green" aria-label="Green" style="background:#15803d"></button><button type="button" class="sig-sw" data-col="#7c3aed" title="Purple" aria-label="Purple" style="background:#7c3aed"></button><label class="sig-cust" title="Custom color"><input id="sig_col" type="color" value="#111827"><span>Custom</span></label></div></div><div class="two"><div class="field" style="margin:0"><label for="sig_sz">Selected size (<b id="sig_szlab">28%</b>)</label><input id="sig_sz" type="range" min="10" max="70" value="28"></div><div class="field" style="margin:0"><label for="sig_pg">Page (for PDF)</label><input id="sig_pg" type="number" min="1" value="1"></div></div></div></details>
 <details class="typ" id="sig_list_det" style="margin-bottom:10px" hidden><summary>Created signatures (<b id="sig_cnt">0</b>)</summary><div class="typ-body"><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px"><button type="button" class="g sm" id="sig_all_pg" style="width:auto;flex:1">Bring all to this page</button><button type="button" class="g sm" id="sig_clr_all" style="width:auto">Delete all</button></div><div class="sig-list" id="sig_list"></div></div></details>
 <div class="field fs-box" id="sig_pvwrap" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label id="sig_pvlab" style="margin:0">Drag signatures anywhere on the page</label><button type="button" class="g sm" id="sig_pv_full">Full screen</button></div><canvas id="sig_pv" style="border:1px solid var(--bd);border-radius:12px;touch-action:none;cursor:move"></canvas></div>
@@ -585,9 +712,18 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <section class="view" id="v-pp" hidden>
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Passport Photo Sheet</h2></div>
-<button type="button" class="pick big" id="pp_dz"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg><b>Choose portrait photo</b><small id="pp_info">Drag &amp; drop or select a photo to tile onto a print sheet</small></button>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
+<button type="button" class="pick big" id="pp_dz"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg><b>Choose portrait photo</b><small id="pp_info">Drag &amp; drop, paste (Ctrl+V), or select a photo</small></button>
 <input id="pp_f" type="file" accept="image/*" hidden>
-<details class="typ" style="margin-top:12px"><summary>Photo size, paper &amp; copies</summary><div class="typ-body">
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Auto-tiles 35×45 mm, 2×2 in US/Visa, or custom photo sizes onto 4×6, 5×7 or A4.</span></div>
+</div>
+</div>
+<div class="tool-col">
+<details class="typ" open style="margin:0"><summary>Photo size, paper &amp; copies</summary><div class="typ-body">
 <div class="two">
 <div class="field"><label for="pp_sz">Photo size</label><select id="pp_sz"><option value="35,45">35 × 45 mm (India / EU / UK)</option><option value="50.8,50.8">2 × 2 in (US / Visa)</option><option value="35,35">35 × 35 mm (Square)</option><option value="custom">Custom width × height (mm)</option></select></div>
 <div class="field"><label for="pp_paper">Sheet paper</label><select id="pp_paper"><option value="101.6,152.4">Photo 4 × 6 in</option><option value="127,177.8">Photo 5 × 7 in</option><option value="210,297">A4</option></select></div>
@@ -603,7 +739,9 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <div class="field"><label for="pp_cols">Photos per row (0 = Auto)</label><input id="pp_cols" type="number" min="0" max="20" value="0"></div>
 </div>
 </div></details>
-<div id="pp_workspace" style="display:none;margin-top:8px">
+</div>
+</div>
+<div id="pp_workspace" style="display:none;margin-top:12px">
 <div class="two" style="align-items:start">
 <div class="field"><label>Manual crop (drag box, corners, or top rotate handle)</label><canvas id="pp_crop_cv" style="max-width:280px;margin:0 auto 8px;border:1px solid var(--bd);border-radius:12px;touch-action:none;cursor:move"></canvas><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:12.5px;color:var(--mut);white-space:nowrap">Tilt <b id="pp_rotlab">0°</b></span><input id="pp_rot" type="range" min="-45" max="45" step="0.5" value="0" style="flex:1;margin:0"><button type="button" class="g sm" id="pp_rot90" style="width:auto;flex:none;padding:6px 10px">90°</button></div><button type="button" class="g sm" id="pp_creset" style="width:100%">Reset crop &amp; tilt</button></div>
 <div class="field"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label id="pp_pvlab" style="margin:0">Sheet preview</label><button type="button" class="sm" id="pp_pv_print" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;font-size:12.5px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v6H7z"/></svg>Print</button></div><canvas id="pp_pv_cv" style="max-width:260px;margin:0 auto 10px;border:1px solid var(--bd);border-radius:10px;background:#fff"></canvas><details class="typ" style="margin-top:8px"><summary>Position &amp; spacing sliders</summary><div id="pp_layout_sl" style="background:var(--soft);padding:12px 14px 6px;border-radius:14px;margin-top:8px">
@@ -620,7 +758,7 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 </div>
 </div>
 </div>
-<button type="button" id="pp_go" disabled style="margin-top:10px">Generate print sheet PDF</button>
+<button type="button" id="pp_go" disabled style="margin-top:12px">Generate print sheet PDF</button>
 <div class="hint" id="pp_st" style="margin-top:10px"></div>
 <div id="pp_out" style="margin-top:12px;display:none"><div class="three"><a class="pick" id="pp_dl" download="passport-photos.pdf" href="#">Download</a><button type="button" class="g" id="pp_print">Print</button><button type="button" class="g" id="pp_save">Save</button></div><button type="button" class="g sm" id="pp_new" style="margin-top:8px;width:100%">+ Create another photo sheet</button></div>
 </section>
@@ -630,18 +768,33 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <section class="card">
 <div class="seg" id="qr_seg"><button type="button" class="on" data-m="gen">Generate QR</button><button type="button" data-m="scan">Scan from photo</button></div>
 <div id="qr_gen_box">
+<div class="tool-split">
+<div class="tool-col">
 <div class="field"><label for="qr_txt">Link, text, Wi-Fi, or UPI</label><input id="qr_txt" type="text" placeholder="https://example.com or any text"></div>
-<details class="typ" style="margin-bottom:12px"><summary>QR size &amp; color</summary><div class="typ-body two"><div class="field"><label for="qr_sz">Size (px)</label><select id="qr_sz"><option value="320">320 × 320</option><option value="512" selected>512 × 512</option><option value="1024">1024 × 1024</option></select></div><div class="field"><label for="qr_col">Color</label><select id="qr_col"><option value="#111827">Black</option><option value="#2563eb">Cobalt Blue</option><option value="#0f766e">Teal</option></select></div></div></details>
+<details class="typ" open style="margin-bottom:12px"><summary>QR size &amp; color</summary><div class="typ-body two"><div class="field"><label for="qr_sz">Size (px)</label><select id="qr_sz"><option value="320">320 × 320</option><option value="512" selected>512 × 512</option><option value="1024">1024 × 1024</option></select></div><div class="field"><label for="qr_col">Color</label><select id="qr_col"><option value="#111827">Black</option><option value="#2563eb">Cobalt Blue</option><option value="#0f766e">Teal</option></select></div></div></details>
 <button type="button" id="qr_go">Generate QR Code</button>
-<div id="qr_pvbox" style="text-align:center;margin-top:14px;display:none"><label style="margin-bottom:8px">Live QR Preview</label><canvas id="qr_cv" width="320" height="320" style="max-width:260px;margin:0 auto;background:#fff;border-radius:14px;border:1px solid var(--bd);box-shadow:var(--sh)"></canvas></div>
+</div>
+<div class="tool-col">
+<div class="pv-empty-box" id="qr_empty"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM19 14v7M14 19h3"/></svg><b>Live QR Preview</b><small>Type a link, Wi-Fi code, or text on the left to generate a downloadable PNG instantly.</small></div>
+<div id="qr_pvbox" style="text-align:center;display:none"><label style="margin-bottom:8px">Live QR Preview</label><canvas id="qr_cv" width="320" height="320" style="max-width:260px;margin:0 auto;background:#fff;border-radius:14px;border:1px solid var(--bd);box-shadow:var(--sh)"></canvas></div>
 <div id="qr_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="qr_dl" download="qr-code.png" href="#">Download PNG</a><button type="button" class="g" id="qr_save">Save to My documents</button></div><button type="button" class="g sm" id="qr_new" style="margin-top:8px;width:100%">+ Create another QR code</button></div>
 </div>
+</div>
+</div>
 <div id="qr_scan_box" hidden>
-<button type="button" class="pick big" id="qr_sdz"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><b>Choose QR image to decode</b><small>Reads QR codes from any photo or screenshot</small></button>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
+<button type="button" class="pick big" id="qr_sdz"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><b>Choose QR image to decode</b><small>Drag &amp; drop, paste (Ctrl+V), or select a screenshot</small></button>
 <input id="qr_sf" type="file" accept="image/*" hidden>
+</div>
 <div class="hint" id="qr_sst" style="margin-top:10px"></div>
-<textarea class="ocr-area" id="qr_res" style="min-height:110px;margin-top:10px" placeholder="Decoded QR text will appear here…"></textarea>
+</div>
+<div class="tool-col">
+<textarea class="ocr-area" id="qr_res" style="min-height:132px;margin-top:0" placeholder="Decoded QR text will appear here…"></textarea>
 <button type="button" class="g" id="qr_copy" style="margin-top:10px">Copy decoded text</button>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -649,8 +802,16 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <section class="view" id="v-red" hidden>
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Redact &amp; Mask</h2></div>
-<button type="button" class="pick big" id="red_dz"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg><b>Choose image or PDF page 1</b><small id="red_info">Draw black boxes over sensitive details</small></button>
+<div class="dz-split">
+<div class="dz-col">
+<button type="button" class="pick big" id="red_dz"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg><b>Choose image or PDF page 1</b><small id="red_info">Drag &amp; drop, paste (Ctrl+V), or select a file</small></button>
 <input id="red_f" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/*,application/pdf,*/*" hidden>
+</div>
+<div class="dz-tips" style="margin-top:0">
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><b>Permanent masking:</b> Exports a flattened PDF so hidden text cannot be selected underneath.</span></div>
+<div><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Includes solid fill, blur, pixelate, stripes, noise &amp; REDACTED stamp styles.</span></div>
+</div>
+</div>
 <div id="red_wrap" class="fs-box" style="display:none;margin-top:12px">
 <details class="typ" style="margin-bottom:10px"><summary>Redaction style, color &amp; strength</summary><div class="typ-body three">
 <div class="field" style="margin:0"><label for="red_style">Style</label><select id="red_style"><option value="solid">Solid color</option><option value="blur">Blur effect</option><option value="pixel">Checkered / Pixelate</option><option value="stripe">Diagonal stripes</option><option value="cross">Crosshatch</option><option value="noise">Scramble / Mosaic</option><option value="stamp">REDACTED stamp</option></select></div>
@@ -670,25 +831,48 @@ button.hpill:hover{background:color-mix(in srgb,var(--acc) 12%,var(--soft));bord
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>PDF Lock &amp; Unlock</h2></div>
 <div class="seg" style="margin-bottom:12px"><button type="button" class="on" id="lk_m_lock">Lock PDF</button><button type="button" id="lk_m_unlk">Unlock PDF</button></div>
-<button type="button" class="pick big" id="lk_dz"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>Choose PDF file</b><small id="lk_info">Select a PDF to protect or unlock</small></button>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
+<button type="button" class="pick big" id="lk_dz"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>Choose PDF file</b><small id="lk_info">Drag &amp; drop or select a PDF to protect or unlock</small></button>
 <input id="lk_f" type="file" accept=".pdf,application/pdf" hidden>
-<div class="field" style="margin-top:12px"><label for="lk_pw" id="lk_pwlab">Set password</label><div style="display:flex;gap:8px"><input id="lk_pw" type="password" placeholder="Enter password" style="margin:0"><button type="button" class="g sm" id="lk_eye" style="width:auto;flex:none">Show</button></div></div>
-<details class="typ" id="lk_opts" style="margin-bottom:12px"><summary>Protection options</summary><div class="typ-body"><label class="lock" style="margin:0"><input id="lk_print" type="checkbox" checked><span>Allow printing</span></label></div></details>
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Encryption &amp; password removal run completely offline on your device.</span></div>
+</div>
+</div>
+<div class="tool-col">
+<div class="field"><label for="lk_pw" id="lk_pwlab">Set password</label><div style="display:flex;gap:8px"><input id="lk_pw" type="password" placeholder="Enter password" style="margin:0"><button type="button" class="g sm" id="lk_eye" style="width:auto;flex:none">Show</button></div></div>
+<details class="typ" open id="lk_opts" style="margin:0 0 12px"><summary>Protection options</summary><div class="typ-body"><label class="lock" style="margin:0"><input id="lk_print" type="checkbox" checked><span>Allow printing</span></label></div></details>
 <button type="button" id="lk_go" disabled>Lock PDF</button>
 <div class="hint" id="lk_st" style="margin-top:10px"></div>
 <div id="lk_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="lk_dl" download="protected.pdf" href="#">Download PDF</a><button type="button" class="g" id="lk_save">Save to My documents</button></div><button type="button" class="g sm" id="lk_new" style="margin-top:8px;width:100%">+ Create another new doc</button></div>
+</div>
+</div>
 </section>
 </section>
 
 <section class="view" id="v-meta" hidden>
 <section class="card">
 <div class="hd"><span class="step">1</span><h2>Privacy Metadata Stripper</h2></div>
+<div class="tool-split">
+<div class="tool-col">
+<div class="dz-col">
 <button type="button" class="pick big" id="mt_dz"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><b>Choose photo or PDF</b><small id="mt_info">Removes GPS location, camera info &amp; author tags</small></button>
 <input id="mt_f" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/*,application/pdf" hidden>
-<div id="mt_rep" class="meta-kv" style="display:none"></div>
-<button type="button" id="mt_go" style="margin-top:12px" disabled>Strip Metadata &amp; Clean File</button>
+</div>
+<div class="dz-tips">
+<div><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Removes EXIF GPS coordinates, device make/model, XMP &amp; PDF author tags.</span></div>
+</div>
+</div>
+<div class="tool-col">
+<div class="pv-empty-box" id="mt_empty" style="margin-bottom:12px"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><b>Metadata inspection</b><small>Select a photo or PDF on the left to inspect embedded EXIF, GPS, or author tags before cleaning.</small></div>
+<div id="mt_rep" class="meta-kv" style="display:none;margin-top:0;margin-bottom:12px"></div>
+<button type="button" id="mt_go" disabled>Strip Metadata &amp; Clean File</button>
 <div class="hint" id="mt_st" style="margin-top:10px"></div>
 <div id="mt_out" style="margin-top:12px;display:none"><div class="two"><a class="pick" id="mt_dl" download="clean-file" href="#">Download Clean File</a><button type="button" class="g" id="mt_save">Save to My documents</button></div><button type="button" class="g sm" id="mt_new" style="margin-top:8px;width:100%">+ Strip another file</button></div>
+</div>
+</div>
 </section>
 </section>
 
@@ -820,8 +1004,10 @@ const slots=[],$=id=>document.getElementById(id);
 const isImgFile=f=>!!f&&(/^image\//i.test(f.type||'')||/\.(png|jpe?g|webp|bmp|gif|avif)$/i.test(f.name||''));
 const isPdfFile=f=>!!f&&(f.type==='application/pdf'||/\.pdf$/i.test(f.name||''));
 const hasDropFiles=e=>!!(e.dataTransfer&&e.dataTransfer.types&&[...e.dataTransfer.types].includes('Files'));
+const _dropZones=[];
 const wireDropZone=(zone,onFiles,filterFn,dzId,onReject)=>{
  if(!zone)return;
+ _dropZones.push({zone,onFiles,filterFn,onReject});
  let depth=0;
  const setOver=on=>{
   if(dzId){
@@ -846,6 +1032,24 @@ const wireDropZone=(zone,onFiles,filterFn,dzId,onReject)=>{
   else if(all.length&&onReject)onReject();
  });
 };
+document.addEventListener('paste',async e=>{
+ const ae=document.activeElement;
+ if(ae&&(/^(INPUT|TEXTAREA|SELECT)$/i.test(ae.tagName)||ae.isContentEditable))return;
+ const raw=e.clipboardData;
+ let files=raw&&raw.files?[...raw.files]:[];
+ if(!files.length&&raw&&raw.items)files=[...raw.items].filter(it=>it.kind==='file').map(it=>it.getAsFile()).filter(Boolean);
+ if(!files.length)return;
+ if($('v-add')&&!$('v-add').hidden){
+  const fs=files.filter(f=>isImgFile(f)||isPdfFile(f));
+  if(fs.length){e.preventDefault();st('Loading '+fs.length+' pasted file(s)…');await loadBatch(fs);st('');}
+  return;
+ }
+ const active=_dropZones.find(d=>d.zone&&d.zone.offsetParent!==null);
+ if(!active)return;
+ const matched=active.filterFn?files.filter(active.filterFn):files;
+ if(matched.length){e.preventDefault();await active.onFiles(matched);}
+ else if(active.onReject)active.onReject();
+});
 const setRing=(av,pct)=>{
  const c=av&&av.querySelector('.prg');
  if(c)c.style.strokeDashoffset=String(119.38*(1-Math.max(0,Math.min(100,pct))/100));
@@ -860,17 +1064,175 @@ const fillThumbFromFile=(av,file)=>{
   if(img){img.onload=()=>{img.hidden=false;if(ic)ic.hidden=true;setRing(av,100);};img.src=u;}
  }else if((file.type==='application/pdf'||/\.pdf$/i.test(file.name||''))&&window.pdfjsLib){
   setRing(av,55);
-  file.arrayBuffer().then(b=>pdfjsLib.getDocument({data:b}).promise).then(pdf=>pdf.getPage(1)).then(pg=>{
+  file.arrayBuffer().then(b=>pdfjsLib.getDocument({data:b}).promise).then(pdf=>pdf.getPage(1).then(pg=>{
    const vp=pg.getViewport({scale:0.35}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;
-   return pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise.then(()=>{
+   const ctx=cv.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,cv.width,cv.height);
+   return pg.render({canvasContext:ctx,viewport:vp}).promise.then(()=>{
     if(img){img.src=cv.toDataURL('image/jpeg',0.75);img.hidden=false;if(ic)ic.hidden=true;}
     setRing(av,100);
-   });
-  }).catch(()=>setRing(av,100));
+   }).finally(()=>pdf.destroy().catch(()=>{}));
+  })).catch(()=>setRing(av,100));
  }else{
   setTimeout(()=>setRing(av,100),180);
  }
 };
+const _filePvCache=new WeakMap(),_filePageCache=new WeakMap();
+async function getPdfPageImage(file,pageNum,targetW=540){
+ if(!file||!isPdfFile(file)||!window.pdfjsLib)return null;
+ let pgMap=_filePageCache.get(file);
+ if(!pgMap){pgMap=new Map();_filePageCache.set(file,pgMap);}
+ if(pgMap.has(pageNum))return pgMap.get(pageNum);
+ const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+ try{
+  const p=Math.max(1,Math.min(pdf.numPages,pageNum));
+  const pg=await pdf.getPage(p),vp1=pg.getViewport({scale:1});
+  const sc=Math.min(2.2,Math.max(0.3,targetW/Math.max(1,vp1.width))),vp=pg.getViewport({scale:sc});
+  const cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(vp.width));cv.height=Math.max(1,Math.round(vp.height));
+  const ctx=cv.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,cv.width,cv.height);
+  await pg.render({canvasContext:ctx,viewport:vp}).promise;
+  const url=cv.toDataURL('image/jpeg',0.86);
+  pgMap.set(p,url);
+  return url;
+ }finally{pdf.destroy().catch(()=>{});}
+}
+async function getFilePreviewMeta(file,maxPages=1){
+ if(!file)return null;
+ let cached=_filePvCache.get(file);
+ if(cached&&(cached.kind!=='pdf'||cached.thumbs.length>=Math.min(cached.pages,maxPages)))return cached;
+ if(isImgFile(file)){
+  cached={kind:'img',pages:1,thumbs:[URL.createObjectURL(file)]};
+  _filePvCache.set(file,cached);
+  return cached;
+ }
+ if(isPdfFile(file)&&window.pdfjsLib){
+  const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+  try{
+   const total=pdf.numPages,lim=Math.min(total,maxPages);
+   const thumbs=cached?cached.thumbs.slice():[];
+   for(let p=thumbs.length+1;p<=lim;p++){
+    const pg=await pdf.getPage(p),vp1=pg.getViewport({scale:1});
+    const sc=Math.min(1.8,Math.max(0.25,180/Math.max(1,vp1.width))),vp=pg.getViewport({scale:sc});
+    const cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(vp.width));cv.height=Math.max(1,Math.round(vp.height));
+    const ctx=cv.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,cv.width,cv.height);
+    await pg.render({canvasContext:ctx,viewport:vp}).promise;
+    thumbs.push(cv.toDataURL('image/jpeg',0.82));
+   }
+   cached={kind:'pdf',pages:total,thumbs};
+   _filePvCache.set(file,cached);
+   return cached;
+  }finally{pdf.destroy().catch(()=>{});}
+ }
+ return null;
+}
+function renderPdfStrip(box,title,meta,maxShow,fallbackMsg,opts){
+ if(!box)return;
+ box.innerHTML='';
+ box.tabIndex=-1;
+ const file=opts&&opts.file?opts.file:null;
+ const onClose=opts&&typeof opts.onClose==='function'?opts.onClose:null;
+ const hd=document.createElement('div');hd.className='pdf-pv-hd';
+ const b=document.createElement('b');b.textContent=title||'Preview';
+ const sp=document.createElement('span');
+ sp.textContent=meta?(meta.kind==='pdf'?(meta.pages+' page'+(meta.pages>1?'s':'')):(meta.thumbs.length+' image'+(meta.thumbs.length>1?'s':''))):'';
+ hd.appendChild(b);hd.appendChild(sp);
+ if(onClose){
+  const xb=document.createElement('button');xb.type='button';xb.className='g sm pdf-x';xb.textContent='✕';xb.title='Close preview';
+  xb.onclick=onClose;hd.appendChild(xb);
+ }
+ box.appendChild(hd);
+ if(!meta||!meta.thumbs||!meta.thumbs.length){
+  const em=document.createElement('div');em.className='pdf-empty';em.textContent=fallbackMsg||'Preview unavailable.';
+  box.appendChild(em);return;
+ }
+ let curMeta=meta,total=curMeta.kind==='pdf'?curMeta.pages:curMeta.thumbs.length,cur=1,navTok=0;
+ const stage=document.createElement('div');stage.className='pdf-stage';
+ const stageImg=document.createElement('img');stageImg.alt='Page 1 preview';stageImg.src=curMeta.thumbs[0];
+ const stageMsg=document.createElement('div');stageMsg.className='pdf-stage-msg';stageMsg.hidden=true;
+ stage.appendChild(stageImg);stage.appendChild(stageMsg);
+ box.appendChild(stage);
+ let prevBtn=null,nextBtn=null,ind=null;
+ if(curMeta.kind==='pdf'||total>1){
+  const nav=document.createElement('div');nav.className='pdf-nav';
+  prevBtn=document.createElement('button');prevBtn.type='button';prevBtn.className='g sm';prevBtn.textContent='← Prev';prevBtn.setAttribute('aria-label','Previous page');
+  ind=document.createElement('span');ind.className='pdf-pg-ind';
+  nextBtn=document.createElement('button');nextBtn.type='button';nextBtn.className='g sm';nextBtn.textContent='Next →';nextBtn.setAttribute('aria-label','Next page');
+  nav.appendChild(prevBtn);nav.appendChild(ind);nav.appendChild(nextBtn);
+  box.appendChild(nav);
+ }
+ const strip=document.createElement('div');strip.className='pdf-strip';
+ box.appendChild(strip);
+ const rebuildStrip=()=>{
+  strip.innerHTML='';
+  const showLim=curMeta.kind==='pdf'?curMeta.thumbs.length:Math.min(maxShow||curMeta.thumbs.length,curMeta.thumbs.length);
+  curMeta.thumbs.slice(0,showLim).forEach((src,idx)=>{
+   const pNum=idx+1;
+   const card=document.createElement('button');card.type='button';card.className='pdf-pg'+(pNum===cur?' on':'');
+   const im=document.createElement('img');im.src=src;im.alt=(curMeta.kind==='pdf'?'Page ':'Image ')+pNum;
+   const lb=document.createElement('span');lb.textContent=curMeta.kind==='pdf'?('Page '+pNum):('File '+pNum);
+   card.appendChild(im);card.appendChild(lb);
+   card.onclick=()=>goPage(pNum);
+   strip.appendChild(card);
+  });
+  if(curMeta.kind==='pdf'&&curMeta.pages>curMeta.thumbs.length){
+   const rem=curMeta.pages-curMeta.thumbs.length;
+   const more=document.createElement('button');more.type='button';more.className='pdf-more';
+   more.textContent='+'+rem+' more';
+   more.onclick=async()=>{
+    if(!file)return;
+    more.disabled=true;more.textContent='Loading…';
+    const nextStart=curMeta.thumbs.length+1;
+    const upd=await getFilePreviewMeta(file,Math.min(curMeta.pages,curMeta.thumbs.length+8)).catch(()=>null);
+    if(!box.isConnected)return;
+    if(upd){curMeta=upd;rebuildStrip();goPage(Math.min(curMeta.pages,nextStart));}
+   };
+   strip.appendChild(more);
+  }
+ };
+ const syncNav=()=>{
+  if(prevBtn)prevBtn.disabled=cur<=1;
+  if(nextBtn)nextBtn.disabled=cur>=total;
+  if(ind)ind.textContent=(curMeta.kind==='pdf'?'Page ':'Image ')+cur+' of '+total;
+  const btns=[...strip.querySelectorAll('.pdf-pg')];
+  btns.forEach((btn,idx)=>btn.classList.toggle('on',idx+1===cur));
+  const active=btns[cur-1];
+  if(active)active.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+ };
+ const goPage=async p=>{
+  cur=Math.max(1,Math.min(total,p));
+  const tok=++navTok;
+  syncNav();
+  if(curMeta.thumbs[cur-1])stageImg.src=curMeta.thumbs[cur-1];
+  stageImg.alt=(curMeta.kind==='pdf'?'Page ':'Image ')+cur+' preview';
+  if(curMeta.kind==='pdf'&&file){
+   const pgMap=_filePageCache.get(file);
+   const cachedHigh=pgMap&&pgMap.get(cur);
+   if(cachedHigh){
+    stage.classList.remove('busy');stageMsg.hidden=true;stageImg.src=cachedHigh;
+   }else{
+    stage.classList.add('busy');stageMsg.textContent='Loading page '+cur+'…';stageMsg.hidden=false;
+    try{
+     const highUrl=await getPdfPageImage(file,cur,540);
+     if(tok!==navTok||!box.isConnected)return;
+     if(highUrl)stageImg.src=highUrl;
+    }catch(e){}
+    if(tok===navTok){stage.classList.remove('busy');stageMsg.hidden=true;}
+   }
+   if(cur>curMeta.thumbs.length){
+    const upd=await getFilePreviewMeta(file,Math.min(total,cur+4)).catch(()=>null);
+    if(tok===navTok&&box.isConnected&&upd){curMeta=upd;rebuildStrip();syncNav();}
+   }
+  }
+ };
+ if(prevBtn)prevBtn.onclick=()=>goPage(cur-1);
+ if(nextBtn)nextBtn.onclick=()=>goPage(cur+1);
+ box.onkeydown=e=>{
+  if(total<=1)return;
+  if(e.key==='ArrowLeft'){e.preventDefault();goPage(cur-1);}
+  else if(e.key==='ArrowRight'){e.preventDefault();goPage(cur+1);}
+ };
+ rebuildStrip();
+ goPage(1);
+}
 const collapseDz=(dzId,label,file)=>{
  const dz=$(dzId);if(!dz)return;
  dz.hidden=true;dz.disabled=true;
@@ -2292,6 +2654,32 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   return ps.map(p=>[...p.getElementsByTagNameNS('*','t')].map(t=>t.textContent).join('')).join('\n');
  }
  const csvParse=s=>{const rows=[];let r=[],cur='',q=false;for(let i=0;i<s.length;i++){const c=s[i];if(q){if(c==='"'&&s[i+1]==='"'){cur+='"';i++;}else if(c==='"')q=false;else cur+=c;}else{if(c==='"')q=true;else if(c===','){r.push(cur);cur='';}else if(c==='\n'){r.push(cur);rows.push(r);r=[];cur='';}else if(c!=='\r')cur+=c;}}if(cur||r.length){r.push(cur);rows.push(r);}return rows;};
+ let convPvTok=0;
+ async function renderConvPreview(fs,kind){
+  const box=$('conv_pv'),tips=$('conv_tips'),tok=++convPvTok;
+  if(!box||!fs||!fs.length||(kind!=='pdf'&&kind!=='img')){if(box){box.hidden=true;box.innerHTML='';}if(tips)tips.hidden=false;return;}
+  if(tips)tips.hidden=true;
+  box.hidden=false;
+  box.innerHTML='<div class="pdf-pv-hd"><b></b><span>Loading preview…</span></div>';
+  box.querySelector('b').textContent=kind==='pdf'?fs[0].name:(fs.length+' image'+(fs.length>1?'s':''));
+  try{
+   if(kind==='pdf'){
+    const meta=await getFilePreviewMeta(fs[0],8);
+    if(tok!==convPvTok)return;
+    const kb=Math.max(1,Math.round(fs[0].size/1024));
+    if(meta)$('conv_info').textContent=fs[0].name+' · '+meta.pages+' page'+(meta.pages>1?'s':'')+' · '+kb+' KB (PDF)';
+    renderPdfStrip(box,fs[0].name,meta,8,window.pdfjsLib?'Could not render PDF preview.':'PDF preview unavailable offline.',{file:fs[0]});
+   }else{
+    const metas=await Promise.all(fs.slice(0,12).map(f=>getFilePreviewMeta(f,1)));
+    if(tok!==convPvTok)return;
+    const thumbs=metas.map(m=>m&&m.thumbs&&m.thumbs[0]).filter(Boolean);
+    renderPdfStrip(box,fs.length===1?fs[0].name:(fs.length+' images selected'),{kind:'img',pages:thumbs.length,thumbs},12);
+   }
+  }catch(e){
+   if(tok!==convPvTok)return;
+   renderPdfStrip(box,fs[0].name,null,8,'Could not render PDF preview (file may be password-protected).');
+  }
+ }
  function pickFiles(fs){
   if(!fs||!fs.length)return;
   cFiles=[...fs];cKind=detectKind(cFiles[0]);
@@ -2300,6 +2688,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   $('conv_fmt').innerHTML=opts.map(([v,l])=>'<option value="'+v+'">'+l+'</option>').join('');
   $('conv_info').textContent=cFiles.length+' file(s): '+cFiles.map(f=>f.name).join(', ')+' ('+cKind.toUpperCase()+')';
   $('conv_go').disabled=false;
+  renderConvPreview(cFiles,cKind);
  }
  const handleConvFiles=fs=>{if(fs&&fs.length){collapseDz('conv_dz',fs.length>1?(fs.length+' files'):fs[0].name,fs[0]);pickFiles(fs);}};
  ['conv_f','conv_cam'].forEach(id=>$(id).onchange=e=>{handleConvFiles([...e.target.files]);e.target.value='';});
@@ -2374,7 +2763,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   }catch(e){$('conv_st').textContent='Conversion failed: '+(e.message||e);}
   $('conv_go').disabled=false;
  };
- $('conv_new').onclick=()=>{cFile=null;cBlob=null;cExt='';cText=null;cPages=[];$('conv_out').style.display='none';$('conv_st').textContent='';$('conv_go').disabled=true;expandDz('conv_dz');window.scrollTo({top:0,behavior:'smooth'});};
+ $('conv_new').onclick=()=>{convPvTok++;cFiles=[];cKind='';cBlob=null;cExt='';cText=null;cPages=[];$('conv_info').textContent='';$('conv_pv').hidden=true;$('conv_pv').innerHTML='';if($('conv_tips'))$('conv_tips').hidden=false;$('conv_fmt').innerHTML='<option value="">Add a file above first</option>';$('conv_out').style.display='none';$('conv_st').textContent='';$('conv_go').disabled=true;expandDz('conv_dz');window.scrollTo({top:0,behavior:'smooth'});};
  $('conv_save').onclick=async()=>{
   if(!cBlob)return;
   const pages=cPages.map(p=>({w:p.w,h:p.h,items:p.items.map(it=>({blob:it.blob,x:it.x,y:it.y,w:it.w,h:it.h,line:false}))}));
@@ -2384,7 +2773,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
 })();
 
 (function(){
- let mFiles=[],sFile=null,sPages=0,msBlob=null,msExt='pdf',msCount=1;
+ let mFiles=[],sFile=null,sPages=0,msBlob=null,msExt='pdf',msCount=1,mListTok=0,mPvTok=0,mPvFile=null,sPvTok=0;
  const setSt=t=>{$('ms_st').textContent=t;};
  const resetOut=()=>{msBlob=null;$('ms_out').style.display='none';};
  document.querySelectorAll('#ms_seg button').forEach(b=>b.onclick=()=>{
@@ -2396,26 +2785,110 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  $('ms_dz').onclick=()=>$('ms_f').click();
  $('ms_sdz').onclick=()=>$('ms_sf').click();
  $('ms_mode').onchange=()=>{$('ms_rbox').style.display=$('ms_mode').value==='range'?'block':'none';};
+ const closeMergePreview=()=>{mPvTok++;mPvFile=null;const box=$('ms_m_pv');if(box){box.hidden=true;box.innerHTML='';}};
+ const openMergePreview=async f=>{
+  const box=$('ms_m_pv');
+  if(!box||!f)return;
+  if(mPvFile===f&&!box.hidden){closeMergePreview();return;}
+  const tok=++mPvTok;mPvFile=f;
+  box.hidden=false;
+  box.innerHTML='<div class="pdf-pv-hd"><b></b><span>Rendering preview…</span></div>';
+  box.querySelector('b').textContent=f.name;
+  try{
+   const meta=await getFilePreviewMeta(f,isPdfFile(f)?8:1);
+   if(tok!==mPvTok)return;
+   renderPdfStrip(box,f.name,meta,8,window.pdfjsLib?'Could not render preview.':'Preview unavailable offline.',{file:f,onClose:closeMergePreview});
+  }catch(e){
+   if(tok!==mPvTok)return;
+   renderPdfStrip(box,f.name,null,8,'Could not render preview.',{onClose:closeMergePreview});
+  }
+ };
+ const updateMergeSum=()=>{
+  const em=$('ms_m_empty'),sum=$('ms_m_sum'),txt=$('ms_m_sum_txt');
+  if(em)em.hidden=mFiles.length>0;
+  if(sum)sum.hidden=!mFiles.length;
+  if(!mFiles.length||!txt)return;
+  const totalBytes=mFiles.reduce((a,f)=>a+(f.size||0),0);
+  const szTxt=totalBytes>=1048576?(totalBytes/1048576).toFixed(1)+' MB':Math.max(1,Math.round(totalBytes/1024))+' KB';
+  let knownPages=0,allKnown=true;
+  mFiles.forEach(f=>{
+   const c=_filePvCache.get(f);
+   if(c&&c.pages){knownPages+=c.pages;}
+   else if(isImgFile(f)){knownPages+=1;}
+   else{allKnown=false;}
+  });
+  const pgTxt=knownPages>0?(knownPages+(allKnown?'':'+')+' page'+(knownPages>1?'s':'')+' · '):'';
+  txt.textContent=mFiles.length+' file'+(mFiles.length>1?'s':'')+' · '+pgTxt+szTxt;
+ };
  function renderMList(){
-  const box=$('ms_list');box.innerHTML='';
+  const box=$('ms_list'),tok=++mListTok;box.innerHTML='';
+  if(mPvFile&&!mFiles.includes(mPvFile))closeMergePreview();
   mFiles.forEach((f,i)=>{
    const row=document.createElement('div');row.className='hi';
-   row.innerHTML='<div class="m"><b>'+f.name+'</b><span>'+Math.max(1,Math.round(f.size/1024))+' KB</span></div><div class="ab"><button class="g sm ic" data-a="u">↑</button><button class="g sm ic" data-a="d">↓</button><button class="g sm ic" data-a="x">✕</button></div>';
-   row.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-    const a=b.dataset.a;
-    if(a==='u'&&i>0)[mFiles[i-1],mFiles[i]]=[mFiles[i],mFiles[i-1]];
-    if(a==='d'&&i<mFiles.length-1)[mFiles[i+1],mFiles[i]]=[mFiles[i],mFiles[i+1]];
-    if(a==='x')mFiles.splice(i,1);
-    renderMList();
+   const th=document.createElement('div');th.className='th clk';th.title='Preview document pages';
+   th.onclick=()=>openMergePreview(f);
+   const cached=_filePvCache.get(f);
+   if(cached&&cached.thumbs&&cached.thumbs[0]){
+    const im=document.createElement('img');im.src=cached.thumbs[0];im.alt=f.name;th.appendChild(im);
+   }else{
+    th.textContent=isPdfFile(f)?'PDF':'IMG';
+   }
+   const meta=document.createElement('div');meta.className='m';
+   const ttl=document.createElement('b');ttl.textContent=f.name;
+   const sub=document.createElement('span');
+   const kb=Math.max(1,Math.round(f.size/1024));
+   sub.textContent=kb+' KB'+(cached&&cached.kind==='pdf'?' · '+cached.pages+' page'+(cached.pages>1?'s':''):'');
+   meta.appendChild(ttl);meta.appendChild(sub);
+   const ab=document.createElement('div');ab.className='ab';
+   [['u','↑'],['d','↓'],['x','✕']].forEach(([a,lbl])=>{
+    const b=document.createElement('button');b.type='button';b.className='g sm ic';b.dataset.a=a;b.textContent=lbl;
+    b.onclick=()=>{
+     if(a==='u'&&i>0)[mFiles[i-1],mFiles[i]]=[mFiles[i],mFiles[i-1]];
+     if(a==='d'&&i<mFiles.length-1)[mFiles[i+1],mFiles[i]]=[mFiles[i],mFiles[i+1]];
+     if(a==='x')mFiles.splice(i,1);
+     renderMList();
+    };
+    ab.appendChild(b);
    });
+   row.appendChild(th);row.appendChild(meta);row.appendChild(ab);
    box.appendChild(row);
+   if(!cached){
+    getFilePreviewMeta(f,1).then(res=>{
+     if(tok!==mListTok||!row.isConnected||!res)return;
+     if(res.thumbs&&res.thumbs[0]){
+      th.textContent='';
+      const im=document.createElement('img');im.src=res.thumbs[0];im.alt=f.name;th.appendChild(im);
+     }
+     if(res.kind==='pdf')sub.textContent=kb+' KB · '+res.pages+' page'+(res.pages>1?'s':'');
+     updateMergeSum();
+    }).catch(()=>{});
+   }
   });
+  updateMergeSum();
   $('ms_go_merge').disabled=!mFiles.length;
  }
+ if($('ms_m_clr'))$('ms_m_clr').onclick=()=>{mListTok++;mFiles=[];closeMergePreview();resetOut();setSt('');renderMList();};
+ const renderSplitPreview=async f=>{
+  const box=$('ms_sp_pv'),em=$('ms_sp_empty'),tok=++sPvTok;
+  if(em)em.hidden=!!f;
+  if(!box||!f){if(box){box.hidden=true;box.innerHTML='';}return;}
+  box.hidden=false;
+  box.innerHTML='<div class="pdf-pv-hd"><b></b><span>Rendering preview…</span></div>';
+  box.querySelector('b').textContent=f.name;
+  try{
+   const meta=await getFilePreviewMeta(f,12);
+   if(tok!==sPvTok)return;
+   renderPdfStrip(box,f.name,meta,12,window.pdfjsLib?'Could not render PDF preview.':'PDF preview unavailable offline.',{file:f});
+  }catch(e){
+   if(tok!==sPvTok)return;
+   renderPdfStrip(box,f.name,null,12,'Could not render PDF preview.');
+  }
+ };
  const handleSplitFile=async f=>{
   if(!f)return;
   collapseDz('ms_sdz',f.name,f);
   resetOut();setSt('Reading PDF…');
+  renderSplitPreview(f);
   try{
    if(!window.PDFLib)throw new Error('PDF engine unavailable offline.');
    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());
@@ -2490,7 +2963,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   }catch(err){setSt('Split failed: '+(err.message||err));}
   $('ms_go_split').disabled=false;
  };
- $('ms_new').onclick=()=>{msFiles=[];msSplitFile=null;msBlob=null;renderMs();$('ms_sinfo').textContent='Select a multi-page PDF file';$('ms_go_split').disabled=true;expandDz('ms_sdz');resetOut();$('ms_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
+ $('ms_new').onclick=()=>{mListTok++;sPvTok++;closeMergePreview();mFiles=[];sFile=null;sPages=0;msBlob=null;renderMList();$('ms_sp_pv').hidden=true;$('ms_sp_pv').innerHTML='';if($('ms_sp_empty'))$('ms_sp_empty').hidden=false;$('ms_sinfo').textContent='Drag & drop or select a multi-page PDF file';$('ms_go_split').disabled=true;expandDz('ms_sdz');resetOut();$('ms_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
  $('ms_save').onclick=async()=>{
   if(!msBlob)return;
   const rec={id:Date.now(),ts:Date.now(),n:msCount,ext:msExt,tool:'Merge & Split',paper:msExt.toUpperCase(),pdf:msBlob,text:null,pages:[]};
@@ -3129,7 +3602,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  };
  $('pp_pv_print').onclick=()=>buildAndPrint($('pp_pv_print'));
  $('pp_print').onclick=()=>buildAndPrint($('pp_print'));
- $('pp_new').onclick=()=>{pImg=null;pBlob=null;pPages=null;$('pp_info').textContent='Select a photo to tile onto a print sheet';$('pp_crop_wrap').style.display='none';$('pp_pv_wrap').style.display='none';$('pp_out').style.display='none';$('pp_go').disabled=true;$('pp_st').textContent='';expandDz('pp_dz');window.scrollTo({top:0,behavior:'smooth'});};
+ $('pp_new').onclick=()=>{pImg=null;pBlob=null;pPages=null;$('pp_info').textContent='Drag & drop, paste (Ctrl+V), or select a photo';$('pp_workspace').style.display='none';$('pp_out').style.display='none';$('pp_go').disabled=true;$('pp_st').textContent='';expandDz('pp_dz');window.scrollTo({top:0,behavior:'smooth'});};
  $('pp_save').onclick=async()=>{if(!pBlob)return;const rec={id:Date.now(),ts:Date.now(),n:1,ext:'pdf',tool:'Passport Photo',paper:'Print Sheet',pdf:pBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('pp_st').textContent='Saved to My documents.';}catch(e){}};
 })();
 
@@ -3143,10 +3616,11 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  });
  const renderQR=async()=>{
   const txt=$('qr_txt').value.trim();
-  if(!txt){$('qr_pvbox').style.display='none';$('qr_out').style.display='none';qBlob=null;return;}
+  if(!txt){$('qr_pvbox').style.display='none';$('qr_out').style.display='none';if($('qr_empty'))$('qr_empty').hidden=false;qBlob=null;return;}
   if(!window.QRCode)return;
   const sz=+$('qr_sz').value||512,col=$('qr_col').value||'#111827',cv=$('qr_cv');
   await QRCode.toCanvas(cv,txt,{width:sz,margin:2,color:{dark:col,light:'#ffffff'}});
+  if($('qr_empty'))$('qr_empty').hidden=true;
   $('qr_pvbox').style.display='block';
   qBlob=await new Promise(r=>cv.toBlob(r,'image/png'));
   $('qr_dl').href=URL.createObjectURL(qBlob);$('qr_out').style.display='block';
@@ -3155,7 +3629,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  $('qr_txt').addEventListener('input',renderQR);
  $('qr_sz').addEventListener('change',renderQR);
  $('qr_col').addEventListener('change',renderQR);
- $('qr_new').onclick=()=>{$('qr_txt').value='';qBlob=null;$('qr_pvbox').style.display='none';$('qr_out').style.display='none';$('qr_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
+ $('qr_new').onclick=()=>{$('qr_txt').value='';qBlob=null;$('qr_pvbox').style.display='none';$('qr_out').style.display='none';if($('qr_empty'))$('qr_empty').hidden=false;window.scrollTo({top:0,behavior:'smooth'});};
  $('qr_save').onclick=async()=>{if(!qBlob)return;const rec={id:Date.now(),ts:Date.now(),n:1,ext:'png',tool:'QR Studio',paper:'QR PNG',pdf:qBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();}catch(e){}};
  const handleQrFile=async f=>{
   if(!f)return;
@@ -3243,7 +3717,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   rBlob=pdfBuild([{w,h,items:[{w,h,pw:cv.width,ph:cv.height,x:0,y:0,line:false,bytes}]}]);
   $('red_dl').href=URL.createObjectURL(rBlob);$('red_out').style.display='block';$('red_st').textContent='Redacted PDF ready (flattened).';
  };
- $('red_new').onclick=()=>{rImg=null;rBoxes=[];rBlob=null;$('red_info').textContent='Draw black boxes over sensitive details';$('red_pvwrap').style.display='none';$('red_out').style.display='none';$('red_go').disabled=true;$('red_st').textContent='';expandDz('red_dz');window.scrollTo({top:0,behavior:'smooth'});};
+ $('red_new').onclick=()=>{rImg=null;rBoxes=[];rBlob=null;$('red_info').textContent='Drag & drop, paste (Ctrl+V), or select a file';$('red_wrap').style.display='none';$('red_out').style.display='none';$('red_go').disabled=true;$('red_st').textContent='';expandDz('red_dz');window.scrollTo({top:0,behavior:'smooth'});};
  $('red_save').onclick=async()=>{if(!rBlob)return;const rec={id:Date.now(),ts:Date.now(),n:1,ext:'pdf',tool:'Redact & Mask',paper:'Redacted PDF',pdf:rBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('red_st').textContent='Saved to My documents.';}catch(e){}};
 })();
 
@@ -3266,7 +3740,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  const handleLkFile=f=>{if(!f)return;lkFile=f;lkBlob=null;collapseDz('lk_dz',f.name,f);$('lk_info').textContent=f.name;$('lk_go').disabled=false;$('lk_out').style.display='none';$('lk_st').textContent='';};
  $('lk_dz').onclick=()=>$('lk_f').click();
  $('lk_f').onchange=e=>{const f=e.target.files[0];e.target.value='';handleLkFile(f);};
- wireDropZone($('v-lk'),fs=>handleLkFile(fs[0]),isPdfFile,'lk_dz',()=>{$('lk_st').textContent='Drop a PDF file to lock or unlock.';});
+ wireDropZone($('v-lock'),fs=>handleLkFile(fs[0]),isPdfFile,'lk_dz',()=>{$('lk_st').textContent='Drop a PDF file to lock or unlock.';});
  $('lk_go').onclick=async()=>{
   const pw=$('lk_pw').value;
   if(!lkFile){$('lk_st').textContent='Choose a PDF file first.';return;}
@@ -3345,6 +3819,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   return [...new Set(found)];
  };
  const inspectFile=async f=>{
+  if($('mt_empty'))$('mt_empty').hidden=true;
   const rep=$('mt_rep');rep.innerHTML='';rep.style.display='grid';
   const rows=[['File',f.name],['Size',fmtSz(f.size)]];
   if(f.type==='application/pdf'||/\.pdf$/i.test(f.name)){
@@ -3392,7 +3867,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   }catch(err){$('mt_st').textContent='Failed: '+(err.message||err);}
   $('mt_go').disabled=false;
  };
- $('mt_new').onclick=()=>{expandDz('mt_dz');mtFile=null;mtBlob=null;$('mt_info').textContent='Removes GPS location, camera info & author tags';$('mt_rep').style.display='none';$('mt_go').disabled=true;$('mt_out').style.display='none';$('mt_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
+ $('mt_new').onclick=()=>{expandDz('mt_dz');mtFile=null;mtBlob=null;$('mt_info').textContent='Removes GPS location, camera info & author tags';$('mt_rep').style.display='none';if($('mt_empty'))$('mt_empty').hidden=false;$('mt_go').disabled=true;$('mt_out').style.display='none';$('mt_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
  $('mt_save').onclick=async()=>{if(!mtBlob)return;const rec={id:Date.now(),ts:Date.now(),n:1,ext:mtExt,tool:'Metadata Stripper',paper:'Clean '+mtExt.toUpperCase(),pdf:mtBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('mt_st').textContent='Saved to My documents.';}catch(e){}};
 })();
 
