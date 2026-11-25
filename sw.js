@@ -1,4 +1,4 @@
-const C='docscan-v172',F=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','logo.png','src/assets/images/workflow_showcase_1795526221943.jpg','src/assets/images/offline_devices_blue_1795527582249.jpg'];
+const C='docscan-v173',F=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png','logo.png','src/assets/images/workflow_showcase_1795526221943.jpg','src/assets/images/offline_devices_blue_1795527582249.jpg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(F.map(u=>c.add(new Request(u,{cache:'reload'}))))).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
 self.addEventListener('message',e=>{if(e.data==='SKIP_WAITING')self.skipWaiting();});
