@@ -611,6 +611,44 @@ select,input[type=number]{min-width:0;max-width:100%}
 .conf-card p{margin:0;font-size:14px;line-height:1.5;color:var(--mut)}
 .conf-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
 .conf-acts button{width:auto;min-height:40px;padding:8px 14px}
+.qrh-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qrh-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.qrh-bar .seg button{min-height:36px;padding:6px 8px;font-size:13px}
+.qrh-list{display:flex;flex-direction:column;gap:8px}
+.qrh-empty{margin:0;padding:14px 12px;border-radius:10px;border:1px dashed var(--bd);color:var(--mut);font-size:13px;text-align:center}
+.qrh-item{display:flex;align-items:flex-start;gap:12px;padding:11px 12px;border:1px solid var(--bd);border-radius:12px;background:var(--soft);flex-wrap:wrap}
+.qrh-thumb{width:46px;height:46px;border-radius:8px;border:1px solid var(--bd);background:#fff;display:grid;place-items:center;flex:none;overflow:hidden;color:#475569}
+.qrh-thumb canvas{width:46px;height:46px;border-radius:0;background:#fff}
+.qrh-meta{flex:1 1 200px;min-width:0}
+.qrh-badges{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px;font-size:12px;color:var(--mut)}
+.qrh-tag{display:inline-flex;align-items:center;padding:2px 7px;border-radius:6px;font-size:11.5px;font-weight:700;background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc-txt)}
+.qrh-tag.scan{background:color-mix(in srgb,#0f766e 15%,transparent);color:#0f766e}
+:root[data-theme="dark"] .qrh-tag.scan{color:#5eead4}
+.qrh-kind{font-weight:600;color:var(--fg)}
+.qrh-txt{font:500 13px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg);word-break:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qrh-acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-left:auto}
+.qrh-acts button,.qrh-acts a.pick{width:auto;min-height:34px;padding:6px 10px;font-size:12.5px}
+.qr-cam-wrap{margin-top:10px;padding:10px;border-radius:12px;background:var(--soft);border:1px solid var(--bd);display:flex;flex-direction:column;gap:8px}
+.qr-cam-wrap[hidden]{display:none}
+.qr-cam-wrap video{width:100%;max-height:280px;object-fit:cover;border-radius:10px;background:#090d16;display:block}
+.qr-cam-acts{display:flex;gap:8px;flex-wrap:wrap}
+.qr-cam-acts button{width:auto;flex:1 1 110px}
+.docs-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.docs-bar input{flex:1 1 200px;margin:0;min-height:38px;padding:7px 12px}
+.docs-bar select{flex:0 1 160px;margin:0;min-height:38px;padding:7px 10px}
+.hi-ren{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.hi-ren input{flex:1 1 140px;margin:0;min-height:34px;padding:5px 9px;font-size:13px}
+.hi-ren button{width:auto;min-height:32px;padding:4px 9px;font-size:12px}
+.org-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:8px;font-size:12.5px;color:var(--mut)}
+.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:8px}
+.org-card{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:10px;border:1px solid var(--bd);background:var(--card);transition:opacity .15s,border-color .15s}
+.org-card.off{opacity:.48;border-style:dashed}
+.org-th{position:relative;aspect-ratio:3/4;border-radius:7px;background:#fff;border:1px solid var(--bd);display:grid;place-items:center;overflow:hidden}
+.org-th img{max-width:92%;max-height:92%;object-fit:contain;transition:transform .18s ease}
+.org-pg{font-size:11.5px;font-weight:700;color:var(--fg);display:flex;align-items:center;justify-content:space-between;gap:4px}
+.org-pg small{font-weight:600;color:var(--acc-txt)}
+.org-acts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.org-acts button{width:100%;min-height:28px;padding:3px 2px;font-size:12px;border-radius:7px}
 .ocr-area{width:100%;min-height:220px;padding:14px;border-radius:12px;border:1px solid var(--bd);background:var(--soft);color:var(--fg);font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
 .ocr-bar{height:8px;border-radius:999px;background:var(--soft);overflow:hidden;margin:10px 0}
 .ocr-bar>i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
@@ -1127,12 +1165,12 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <button type="button" class="pick big" id="ms_sdz"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><b>Choose a PDF to split</b><small id="ms_sinfo">Drag &amp; drop or select a multi-page PDF file</small></button>
 <input id="ms_sf" type="file" accept="application/pdf,.pdf" hidden>
 </div>
-<div class="field" style="margin-top:12px"><label for="ms_mode">Split mode</label><select id="ms_mode"><option value="range">Extract specific pages (e.g. 1-3, 5)</option><option value="each">Split every page into separate PDFs (.zip)</option></select></div>
-<div class="field" id="ms_rbox"><label for="ms_range">Pages to extract</label><input id="ms_range" type="text" placeholder="e.g. 1-3, 5, 7"></div>
-<button type="button" id="ms_go_split" disabled>Split PDF</button>
+<div class="field" style="margin-top:12px"><label for="ms_mode">Split &amp; Organize mode</label><select id="ms_mode"><option value="range">Organize, rotate, or extract pages (PDF)</option><option value="each">Split kept pages into separate PDFs (.zip)</option></select></div>
+<div class="field" id="ms_rbox"><label for="ms_range">Pages to include (or tap cards to reorder/rotate/remove)</label><input id="ms_range" type="text" placeholder="e.g. 1-3, 5, 7"></div>
+<button type="button" id="ms_go_split" disabled>Export organized PDF</button>
 </div>
 <div class="tool-col">
-<div class="pv-empty-box" id="ms_sp_empty"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg><b>No PDF selected yet</b><small>Page thumbnails and Next/Prev navigation appear here so you can check page numbers before extracting.</small></div>
+<div class="pv-empty-box" id="ms_sp_empty"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg><b>No PDF selected yet</b><small>Interactive page thumbnails appear here so you can rotate 90°, reorder, or remove pages before exporting.</small></div>
 <div id="ms_sp_pv" class="pdf-pv" style="margin-top:0" hidden></div>
 </div>
 </div>
@@ -1188,7 +1226,7 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 </div>
 </div>
 <div class="tool-col">
-<div class="field fs-box" id="sig_pad_box" style="margin:0 0 12px"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label style="margin:0">Draw your signature</label><button type="button" class="g sm" id="sig_pad_full">Full screen</button></div><canvas id="sig_pad" width="560" height="200" style="border:1px solid var(--bd);background:#fff;border-radius:14px;touch-action:none"></canvas><div class="three" style="margin-top:8px"><button type="button" class="g sm" id="sig_clr">Clear pad</button><button type="button" class="sm" id="sig_add">+ Add to page</button><button type="button" class="g sm" id="sig_del" disabled>Remove selected</button></div></div>
+<div class="field fs-box" id="sig_pad_box" style="margin:0 0 12px"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px"><label style="margin:0">Draw your signature</label><button type="button" class="g sm" id="sig_pad_full">Full screen</button></div><canvas id="sig_pad" width="560" height="200" style="border:1px solid var(--bd);background:#fff;border-radius:14px;touch-action:none"></canvas><div class="three" style="margin-top:8px"><button type="button" class="g sm" id="sig_clr">Clear pad</button><button type="button" class="sm" id="sig_add">+ Add to page</button><button type="button" class="g sm" id="sig_del" disabled>Remove selected</button></div><div class="two" style="margin-top:6px"><button type="button" class="g sm" id="sig_save_tpl">Save signature</button><button type="button" class="g sm" id="sig_use_tpl" hidden>Use saved signature</button></div></div>
 </div>
 </div>
 <details class="typ" style="margin-bottom:10px"><summary>Signature color, size &amp; PDF page</summary><div class="typ-body"><div class="field" style="margin:0 0 10px"><label>Ink color</label><div class="sig-cols" id="sig_cols"><button type="button" class="sig-sw on" data-col="#111827" title="Black" aria-label="Black" style="background:#111827"></button><button type="button" class="sig-sw" data-col="#1d4ed8" title="Royal Blue" aria-label="Royal Blue" style="background:#1d4ed8"></button><button type="button" class="sig-sw" data-col="#2563eb" title="Cobalt Blue" aria-label="Cobalt Blue" style="background:#2563eb"></button><button type="button" class="sig-sw" data-col="#dc2626" title="Red" aria-label="Red" style="background:#dc2626"></button><button type="button" class="sig-sw" data-col="#15803d" title="Green" aria-label="Green" style="background:#15803d"></button><button type="button" class="sig-sw" data-col="#7c3aed" title="Purple" aria-label="Purple" style="background:#7c3aed"></button><label class="sig-cust" title="Custom color"><input id="sig_col" type="color" value="#111827"><span>Custom</span></label></div></div><div class="two"><div class="field" style="margin:0"><label for="sig_sz">Selected size (<b id="sig_szlab">28%</b>)</label><input id="sig_sz" type="range" min="10" max="70" value="28"></div><div class="field" style="margin:0"><label for="sig_pg">Page (for PDF)</label><input id="sig_pg" type="number" min="1" value="1"></div></div></div></details>
@@ -1288,6 +1326,11 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <div class="dz-col">
 <button type="button" class="pick big" id="qr_sdz"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><b>Choose QR image or PDF</b><small>Drag &amp; drop, paste (Ctrl+V), or select a screenshot</small></button>
 <input id="qr_sf" type="file" accept="image/*,.pdf,application/pdf" hidden>
+<button type="button" class="g" id="qr_cam_btn" style="margin-top:8px">Scan with camera</button>
+</div>
+<div class="qr-cam-wrap" id="qr_cam_wrap" hidden>
+<video id="qr_cam_vid" playsinline muted autoplay></video>
+<div class="qr-cam-acts"><button type="button" class="g sm" id="qr_cam_flip" hidden>Switch camera</button><button type="button" class="g sm" id="qr_cam_stop">Stop camera</button></div>
 </div>
 <div class="hint" id="qr_sst" style="margin-top:10px"></div>
 <div id="qr_scan_pv" class="pdf-pv" hidden></div>
@@ -1298,6 +1341,17 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 </div>
 </div>
 </div>
+</section>
+<section class="card" id="qr_hist_card">
+<div class="qrh-hd">
+<div><h3 id="qr_hist_title" style="margin:0;font-size:16px">QR History</h3><small style="font-size:12.5px;color:var(--mut)">Saved locally on this device · Separate from My Documents</small></div>
+<button type="button" class="g sm" id="qr_hist_clr" style="width:auto" hidden>Clear log</button>
+</div>
+<div class="qrh-bar">
+<div class="seg" id="qr_hist_flt" style="margin:0;flex:1 1 220px"><button type="button" class="on" data-f="all">All</button><button type="button" data-f="gen">Generated</button><button type="button" data-f="scan">Scanned</button></div>
+<input id="qr_hist_q" type="search" placeholder="Filter QR log…" aria-label="Filter QR history" style="flex:1 1 180px;margin:0;min-height:38px;padding:7px 12px">
+</div>
+<div class="qrh-list" id="qr_hist_list"></div>
 </section>
 </section>
 
@@ -1398,7 +1452,7 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <div class="seg" style="margin-bottom:12px"><button type="button" class="on" id="iv_t_inv">Invoice</button><button type="button" id="iv_t_rec">Receipt</button></div>
 <div class="two"><div class="field"><label for="iv_num">Number</label><input id="iv_num" type="text"></div><div class="field"><label for="iv_date">Date</label><input id="iv_date" type="date"></div></div>
 <div class="two"><div class="field"><label for="iv_cur">Currency</label><select id="iv_cur"><option value="INR">INR (Rs.)</option><option value="USD">USD ($)</option><option value="EUR">EUR (EUR)</option><option value="GBP">GBP (GBP)</option></select></div><div class="field"><label for="iv_due">Due / Payment mode</label><input id="iv_due" type="text" placeholder="e.g. UPI / Paid / Net 7"></div></div>
-<details class="typ" style="margin-top:0;margin-bottom:10px"><summary>From (Your business / details)</summary><div class="typ-body"><div class="field"><label for="iv_fn">Name / Business</label><input id="iv_fn" type="text" placeholder="Your name or company"></div><div class="field" style="margin:0"><label for="iv_fc">Phone / Email / Address</label><input id="iv_fc" type="text" placeholder="Phone, email, or city"></div></div></details>
+<details class="typ" style="margin-top:0;margin-bottom:10px"><summary>From (Your business / details)</summary><div class="typ-body"><div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button type="button" class="g sm" id="iv_fill_prof" style="width:auto">Fill from Profile</button></div><div class="field"><label for="iv_fn">Name / Business</label><input id="iv_fn" type="text" placeholder="Your name or company"></div><div class="field" style="margin:0"><label for="iv_fc">Phone / Email / Address</label><input id="iv_fc" type="text" placeholder="Phone, email, or city"></div></div></details>
 <details class="typ" open style="margin-top:0;margin-bottom:10px"><summary>Bill to (Client / Recipient)</summary><div class="typ-body"><div class="field"><label for="iv_tn">Client name</label><input id="iv_tn" type="text" placeholder="Client or customer name"></div><div class="field" style="margin:0"><label for="iv_tc">Client contact / address</label><input id="iv_tc" type="text" placeholder="Optional phone, email, or address"></div></div></details>
 <div class="field"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><label style="margin:0">Items</label><button type="button" class="g sm" id="iv_add" style="width:auto">+ Add item</button></div><div id="iv_items"></div></div>
 <details class="typ" style="margin-top:0;margin-bottom:10px"><summary>Tax, discount &amp; notes</summary><div class="typ-body"><div class="two"><div class="field"><label for="iv_tax">Tax / GST (%)</label><input id="iv_tax" type="number" min="0" max="100" step="0.5" value="0"></div><div class="field"><label for="iv_disc">Discount</label><input id="iv_disc" type="number" min="0" step="0.01" value="0"></div></div><div class="field" style="margin:0"><label for="iv_note">Notes / Terms</label><input id="iv_note" type="text" placeholder="Thank you for your business!"></div></div></details>
@@ -1417,7 +1471,12 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 </section>
 
 <section class="view" id="v-docs" hidden>
-<div class="card"><div class="hd"><h2>Saved on this device</h2><button class="g sm" id="clr">Clear all</button></div><div id="hist"></div></div>
+<div class="card"><div class="hd"><h2>Saved on this device</h2><button class="g sm" id="clr">Clear all</button></div>
+<div class="docs-bar">
+<input id="docs_q" type="search" placeholder="Search by name, tool, or type…" aria-label="Search saved documents">
+<select id="docs_flt" aria-label="Filter saved documents"><option value="all">All types</option><option value="pdf">PDF files</option><option value="img">Images</option><option value="other">Word / Text / ZIP</option></select>
+</div>
+<div id="hist"></div></div>
 </section>
 
 <section class="view" id="v-profile" hidden>
@@ -1516,7 +1575,9 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <p class="s" id="upd_ver" style="margin:0 0 12px"></p>
 <button id="upd_btn" class="g">Check for updates</button>
 <div class="hint" id="upd_msg"></div></div>
-<div class="card" style="margin-top:14px"><div class="hd"><h2>Data</h2></div>
+<div class="card" style="margin-top:14px"><div class="hd"><h2>Offline Backup &amp; Data</h2></div>
+<p class="s" style="margin:0 0 12px">Export your My Documents vault and QR History as a local ZIP file, or restore a backup on another device without signing in.</p>
+<div class="two" style="margin-bottom:10px"><button type="button" class="g" id="s_exp_vault">Export Vault (.zip)</button><button type="button" class="g" id="s_imp_vault">Restore Vault (.zip)</button><input id="s_imp_file" type="file" accept=".zip,application/zip" hidden></div>
 <div class="two"><button class="g" id="s_clrdocs">Delete saved documents</button><button class="g" id="s_reset">Reset all settings</button></div>
 <div class="hint" id="s_msg"></div></div>
 <div class="card" style="margin-top:14px"><div class="hd"><h2>Support &amp; App</h2></div>
@@ -2746,6 +2807,7 @@ if(screen.orientation&&screen.orientation.addEventListener)screen.orientation.ad
 window.addEventListener('resize',()=>{placeTab();updLand();if(window._fitGrid)window._fitGrid();});updLand();
 let _curView='';
 function go(v,noAnim){if($('tab_stage')){$('tab_stage').style.height='';$('tab_stage').style.minHeight='';}if(v==='out')v='add';if(!VIEWS[v])v='home';
+ if(v!=='qr'&&window._stopQrCam)window._stopQrCam();
  const prev=_curView;_curView=v;
  const inTool=v==='add'||v==='out',anyTool=inTool||['ocr','conv','ms','comp','sign','pp','qr','red','lock','meta','inv'].includes(v),inSetSub=v==='help'||v==='get';
  const navV=anyTool?((v==='ms'||v==='comp'||v==='conv')?v:'home'):(inSetSub?'settings':v);
@@ -3464,11 +3526,20 @@ async function driveUploadDoc(rec,opts={}){
  try{
   const fid=await driveFolder(tok);
   const blob=rec.pdf||new Blob([rec.text],{type:'text/plain'});
-  const meta={name:'pocketdocs-'+rec.id+'.'+(rec.ext||'pdf'),parents:[fid],appProperties:{prdId:String(rec.id),prdTs:String(rec.ts||rec.id),prdTool:String(rec.tool||'PocketDocs').slice(0,80),prdPaper:String(rec.paper||'').slice(0,80),prdN:String(rec.n||1),prdExt:String(rec.ext||'pdf').slice(0,12)}};
+  const safeBase=(rec.title?String(rec.title).replace(/[^\w\-. ]+/g,'_').trim().slice(0,60):'')||('pocketdocs-'+rec.id);
+  const meta={name:safeBase+'.'+(rec.ext||'pdf'),parents:[fid],appProperties:{prdId:String(rec.id),prdTs:String(rec.ts||rec.id),prdTool:String(rec.tool||'PocketDocs').slice(0,80),prdPaper:String(rec.paper||'').slice(0,80),prdTitle:String(rec.title||'').slice(0,80),prdN:String(rec.n||1),prdExt:String(rec.ext||'pdf').slice(0,12)}};
   const fd=new FormData();fd.append('metadata',new Blob([JSON.stringify(meta)],{type:'application/json'}));fd.append('file',blob);
   const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{method:'POST',headers:{Authorization:'Bearer '+tok},body:fd});
   if(r.status===401){cachedAccessToken=null;updSyncUI();return;}
   const j=await r.json();if(j.id){rec.driveId=j.id;await tx('readwrite',s=>s.put(rec));renderHist();}
+ }catch(e){}
+}
+async function driveRenameDoc(rec){
+ const tok=gTok();if(!tok||!rec||!rec.driveId)return;
+ const safeBase=(rec.title?String(rec.title).replace(/[^\w\-. ]+/g,'_').trim().slice(0,60):'')||('pocketdocs-'+rec.id);
+ try{
+  const r=await fetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(rec.driveId),{method:'PATCH',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({name:safeBase+'.'+(rec.ext||'pdf'),appProperties:{prdTitle:String(rec.title||'').slice(0,80)}})});
+  if(r.status===401){cachedAccessToken=null;updSyncUI();}
  }catch(e){}
 }
 async function driveDeleteFile(fileId){
@@ -3515,6 +3586,7 @@ async function syncWithDrive(opts={}){
     ext,
     tool:ap.prdTool||'Google Drive',
     paper:ap.prdPaper||ext.toUpperCase(),
+    title:ap.prdTitle||'',
     pdf:blob,
     text:isTxt?(await blob.text().catch(()=>null)):null,
     pages:[],
@@ -3573,6 +3645,91 @@ ensureFirebaseAuth().catch(()=>{});
 updSyncUI();
 $('me').onclick=()=>go('profile');
 showProfile();
+if($('s_exp_vault'))$('s_exp_vault').onclick=async()=>{
+ const btn=$('s_exp_vault');btn.disabled=true;$('s_msg').textContent='Preparing offline backup…';
+ try{
+  const recs=await tx('readonly',s=>s.getAll());
+  const qrHist=Array.isArray(store.get('prd_qr_hist'))?store.get('prd_qr_hist'):[];
+  const prof=store.get('prd_profile')||{};
+  const savedSig=store.get('prd_saved_sig')||null;
+  const enc=new TextEncoder();
+  const files=[];
+  const docsMeta=[];
+  for(const r of recs){
+   const ext=String(r.ext||'pdf').replace(/[^a-z0-9]/gi,'').toLowerCase()||'pdf';
+   const fileName='docs/'+r.id+'.'+ext;
+   let bytes=null;
+   if(r.pdf&&typeof r.pdf.arrayBuffer==='function'){bytes=new Uint8Array(await r.pdf.arrayBuffer());}
+   else if(r.text!=null){bytes=enc.encode(String(r.text));}
+   if(bytes)files.push({name:fileName,data:bytes});
+   docsMeta.push({id:r.id,ts:r.ts,n:r.n||1,ext,tool:r.tool||'PocketDocs',paper:r.paper||'',title:r.title||'',fileName:bytes?fileName:'',text:r.text!=null?String(r.text):null});
+  }
+  const manifest={app:'PocketDocs',version:1,exportedAt:Date.now(),profile:{name:prof.name||'',phone:prof.phone||'',mail:prof.mail||'',org:prof.org||''},qrHist,savedSig,docs:docsMeta};
+  files.unshift({name:'vault_manifest.json',data:enc.encode(JSON.stringify(manifest,null,2))});
+  const blob=zipBuild(files,'application/zip');
+  const u=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=u;a.download='pocketdocs-vault-'+new Date().toISOString().slice(0,10)+'.zip';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),4000);
+  $('s_msg').textContent='Exported '+docsMeta.length+' document(s) and '+qrHist.length+' QR record(s).';
+ }catch(e){$('s_msg').textContent='Export failed: '+(e&&e.message?e.message:'unable to read vault.');}
+ btn.disabled=false;
+};
+if($('s_imp_vault'))$('s_imp_vault').onclick=()=>$('s_imp_file')&&$('s_imp_file').click();
+if($('s_imp_file'))$('s_imp_file').onchange=async e=>{
+ const f=e.target.files[0];e.target.value='';
+ if(!f)return;
+ if(!window.JSZip){$('s_msg').textContent='ZIP reader unavailable offline.';return;}
+ $('s_msg').textContent='Reading backup archive…';
+ try{
+  const z=await JSZip.loadAsync(await f.arrayBuffer());
+  const mf=z.file('vault_manifest.json');
+  if(!mf)throw new Error('Not a PocketDocs backup archive.');
+  const manifest=JSON.parse(await mf.async('string'));
+  if(!manifest||manifest.app!=='PocketDocs'||!Array.isArray(manifest.docs))throw new Error('Invalid backup manifest.');
+  const qrIn=Array.isArray(manifest.qrHist)?manifest.qrHist:[];
+  const ok=await askConfirm({title:'Restore offline backup?',body:'Restore up to '+manifest.docs.length+' document(s) and '+qrIn.length+' QR record(s) into this browser?',okLabel:'Restore backup'});
+  if(!ok){$('s_msg').textContent='Restore cancelled.';return;}
+  const mimeMap={pdf:'application/pdf',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',webp:'image/webp',txt:'text/plain',md:'text/markdown',csv:'text/csv',json:'application/json',html:'text/html',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',zip:'application/zip'};
+  const curRecs=await tx('readonly',s=>s.getAll());
+  const seenIds=new Set(curRecs.map(r=>String(r.id)));
+  let addedDocs=0;
+  for(const d of manifest.docs){
+   if(!d||!d.id||seenIds.has(String(d.id)))continue;
+   const ext=String(d.ext||'pdf').replace(/[^a-z0-9]/gi,'').toLowerCase()||'pdf';
+   let blob=null;
+   if(d.fileName&&z.file(d.fileName)){
+    const u8=await z.file(d.fileName).async('uint8array');
+    blob=new Blob([u8],{type:mimeMap[ext]||'application/octet-stream'});
+   }else if(d.text!=null){
+    blob=new Blob([String(d.text)],{type:'text/plain'});
+   }
+   if(!blob)continue;
+   const rec={id:Number(d.id)||Date.now()+addedDocs,ts:Number(d.ts)||Date.now(),n:Number(d.n)||1,ext,tool:String(d.tool||'Restored').slice(0,80),paper:String(d.paper||'').slice(0,80),title:String(d.title||'').slice(0,120),pdf:blob,text:d.text!=null?String(d.text):null,pages:[]};
+   await tx('readwrite',s=>s.put(rec));
+   seenIds.add(String(rec.id));addedDocs++;
+  }
+  if(qrIn.length){
+   const curQr=Array.isArray(store.get('prd_qr_hist'))?store.get('prd_qr_hist'):[];
+   const seenQr=new Set(curQr.map(x=>x.kind+'|'+x.text));
+   const merged=[...curQr];
+   qrIn.forEach(x=>{if(x&&x.text&&!seenQr.has((x.kind==='scan'?'scan':'gen')+'|'+x.text)){seenQr.add((x.kind==='scan'?'scan':'gen')+'|'+x.text);merged.push(x);}});
+   merged.sort((a,b)=>(b.ts||0)-(a.ts||0));
+   store.set('prd_qr_hist',merged.slice(0,60));
+   if(window._renderQrHist)window._renderQrHist();
+  }
+  if(manifest.savedSig&&manifest.savedSig.dataUrl&&!store.get('prd_saved_sig')){
+   store.set('prd_saved_sig',manifest.savedSig);
+   if(window._syncSavedSigBtn)window._syncSavedSigBtn();
+  }
+  if(manifest.profile&&typeof manifest.profile==='object'){
+   const curP=store.get('prd_profile')||{};
+   if(!curP.name&&!curP.mail&&!curP.phone&&!curP.org){store.set('prd_profile',manifest.profile);showProfile();}
+  }
+  await renderHist();
+  $('s_msg').textContent='Restored '+addedDocs+' new document(s) and merged QR history.';
+ }catch(err){$('s_msg').textContent='Restore failed: '+(err&&err.message?err.message:'corrupt or unsupported archive.');}
+};
 $('s_clrdocs').onclick=async()=>{
  const ok=await askConfirm({title:'Delete saved documents?',body:'This removes all documents from My Documents on this device.',okLabel:'Delete local vault'});
  if(!ok)return;
@@ -3679,13 +3836,14 @@ async function renderHist(){
    const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
    const u=tb?URL.createObjectURL(tb):'';
    const tool=String(r.tool||'PrintFit');
+   const label=r.title?String(r.title):tool;
    const extStr=String(r.ext||'pdf').toUpperCase();
    const when=new Date(r.ts).toLocaleDateString([],{month:'short',day:'numeric'})+' · '+extStr;
    const thumb=document.createElement('div');thumb.className='hr-thumb';
    if(u){const im=document.createElement('img');im.src=u;im.alt='';thumb.appendChild(im);}
    else{thumb.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>';}
    const metaEl=document.createElement('div');metaEl.className='hr-meta';
-   const b=document.createElement('b');b.textContent=tool;
+   const b=document.createElement('b');b.textContent=label;
    const sp=document.createElement('span');sp.textContent=when+(r.paper?' · '+String(r.paper):'');
    metaEl.append(b,sp);
    const vb=document.createElement('button');vb.type='button';vb.className='g sm';vb.textContent='View';vb.onclick=()=>openDoc(r);
@@ -3696,8 +3854,24 @@ async function renderHist(){
   hr.hidden=!recs.length||filtering;
  }
  if($('hr_all'))$('hr_all').onclick=()=>go('docs');
+ const dq=($('docs_q')?.value||'').trim().toLowerCase(),dflt=($('docs_flt')?.value||'all');
+ const filtered=recs.filter(r=>{
+  const ext=String(r.ext||'pdf').toLowerCase();
+  if(dflt==='pdf'&&ext!=='pdf')return false;
+  if(dflt==='img'&&!/^(jpg|jpeg|png|webp)$/.test(ext))return false;
+  if(dflt==='other'&&(/^(pdf|jpg|jpeg|png|webp)$/.test(ext)))return false;
+  if(dq){
+   const hay=[r.title||'',r.tool||'',r.paper||'',ext].join(' ').toLowerCase();
+   if(!hay.includes(dq))return false;
+  }
+  return true;
+ });
  h.innerHTML='';
- if(!recs.length){const p=document.createElement('p');p.className='s';p.style.margin='0';p.textContent='Nothing yet. Documents created with any tool will appear here.';h.appendChild(p);}
+ if(!filtered.length){
+  const p=document.createElement('p');p.className='s';p.style.margin='0';
+  p.textContent=recs.length?'No saved documents match your search or filter.':'Nothing yet. Documents created with any tool will appear here.';
+  h.appendChild(p);
+ }
  const rmDoc=async r=>{
   const ok=await askConfirm({title:'Delete saved document?',body:'Remove this document from My Documents on this device?',okLabel:'Delete'});
   if(!ok)return;
@@ -3708,25 +3882,48 @@ async function renderHist(){
   }
   renderHist();
  };
- recs.forEach(r=>{const d=document.createElement('div');d.className='hi';
+ filtered.forEach(r=>{const d=document.createElement('div');d.className='hi';
   const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
   const u=tb?URL.createObjectURL(tb):'';
   const tool=String(r.tool||'PrintFit');
-  const meta=[r.n?(r.n+' document'+(r.n>1?'s':'')):null,r.paper?String(r.paper):null,String(r.ext||'pdf').toUpperCase()].filter(Boolean).join(' · ');
+  const dateStr=new Date(r.ts).toLocaleString([],{dateStyle:'medium',timeStyle:'short'});
+  const meta=[r.title?dateStr:null,r.n?(r.n+' document'+(r.n>1?'s':'')):null,r.paper?String(r.paper):null,String(r.ext||'pdf').toUpperCase()].filter(Boolean).join(' · ');
   const canEdit=!!r.signState;
   if(u){const im=document.createElement('img');im.src=u;im.alt='';d.appendChild(im);}
   const m=document.createElement('div');m.className='m';
-  const b=document.createElement('b');b.textContent=new Date(r.ts).toLocaleString([],{dateStyle:'medium',timeStyle:'short'});
+  const b=document.createElement('b');b.textContent=r.title?String(r.title):dateStr;
   const sp=document.createElement('span');sp.textContent=meta;
   const tbEl=document.createElement('span');tbEl.className='tbadge';tbEl.textContent=tool+(r.driveId?' · Drive':'');
   m.append(b,sp,tbEl);
   const ab=document.createElement('div');ab.className='ab';
   const vb=document.createElement('button');vb.className='sm';vb.textContent='View';vb.onclick=()=>openDoc(r);ab.appendChild(vb);
+  const rb=document.createElement('button');rb.className='g sm';rb.textContent='Rename';
+  rb.onclick=()=>{
+   if(m.querySelector('.hi-ren'))return;
+   const row=document.createElement('div');row.className='hi-ren';
+   const inp=document.createElement('input');inp.type='text';inp.maxLength=80;inp.value=r.title||'';inp.placeholder='Enter custom document name…';
+   const sv=document.createElement('button');sv.type='button';sv.className='sm';sv.textContent='Save';
+   const ca=document.createElement('button');ca.type='button';ca.className='g sm';ca.textContent='Cancel';
+   const finish=async save=>{
+    if(save){
+     r.title=inp.value.trim().slice(0,80);
+     try{await tx('readwrite',s=>s.put(r));}catch(e){}
+     if(r.driveId&&gTok())driveRenameDoc(r).catch(()=>{});
+     renderHist();
+    }else{row.remove();}
+   };
+   sv.onclick=()=>finish(true);ca.onclick=()=>finish(false);
+   inp.addEventListener('keydown',ev=>{if(ev.key==='Enter')finish(true);else if(ev.key==='Escape')finish(false);});
+   row.append(inp,sv,ca);m.appendChild(row);inp.focus();inp.select();
+  };
+  ab.appendChild(rb);
   if(canEdit){const eb=document.createElement('button');eb.className='g sm';eb.textContent='Edit';eb.onclick=()=>{if(window.editSignedDoc)window.editSignedDoc(r);};ab.appendChild(eb);}
   const db=document.createElement('button');db.className='g sm';db.textContent='Delete';db.onclick=()=>rmDoc(r);ab.appendChild(db);
   d.append(m,ab);
   h.appendChild(d);});
 }
+if($('docs_q'))$('docs_q').addEventListener('input',renderHist);
+if($('docs_flt'))$('docs_flt').addEventListener('change',renderHist);
 let urls=[];
 function openDoc(r){
  urls.forEach(u=>URL.revokeObjectURL(u));urls=[];
@@ -4134,33 +4331,90 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   $('ms_go_merge').disabled=!mFiles.length;
  }
  if($('ms_m_clr'))$('ms_m_clr').onclick=()=>{mListTok++;mFiles=[];closeMergePreview();resetOut();setSt('');renderMList();};
+ let sPlan=[],sThumbs=[];
+ const syncRangeFromPlan=()=>{
+  const kept=sPlan.filter(p=>p.keep).map(p=>p.pageIdx+1);
+  $('ms_range').value=kept.join(', ');
+ };
+ const renderOrgGrid=()=>{
+  const box=$('ms_sp_pv'),em=$('ms_sp_empty');
+  if(em)em.hidden=!!sFile;
+  if(!box)return;
+  if(!sFile||!sPlan.length){box.hidden=true;box.innerHTML='';return;}
+  box.hidden=false;
+  box.innerHTML='';
+  const hd=document.createElement('div');hd.className='org-hd';
+  const keptCnt=sPlan.filter(p=>p.keep).length;
+  const info=document.createElement('span');
+  info.textContent=keptCnt+' of '+sPlan.length+' page'+(sPlan.length>1?'s':'')+' included'+(sPlan.some(p=>p.rot)?' · rotations applied':'');
+  const rst=document.createElement('button');rst.type='button';rst.className='g sm';rst.style.width='auto';rst.textContent='Reset pages';
+  rst.onclick=()=>{sPlan=Array.from({length:sPages},(_,i)=>({pageIdx:i,rot:0,keep:true}));syncRangeFromPlan();renderOrgGrid();setSt('');};
+  hd.append(info,rst);
+  box.appendChild(hd);
+  const grid=document.createElement('div');grid.className='org-grid';
+  sPlan.forEach((it,pos)=>{
+   const card=document.createElement('div');card.className='org-card'+(it.keep?'':' off');
+   const th=document.createElement('div');th.className='org-th';
+   const srcThumb=sThumbs[it.pageIdx];
+   if(srcThumb){
+    const im=document.createElement('img');im.src=srcThumb;im.alt='Page '+(it.pageIdx+1);
+    if(it.rot)im.style.transform='rotate('+it.rot+'deg)';
+    th.appendChild(im);
+   }else{
+    const ph=document.createElement('span');ph.style.cssText='font-size:12px;font-weight:700;color:var(--mut)';ph.textContent='Page '+(it.pageIdx+1);
+    if(it.rot)ph.style.transform='rotate('+it.rot+'deg)';
+    th.appendChild(ph);
+   }
+   const pgLbl=document.createElement('div');pgLbl.className='org-pg';
+   const pn=document.createElement('span');pn.textContent='P'+(it.pageIdx+1);
+   const pr=document.createElement('small');pr.textContent=it.keep?(it.rot?(it.rot+'°'):''):'Removed';
+   pgLbl.append(pn,pr);
+   const acts=document.createElement('div');acts.className='org-acts';
+   const bRot=document.createElement('button');bRot.type='button';bRot.className='g';bRot.title='Rotate 90°';bRot.textContent='↻';
+   bRot.onclick=()=>{it.rot=(it.rot+90)%360;renderOrgGrid();};
+   const bL=document.createElement('button');bL.type='button';bL.className='g';bL.title='Move earlier';bL.textContent='←';bL.disabled=pos===0;
+   bL.onclick=()=>{if(pos>0){[sPlan[pos-1],sPlan[pos]]=[sPlan[pos],sPlan[pos-1]];syncRangeFromPlan();renderOrgGrid();}};
+   const bR=document.createElement('button');bR.type='button';bR.className='g';bR.title='Move later';bR.textContent='→';bR.disabled=pos===sPlan.length-1;
+   bR.onclick=()=>{if(pos<sPlan.length-1){[sPlan[pos+1],sPlan[pos]]=[sPlan[pos],sPlan[pos+1]];syncRangeFromPlan();renderOrgGrid();}};
+   const bDel=document.createElement('button');bDel.type='button';bDel.className='g';bDel.title=it.keep?'Exclude page':'Include page';bDel.textContent=it.keep?'✕':'✓';
+   bDel.onclick=()=>{it.keep=!it.keep;syncRangeFromPlan();renderOrgGrid();};
+   acts.append(bRot,bL,bR,bDel);
+   card.append(th,pgLbl,acts);
+   grid.appendChild(card);
+  });
+  box.appendChild(grid);
+  $('ms_go_split').disabled=!keptCnt;
+ };
+ $('ms_mode').onchange=()=>{
+  const isR=$('ms_mode').value==='range';
+  $('ms_rbox').style.display=isR?'block':'none';
+  $('ms_go_split').textContent=isR?'Export organized PDF':'Split into ZIP';
+ };
  const renderSplitPreview=async f=>{
   const box=$('ms_sp_pv'),em=$('ms_sp_empty'),tok=++sPvTok;
   if(em)em.hidden=!!f;
   if(!box||!f){if(box){box.hidden=true;box.innerHTML='';}return;}
-  box.hidden=false;
-  box.innerHTML='<div class="pdf-pv-hd"><b></b><span>Rendering preview…</span></div>';
-  box.querySelector('b').textContent=f.name;
+  sThumbs=[];
+  renderOrgGrid();
   try{
-   const meta=await getFilePreviewMeta(f,12);
+   const meta=await getFilePreviewMeta(f,32);
    if(tok!==sPvTok)return;
-   renderPdfStrip(box,f.name,meta,12,window.pdfjsLib?'Could not render PDF preview.':'PDF preview unavailable offline.',{file:f});
-  }catch(e){
-   if(tok!==sPvTok)return;
-   renderPdfStrip(box,f.name,null,12,'Could not render PDF preview.');
-  }
+   sThumbs=(meta&&meta.thumbs)||[];
+   renderOrgGrid();
+  }catch(e){}
  };
  const handleSplitFile=async f=>{
   if(!f)return;
   collapseDz('ms_sdz',f.name,f);
   resetOut();setSt('Reading PDF…');
-  renderSplitPreview(f);
   try{
    if(!window.PDFLib)throw new Error('PDF engine unavailable offline.');
    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());
    sFile=f;sPages=doc.getPageCount();
+   sPlan=Array.from({length:sPages},(_,i)=>({pageIdx:i,rot:0,keep:true}));
    $('ms_sinfo').textContent=f.name+' · '+sPages+' page'+(sPages>1?'s':'');
    $('ms_range').value='1-'+sPages;$('ms_go_split').disabled=false;setSt('');
+   renderSplitPreview(f);
   }catch(err){setSt('Could not read PDF: '+(err.message||err));}
  };
  $('ms_f').onchange=e=>{mFiles.push(...e.target.files);e.target.value='';resetOut();setSt('');renderMList();};
@@ -4197,48 +4451,64 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   $('ms_go_merge').disabled=false;
  };
  const parseRange=(str,max)=>{
-  const idxs=new Set();
+  const idxs=[];const seen=new Set();
   str.split(',').forEach(part=>{
    const p=part.trim();if(!p)return;
-   if(p.includes('-')){const[a,b]=p.split('-').map(n=>parseInt(n,10));if(a>=1&&b>=1){const lo=Math.min(a,b),hi=Math.min(max,Math.max(a,b));for(let i=lo;i<=hi;i++)idxs.add(i-1);}}
-   else{const n=parseInt(p,10);if(n>=1&&n<=max)idxs.add(n-1);}
+   if(p.includes('-')){const[a,b]=p.split('-').map(n=>parseInt(n,10));if(a>=1&&b>=1){const lo=Math.min(a,b),hi=Math.min(max,Math.max(a,b));for(let i=lo;i<=hi;i++)if(!seen.has(i-1)){seen.add(i-1);idxs.push(i-1);}}}
+   else{const n=parseInt(p,10);if(n>=1&&n<=max&&!seen.has(n-1)){seen.add(n-1);idxs.push(n-1);}}
   });
-  return [...idxs];
+  return idxs;
  };
  $('ms_range').addEventListener('input',()=>{
   if(!sPages||$('ms_mode').value!=='range')return;
   const idxs=parseRange($('ms_range').value,sPages);
-  setSt(idxs.length?('Selected '+idxs.length+' of '+sPages+' pages to extract.'):('Enter page numbers between 1 and '+sPages+'.'));
+  if(idxs.length){
+   const rotByIdx=new Map(sPlan.map(p=>[p.pageIdx,p.rot]));
+   const keptSet=new Set(idxs);
+   const next=idxs.map(idx=>({pageIdx:idx,rot:rotByIdx.get(idx)||0,keep:true}));
+   for(let i=0;i<sPages;i++)if(!keptSet.has(i))next.push({pageIdx:i,rot:rotByIdx.get(i)||0,keep:false});
+   sPlan=next;
+  }else{
+   sPlan.forEach(p=>p.keep=false);
+  }
+  renderOrgGrid();
+  setSt(idxs.length?('Selected '+idxs.length+' of '+sPages+' pages.'):('Enter page numbers between 1 and '+sPages+'.'));
  });
  $('ms_go_split').onclick=async()=>{
   if(!sFile||!window.PDFLib)return;
-  $('ms_go_split').disabled=true;resetOut();setSt('Splitting PDF…');
+  $('ms_go_split').disabled=true;resetOut();setSt('Building PDF…');
   try{
    const src=await PDFLib.PDFDocument.load(await sFile.arrayBuffer()),mode=$('ms_mode').value;
+   const kept=sPlan.filter(p=>p.keep);
+   if(!kept.length)throw new Error('Select at least one page to export.');
    if(mode==='range'){
-    const idxs=parseRange($('ms_range').value,sPages);
-    if(!idxs.length)throw new Error('Enter valid page numbers between 1 and '+sPages+'.');
     const out=await PDFLib.PDFDocument.create();
-    const copied=await out.copyPages(src,idxs);copied.forEach(p=>out.addPage(p));
-    msBlob=new Blob([await out.save()],{type:'application/pdf'});msExt='pdf';msCount=idxs.length;
-    $('ms_dl').download='extracted-pages.pdf';$('ms_dl').textContent='Download extracted-pages.pdf';
+    const copied=await out.copyPages(src,kept.map(p=>p.pageIdx));
+    copied.forEach((p,i)=>{
+     if(kept[i].rot){const cur=(p.getRotation()&&p.getRotation().angle)||0;p.setRotation(PDFLib.degrees((cur+kept[i].rot)%360));}
+     out.addPage(p);
+    });
+    msBlob=new Blob([await out.save()],{type:'application/pdf'});msExt='pdf';msCount=kept.length;
+    $('ms_dl').download='organized-pages.pdf';$('ms_dl').textContent='Download organized-pages.pdf';
    }else{
     const files=[];
-    for(let i=0;i<sPages;i++){
+    for(let i=0;i<kept.length;i++){
      const out=await PDFLib.PDFDocument.create();
-     const[cp]=await out.copyPages(src,[i]);out.addPage(cp);
+     const[cp]=await out.copyPages(src,[kept[i].pageIdx]);
+     if(kept[i].rot){const cur=(cp.getRotation()&&cp.getRotation().angle)||0;cp.setRotation(PDFLib.degrees((cur+kept[i].rot)%360));}
+     out.addPage(cp);
      files.push({name:'page-'+(i+1)+'.pdf',data:new Uint8Array(await out.save())});
     }
-    msBlob=zipBuild(files,'application/zip');msExt='zip';msCount=sPages;
+    msBlob=zipBuild(files,'application/zip');msExt='zip';msCount=kept.length;
     $('ms_dl').download='split-pages.zip';$('ms_dl').textContent='Download split-pages.zip';
    }
    $('ms_dl').href=URL.createObjectURL(msBlob);$('ms_out').style.display='block';
    setSt('Done · '+msCount+' page(s) ready.');
-   renderBlobPreview($('ms_out_pv'),msBlob,mode==='range'?'extracted-pages.pdf':'split-pages.zip',{title:mode==='range'?('Extracted PDF · '+msCount+' page(s)'):('Split Archive · '+msCount+' PDF(s)')});
+   renderBlobPreview($('ms_out_pv'),msBlob,mode==='range'?'organized-pages.pdf':'split-pages.zip',{title:mode==='range'?('Organized PDF · '+msCount+' page(s)'):('Split Archive · '+msCount+' PDF(s)')});
   }catch(err){setSt('Split failed: '+(err.message||err));}
   $('ms_go_split').disabled=false;
  };
- $('ms_new').onclick=()=>{mListTok++;sPvTok++;closeMergePreview();mFiles=[];sFile=null;sPages=0;msBlob=null;renderMList();$('ms_sp_pv').hidden=true;$('ms_sp_pv').innerHTML='';if($('ms_sp_empty'))$('ms_sp_empty').hidden=false;$('ms_sinfo').textContent='Drag & drop or select a multi-page PDF file';$('ms_go_split').disabled=true;expandDz('ms_sdz');resetOut();$('ms_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
+ $('ms_new').onclick=()=>{mListTok++;sPvTok++;closeMergePreview();mFiles=[];sFile=null;sPages=0;sPlan=[];sThumbs=[];msBlob=null;renderMList();$('ms_sp_pv').hidden=true;$('ms_sp_pv').innerHTML='';if($('ms_sp_empty'))$('ms_sp_empty').hidden=false;$('ms_sinfo').textContent='Drag & drop or select a multi-page PDF file';$('ms_go_split').disabled=true;expandDz('ms_sdz');resetOut();$('ms_st').textContent='';window.scrollTo({top:0,behavior:'smooth'});};
  $('ms_save').onclick=async()=>{
   if(!msBlob)return;
   const rec={id:Date.now(),ts:Date.now(),n:msCount,ext:msExt,tool:'Merge & Split',paper:msExt.toUpperCase(),pdf:msBlob,text:null,pages:[]};
@@ -4473,6 +4743,29 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  pad.onpointermove=e=>{if(!drawing)return;const[x,y]=pt(e);cx.lineTo(x,y);cx.stroke();drawPv();};
  pad.onpointerup=pad.onpointercancel=()=>{drawing=false;drawPv();};
  $('sig_clr').onclick=()=>{cx.clearRect(0,0,pad.width,pad.height);hasSig=false;editIdx=-1;updGoLabel();renderSigList();drawPv();};
+ const SAVED_SIG_KEY='prd_saved_sig';
+ const syncSavedSigBtn=()=>{const sv=store.get(SAVED_SIG_KEY);if($('sig_use_tpl'))$('sig_use_tpl').hidden=!(sv&&sv.dataUrl);};
+ window._syncSavedSigBtn=syncSavedSigBtn;syncSavedSigBtn();
+ if($('sig_save_tpl'))$('sig_save_tpl').onclick=()=>{
+  let srcCv=hasSig?pad:(sel>=0&&placed[sel]?placed[sel].cv:null);
+  if(!srcCv){$('sign_st').textContent='Draw or select a signature first to save it.';return;}
+  try{
+   store.set(SAVED_SIG_KEY,{dataUrl:srcCv.toDataURL('image/png'),col:(sel>=0&&placed[sel]&&!hasSig)?placed[sel].col:sigCol});
+   syncSavedSigBtn();
+   $('sign_st').textContent='Signature saved for reuse on this device.';
+  }catch(e){$('sign_st').textContent='Could not save signature.';}
+ };
+ if($('sig_use_tpl'))$('sig_use_tpl').onclick=()=>{
+  const sv=store.get(SAVED_SIG_KEY);if(!sv||!sv.dataUrl)return;
+  const im=new Image();
+  im.onload=()=>{
+   cx.clearRect(0,0,pad.width,pad.height);cx.drawImage(im,0,0,pad.width,pad.height);
+   hasSig=true;editIdx=-1;if(sv.col)setSigCol(sv.col,true);
+   updGoLabel();drawPv();
+   $('sign_st').textContent='Loaded your saved signature onto the pad.';
+  };
+  im.src=sv.dataUrl;
+ };
  $('sig_pad_full').onclick=()=>{const on=$('sig_pad_box').classList.toggle('full');$('sig_pad_full').textContent=on?'Done':'Full screen';};
  $('sig_pv_full').onclick=()=>{const on=$('sig_pvwrap').classList.toggle('full');$('sig_pv_full').textContent=on?'Done':'Full screen';};
  $('sig_add').onclick=()=>{
@@ -4920,13 +5213,144 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
 })();
 
 (function(){
- // 4. QR Studio
- let qBlob=null,qrType='text';
+ // 4. QR Studio + Dedicated Local QR History Log (separate from My Documents)
+ const QR_HIST_KEY='prd_qr_hist',QR_HIST_MAX=60;
+ let qBlob=null,qrType='text',qrFilter='all',qrLogTimer=null;
+ const safeHttpUrl=raw=>{try{const u=new URL(String(raw||'').trim());return(u.protocol==='http:'||u.protocol==='https:')?u.href:'';}catch(e){return '';}};
+ const detectPayloadType=txt=>{
+  const s=String(txt||'').trim();
+  if(/^WIFI:/i.test(s))return 'Wi-Fi';
+  if(/^upi:\/\/pay/i.test(s))return 'UPI';
+  if(safeHttpUrl(s))return 'Link';
+  return 'Text';
+ };
+ const readQrHist=()=>{const a=store.get(QR_HIST_KEY);return Array.isArray(a)?a:[];};
+ const writeQrHist=arr=>{store.set(QR_HIST_KEY,arr.slice(0,QR_HIST_MAX));};
+ const logQrEntry=({kind,text,col,sz,sourceName})=>{
+  const clean=String(text||'').trim();
+  if(!clean)return;
+  const k=kind==='scan'?'scan':'gen';
+  const list=readQrHist().filter(it=>!(it&&it.kind===k&&it.text===clean));
+  list.unshift({
+   id:Date.now()+Math.floor(Math.random()*1000),
+   ts:Date.now(),
+   kind:k,
+   ptype:detectPayloadType(clean),
+   text:clean.slice(0,4000),
+   col:k==='gen'?(col||'#111827'):undefined,
+   sz:k==='gen'?(+sz||512):undefined,
+   sourceName:sourceName?String(sourceName).slice(0,120):undefined
+  });
+  writeQrHist(list);
+  renderQrHist();
+ };
+ const scheduleGenLog=()=>{
+  clearTimeout(qrLogTimer);
+  const txt=$('qr_txt').value.trim();
+  if(txt.length<2)return;
+  qrLogTimer=setTimeout(()=>{
+   const cur=$('qr_txt').value.trim();
+   if(cur.length>=2&&qBlob)logQrEntry({kind:'gen',text:cur,col:$('qr_col').value,sz:$('qr_sz').value});
+  },1400);
+ };
+ const flushGenLog=()=>{
+  clearTimeout(qrLogTimer);
+  const txt=$('qr_txt').value.trim();
+  if(txt&&qBlob)logQrEntry({kind:'gen',text:txt,col:$('qr_col').value,sz:$('qr_sz').value});
+ };
+ const renderQrHist=()=>{
+  const box=$('qr_hist_list'),ttl=$('qr_hist_title'),clr=$('qr_hist_clr');
+  if(!box)return;
+  const all=readQrHist();
+  if(ttl)ttl.textContent=all.length?('QR History ('+all.length+')'):'QR History';
+  if(clr)clr.hidden=!all.length;
+  const q=($('qr_hist_q')?.value||'').trim().toLowerCase();
+  const rows=all.filter(it=>{
+   if(!it||!it.text)return false;
+   if(qrFilter!=='all'&&it.kind!==qrFilter)return false;
+   if(q&&!it.text.toLowerCase().includes(q)&&!(it.ptype||'').toLowerCase().includes(q)&&!(it.sourceName||'').toLowerCase().includes(q))return false;
+   return true;
+  });
+  box.innerHTML='';
+  if(!rows.length){
+   const p=document.createElement('p');p.className='qrh-empty';
+   p.textContent=all.length?'No QR entries match this filter.':'No QR history yet. Codes you generate or scan will be logged locally here.';
+   box.appendChild(p);
+   return;
+  }
+  rows.forEach(it=>{
+   const row=document.createElement('div');row.className='qrh-item';
+   const thumb=document.createElement('div');thumb.className='qrh-thumb';
+   if(window.QRCode&&it.text.length<=700){
+    const cv=document.createElement('canvas');
+    thumb.appendChild(cv);
+    QRCode.toCanvas(cv,it.text,{width:46,margin:1,color:{dark:it.col||'#111827',light:'#ffffff'}}).catch(()=>{
+     thumb.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM19 14v7M14 19h3"/></svg>';
+    });
+   }else{
+    thumb.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM19 14v7M14 19h3"/></svg>';
+   }
+   const meta=document.createElement('div');meta.className='qrh-meta';
+   const badges=document.createElement('div');badges.className='qrh-badges';
+   const tag=document.createElement('span');tag.className='qrh-tag'+(it.kind==='scan'?' scan':'');
+   tag.textContent=it.kind==='scan'?'Scanned':'Generated';
+   const ptype=document.createElement('span');ptype.className='qrh-kind';
+   ptype.textContent=it.ptype||detectPayloadType(it.text);
+   const when=document.createElement('span');
+   when.textContent=new Date(it.ts||Date.now()).toLocaleString([],{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})+(it.sourceName?' · '+it.sourceName:'');
+   badges.append(tag,ptype,when);
+   const txtEl=document.createElement('div');txtEl.className='qrh-txt';
+   txtEl.textContent=it.text;
+   meta.append(badges,txtEl);
+
+   const acts=document.createElement('div');acts.className='qrh-acts';
+   const loadBtn=document.createElement('button');loadBtn.type='button';loadBtn.className='g sm';loadBtn.textContent='Load QR';
+   loadBtn.onclick=()=>{
+    document.querySelector('#qr_seg button[data-m="gen"]')?.click();
+    document.querySelector('#qr_mode button[data-qt="text"]')?.click();
+    if(it.sz&&[...$('qr_sz').options].some(o=>o.value===String(it.sz)))$('qr_sz').value=String(it.sz);
+    if(it.col&&[...$('qr_col').options].some(o=>o.value===it.col))$('qr_col').value=it.col;
+    $('qr_txt').value=it.text;
+    renderQR();
+    $('v-qr').scrollIntoView({behavior:'smooth',block:'start'});
+   };
+   const copyBtn=document.createElement('button');copyBtn.type='button';copyBtn.className='g sm';copyBtn.textContent='Copy';
+   copyBtn.onclick=async()=>{
+    try{await navigator.clipboard.writeText(it.text);}catch(e){
+     const ta=document.createElement('textarea');ta.value=it.text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();
+    }
+    copyBtn.textContent='Copied';setTimeout(()=>{copyBtn.textContent='Copy';},1400);
+   };
+   acts.append(loadBtn,copyBtn);
+   const url=safeHttpUrl(it.text);
+   if(url){
+    const oa=document.createElement('a');oa.className='pick';oa.href=url;oa.target='_blank';oa.rel='noopener noreferrer';oa.textContent='Open ↗';
+    acts.appendChild(oa);
+   }
+   const delBtn=document.createElement('button');delBtn.type='button';delBtn.className='g sm';delBtn.textContent='Delete';
+   delBtn.onclick=()=>{writeQrHist(readQrHist().filter(x=>x&&x.id!==it.id));renderQrHist();};
+   acts.appendChild(delBtn);
+
+   row.append(thumb,meta,acts);
+   box.appendChild(row);
+  });
+ };
  document.querySelectorAll('#qr_seg button').forEach(b=>b.onclick=()=>{
   const m=b.dataset.m;
   document.querySelectorAll('#qr_seg button').forEach(x=>x.className=x===b?'on':'');
   $('qr_gen_box').hidden=m!=='gen';$('qr_scan_box').hidden=m!=='scan';
  });
+ document.querySelectorAll('#qr_hist_flt button').forEach(b=>b.onclick=()=>{
+  qrFilter=b.dataset.f||'all';
+  document.querySelectorAll('#qr_hist_flt button').forEach(x=>x.className=x===b?'on':'');
+  renderQrHist();
+ });
+ if($('qr_hist_q'))$('qr_hist_q').addEventListener('input',renderQrHist);
+ if($('qr_hist_clr'))$('qr_hist_clr').onclick=async()=>{
+  const ok=await askConfirm({title:'Clear QR history log?',body:'Removes all scanned and generated QR records from this device. Saved files in My Documents are not affected.',okLabel:'Clear QR log'});
+  if(!ok)return;
+  store.del(QR_HIST_KEY);renderQrHist();
+ };
  const escWifi=s=>String(s||'').replace(/([\\;,:"])/g,'\\$1');
  const syncQrPreset=()=>{
   if(qrType==='wifi'){
@@ -4942,7 +5366,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
     $('qr_txt').value=u+'&cu=INR';
    }
   }
-  renderQR();
+  renderQR(true);
  };
  document.querySelectorAll('#qr_mode button').forEach(b=>b.onclick=()=>{
   qrType=b.dataset.qt||'text';
@@ -4953,9 +5377,9 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  });
  ['qr_w_ssid','qr_w_pw','qr_u_id','qr_u_nm','qr_u_amt'].forEach(id=>$(id).addEventListener('input',syncQrPreset));
  $('qr_w_sec').addEventListener('change',syncQrPreset);
- const renderQR=async()=>{
+ const renderQR=async(fromTyping=false)=>{
   const txt=$('qr_txt').value.trim();
-  if(!txt){$('qr_pvbox').style.display='none';$('qr_out').style.display='none';$('qr_st').textContent='';if($('qr_empty'))$('qr_empty').hidden=false;qBlob=null;return;}
+  if(!txt){clearTimeout(qrLogTimer);$('qr_pvbox').style.display='none';$('qr_out').style.display='none';$('qr_st').textContent='';if($('qr_empty'))$('qr_empty').hidden=false;qBlob=null;return;}
   if(!window.QRCode)return;
   const sz=+$('qr_sz').value||512,col=$('qr_col').value||'#111827',cv=$('qr_cv');
   await QRCode.toCanvas(cv,txt,{width:sz,margin:2,color:{dark:col,light:'#ffffff'}});
@@ -4963,13 +5387,15 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   $('qr_pvbox').style.display='block';
   qBlob=await new Promise(r=>cv.toBlob(r,'image/png'));
   $('qr_dl').href=URL.createObjectURL(qBlob);$('qr_out').style.display='block';$('qr_st').textContent='';
+  if(fromTyping)scheduleGenLog();
  };
- $('qr_go').onclick=renderQR;
- $('qr_txt').addEventListener('input',renderQR);
- $('qr_sz').addEventListener('change',renderQR);
- $('qr_col').addEventListener('change',renderQR);
- $('qr_new').onclick=()=>{$('qr_txt').value='';$('qr_w_ssid').value='';$('qr_w_pw').value='';$('qr_u_id').value='';$('qr_u_nm').value='';$('qr_u_amt').value='';qBlob=null;$('qr_pvbox').style.display='none';$('qr_out').style.display='none';$('qr_st').textContent='';if($('qr_empty'))$('qr_empty').hidden=false;window.scrollTo({top:0,behavior:'smooth'});};
- $('qr_save').onclick=async()=>{if(!qBlob)return;const rec={id:Date.now(),ts:Date.now(),n:1,ext:'png',tool:'QR Studio',paper:'QR PNG',pdf:qBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('qr_st').textContent='Saved to My documents.';}catch(e){$('qr_st').textContent='Could not save.';}};
+ $('qr_go').onclick=async()=>{await renderQR(false);flushGenLog();};
+ $('qr_dl').addEventListener('click',()=>flushGenLog());
+ $('qr_txt').addEventListener('input',()=>renderQR(true));
+ $('qr_sz').addEventListener('change',()=>renderQR(false));
+ $('qr_col').addEventListener('change',()=>renderQR(false));
+ $('qr_new').onclick=()=>{clearTimeout(qrLogTimer);$('qr_txt').value='';$('qr_w_ssid').value='';$('qr_w_pw').value='';$('qr_u_id').value='';$('qr_u_nm').value='';$('qr_u_amt').value='';qBlob=null;$('qr_pvbox').style.display='none';$('qr_out').style.display='none';$('qr_st').textContent='';if($('qr_empty'))$('qr_empty').hidden=false;window.scrollTo({top:0,behavior:'smooth'});};
+ $('qr_save').onclick=async()=>{if(!qBlob)return;flushGenLog();const rec={id:Date.now(),ts:Date.now(),n:1,ext:'png',tool:'QR Studio',paper:'QR PNG',pdf:qBlob,text:null,pages:[]};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('qr_st').textContent='Saved to My documents.';}catch(e){$('qr_st').textContent='Could not save.';}};
  const tryDecodeQr=cv=>{
   const cx=cv.getContext('2d'),imgd=cx.getImageData(0,0,cv.width,cv.height);
   let code=jsQR(imgd.data,cv.width,cv.height,{inversionAttempts:'attemptBoth'});
@@ -5012,16 +5438,85 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
    const code=tryDecodeQr(cv);
    $('qr_res').value=code?code.data:'';
    $('qr_sst').textContent=code?'QR code decoded!':'No QR code found in this file.';
-   if(code&&/^https?:\/\//i.test(code.data.trim())){
-    $('qr_open').href=code.data.trim();$('qr_open').style.display='inline-flex';
+   const decodedUrl=code?safeHttpUrl(code.data):'';
+   if(decodedUrl){
+    $('qr_open').href=decodedUrl;$('qr_open').style.display='inline-flex';
    }else{$('qr_open').style.display='none';}
+   if(code&&code.data){logQrEntry({kind:'scan',text:code.data,sourceName:f.name});}
   }catch(err){$('qr_sst').textContent='Could not scan file: '+(err.message||err);}
  };
+ window._renderQrHist=renderQrHist;
+ let camStream=null,camRaf=0,camFacing='environment',camLastScan=0;
+ const camCv=document.createElement('canvas');
+ const stopQrCam=()=>{
+  cancelAnimationFrame(camRaf);camRaf=0;
+  if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;}
+  if($('qr_cam_vid'))$('qr_cam_vid').srcObject=null;
+  if($('qr_cam_wrap'))$('qr_cam_wrap').hidden=true;
+  if($('qr_cam_btn'))$('qr_cam_btn').textContent='Scan with camera';
+ };
+ window._stopQrCam=stopQrCam;
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&camStream)stopQrCam();});
+ document.querySelectorAll('#qr_seg button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.m!=='scan')stopQrCam();}));
+ const camTick=()=>{
+  if(!camStream)return;
+  const vid=$('qr_cam_vid');
+  if(vid&&vid.readyState>=2&&vid.videoWidth&&window.jsQR){
+   const now=Date.now();
+   if(now-camLastScan>=160){
+    camLastScan=now;
+    const sc=Math.min(1,720/Math.max(vid.videoWidth,vid.videoHeight));
+    camCv.width=Math.max(120,Math.round(vid.videoWidth*sc));
+    camCv.height=Math.max(120,Math.round(vid.videoHeight*sc));
+    const cx=camCv.getContext('2d',{willReadFrequently:true});
+    cx.drawImage(vid,0,0,camCv.width,camCv.height);
+    const imgd=cx.getImageData(0,0,camCv.width,camCv.height);
+    const code=jsQR(imgd.data,camCv.width,camCv.height,{inversionAttempts:'dontInvert'});
+    if(code&&code.data){
+     $('qr_res').value=code.data;
+     $('qr_sst').textContent='QR code scanned from camera!';
+     const u=safeHttpUrl(code.data);
+     if(u){$('qr_open').href=u;$('qr_open').style.display='inline-flex';}else{$('qr_open').style.display='none';}
+     logQrEntry({kind:'scan',text:code.data,sourceName:'Live Camera'});
+     stopQrCam();
+     return;
+    }
+   }
+  }
+  camRaf=requestAnimationFrame(camTick);
+ };
+ const startQrCam=async()=>{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){$('qr_sst').textContent='Camera access is unavailable in this browser.';return;}
+  if(!window.jsQR){$('qr_sst').textContent='QR scanner unavailable offline.';return;}
+  stopQrCam();
+  $('qr_sst').textContent='Starting camera…';
+  try{
+   camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:camFacing}},audio:false});
+   const vid=$('qr_cam_vid');
+   vid.srcObject=camStream;
+   await vid.play().catch(()=>{});
+   if($('qr_cam_wrap'))$('qr_cam_wrap').hidden=false;
+   if($('qr_cam_btn'))$('qr_cam_btn').textContent='Restart camera';
+   try{
+    const devs=await navigator.mediaDevices.enumerateDevices();
+    if($('qr_cam_flip'))$('qr_cam_flip').hidden=devs.filter(d=>d.kind==='videoinput').length<2;
+   }catch(e){}
+   $('qr_sst').textContent='Point camera at a QR code…';
+   camRaf=requestAnimationFrame(camTick);
+  }catch(err){
+   stopQrCam();
+   $('qr_sst').textContent='Camera permission denied or unavailable.';
+  }
+ };
+ if($('qr_cam_btn'))$('qr_cam_btn').onclick=()=>camStream?stopQrCam():startQrCam();
+ if($('qr_cam_stop'))$('qr_cam_stop').onclick=()=>{stopQrCam();$('qr_sst').textContent='Camera stopped.';};
+ if($('qr_cam_flip'))$('qr_cam_flip').onclick=()=>{camFacing=camFacing==='environment'?'user':'environment';startQrCam();};
  window._toolOpeners.qr=f=>{document.querySelector('#qr_seg button[data-m="scan"]')?.click();handleQrFile(f);};
  $('qr_sdz').onclick=()=>$('qr_sf').click();
  $('qr_sf').onchange=e=>{const f=e.target.files[0];e.target.value='';handleQrFile(f);};
  wireDropZone($('qr_scan_box'),fs=>handleQrFile(fs[0]),f=>isImgFile(f)||isPdfFile(f),'qr_sdz',()=>{$('qr_sst').textContent='Drop an image or PDF containing a QR code.';});
  $('qr_copy').onclick=async()=>{const t=$('qr_res').value;if(!t)return;try{await navigator.clipboard.writeText(t);}catch(e){$('qr_res').select();document.execCommand('copy');}$('qr_sst').textContent='Copied to clipboard.';};
+ renderQrHist();
 })();
 
 (function(){
@@ -5389,8 +5884,20 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
  if(fc)$('iv_fc').value=fc;
  const today=new Date().toISOString().slice(0,10);
  $('iv_date').value=today;
- const setNum=()=>{const d=today.replace(/-/g,'').slice(2);$('iv_num').value=(ivType==='Invoice'?'INV-':'REC-')+d+'-01';};
+ const INV_SEQ_KEY='prd_inv_seq';
+ const getSeq=()=>(store.get(INV_SEQ_KEY)||{Invoice:1,Receipt:1});
+ const setNum=()=>{const sq=getSeq();const n=Math.max(1,+(sq[ivType]||1));const d=today.replace(/-/g,'').slice(2);$('iv_num').value=(ivType==='Invoice'?'INV-':'REC-')+d+'-'+String(n).padStart(2,'0');};
+ const bumpSeq=()=>{const sq=getSeq();sq[ivType]=(Math.max(1,+(sq[ivType]||1)))+1;store.set(INV_SEQ_KEY,sq);};
  setNum();
+ if($('iv_fill_prof'))$('iv_fill_prof').onclick=()=>{
+  const p=store.get('prd_profile')||{};
+  if(!p.org&&!p.name&&!p.phone&&!p.mail){$('iv_st').textContent='No profile saved yet — add your details in Profile first.';return;}
+  if(p.org||p.name)$('iv_fn').value=p.org||p.name||'';
+  const c=[p.phone,p.mail].filter(Boolean).join(' · ');
+  if(c)$('iv_fc').value=c;
+  renderIvLivePreview();
+  $('iv_st').textContent='Filled sender details from Profile.';
+ };
  $('iv_t_inv').onclick=()=>{ivType='Invoice';$('iv_t_inv').classList.add('on');$('iv_t_rec').classList.remove('on');setNum();renderIvLivePreview();};
  $('iv_t_rec').onclick=()=>{ivType='Receipt';$('iv_t_rec').classList.add('on');$('iv_t_inv').classList.remove('on');setNum();renderIvLivePreview();};
  const curSym=c=>c==='USD'?'$':(c==='EUR'?'EUR ':(c==='GBP'?'GBP ':'Rs. '));
@@ -5554,7 +6061,7 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   }catch(err){$('iv_st').textContent='Print failed: '+(err.message||err);}
   btn.disabled=false;btn.textContent=orig;
  };
- $('iv_new').onclick=()=>{ivBlob=null;ivPages=[];$('iv_out').style.display='none';if($('iv_out_pv')){$('iv_out_pv').hidden=true;$('iv_out_pv').innerHTML='';}$('iv_st').textContent='';$('iv_tn').value='';$('iv_tc').value='';setNum();renderIvLivePreview();window.scrollTo({top:0,behavior:'smooth'});};
+ $('iv_new').onclick=()=>{bumpSeq();ivBlob=null;ivPages=[];$('iv_out').style.display='none';if($('iv_out_pv')){$('iv_out_pv').hidden=true;$('iv_out_pv').innerHTML='';}$('iv_st').textContent='';$('iv_tn').value='';$('iv_tc').value='';setNum();renderIvLivePreview();window.scrollTo({top:0,behavior:'smooth'});};
  $('iv_save').onclick=async()=>{if(!ivBlob)return;const rec={id:Date.now(),ts:Date.now(),n:Math.max(1,ivPages.length),ext:'pdf',tool:'Invoice & Receipt',paper:($('iv_num').value||ivType),pdf:ivBlob,text:null,pages:ivPages};try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();$('iv_st').textContent='Saved to My documents.';}catch(e){$('iv_st').textContent='Could not save.';}};
 })();
 
