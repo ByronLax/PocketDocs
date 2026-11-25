@@ -612,6 +612,8 @@ select,input[type=number]{min-width:0;max-width:100%}
 .conf-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
 .conf-acts button{width:auto;min-height:40px;padding:8px 14px}
 .qrh-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qrh-hd-acts{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.qrh-hd-acts[hidden]{display:none}
 .qrh-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
 .qrh-bar .seg button{min-height:36px;padding:6px 8px;font-size:13px}
 .qrh-list{display:flex;flex-direction:column;gap:8px}
@@ -1345,7 +1347,11 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <section class="card" id="qr_hist_card">
 <div class="qrh-hd">
 <div><h3 id="qr_hist_title" style="margin:0;font-size:16px">QR History</h3><small style="font-size:12.5px;color:var(--mut)">Saved locally on this device · Separate from My Documents</small></div>
-<button type="button" class="g sm" id="qr_hist_clr" style="width:auto" hidden>Clear log</button>
+<div class="qrh-hd-acts" id="qr_hist_acts" hidden>
+<select id="qr_hist_fmt" aria-label="Export format" style="width:auto;min-height:34px;padding:4px 28px 4px 10px;font-size:12.5px;margin:0"><option value="json">JSON</option><option value="csv">CSV</option></select>
+<button type="button" class="g sm" id="qr_hist_exp" style="width:auto">Export log</button>
+<button type="button" class="g sm" id="qr_hist_clr" style="width:auto">Clear log</button>
+</div>
 </div>
 <div class="qrh-bar">
 <div class="seg" id="qr_hist_flt" style="margin:0;flex:1 1 220px"><button type="button" class="on" data-f="all">All</button><button type="button" data-f="gen">Generated</button><button type="button" data-f="scan">Scanned</button></div>
@@ -5259,11 +5265,11 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   if(txt&&qBlob)logQrEntry({kind:'gen',text:txt,col:$('qr_col').value,sz:$('qr_sz').value});
  };
  const renderQrHist=()=>{
-  const box=$('qr_hist_list'),ttl=$('qr_hist_title'),clr=$('qr_hist_clr');
+  const box=$('qr_hist_list'),ttl=$('qr_hist_title'),actsBox=$('qr_hist_acts');
   if(!box)return;
   const all=readQrHist();
   if(ttl)ttl.textContent=all.length?('QR History ('+all.length+')'):'QR History';
-  if(clr)clr.hidden=!all.length;
+  if(actsBox)actsBox.hidden=!all.length;
   const q=($('qr_hist_q')?.value||'').trim().toLowerCase();
   const rows=all.filter(it=>{
    if(!it||!it.text)return false;
@@ -5346,6 +5352,45 @@ if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
   renderQrHist();
  });
  if($('qr_hist_q'))$('qr_hist_q').addEventListener('input',renderQrHist);
+ if($('qr_hist_exp'))$('qr_hist_exp').onclick=()=>{
+  const all=readQrHist();
+  if(!all.length)return;
+  const fmt=($('qr_hist_fmt')&&$('qr_hist_fmt').value==='csv')?'csv':'json';
+  const day=new Date().toISOString().slice(0,10);
+  let blob,fname;
+  if(fmt==='csv'){
+   const csvCell=v=>{
+    let s=v==null?'':String(v);
+    if(/^[=+\-@\t\r]/.test(s))s="'"+s;
+    return '"'+s.replace(/"/g,'""')+'"';
+   };
+   const hdr=['ID','Timestamp','ISO Date','Action','Type','Content','Source','Size (px)','Color'];
+   const lines=[hdr.map(csvCell).join(',')];
+   all.forEach(it=>{
+    const ts=Number(it.ts)||0;
+    lines.push([
+     it.id||'',
+     ts,
+     ts?new Date(ts).toISOString():'',
+     it.kind==='scan'?'Scanned':'Generated',
+     it.ptype||detectPayloadType(it.text),
+     it.text||'',
+     it.sourceName||'',
+     it.sz||'',
+     it.col||''
+    ].map(csvCell).join(','));
+   });
+   blob=new Blob(['\uFEFF'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+   fname='pocketdocs-qr-history-'+day+'.csv';
+  }else{
+   const payload={app:'PocketDocs',exportedAt:new Date().toISOString(),count:all.length,items:all};
+   blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+   fname='pocketdocs-qr-history-'+day+'.json';
+  }
+  const u=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=u;a.download=fname;document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),4000);
+ };
  if($('qr_hist_clr'))$('qr_hist_clr').onclick=async()=>{
   const ok=await askConfirm({title:'Clear QR history log?',body:'Removes all scanned and generated QR records from this device. Saved files in My Documents are not affected.',okLabel:'Clear QR log'});
   if(!ok)return;
