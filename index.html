@@ -2810,10 +2810,10 @@ if($('home_get_btn'))$('home_get_btn').onclick=()=>go('get');
 if($('nav_logo'))$('nav_logo').onclick=e=>{e.preventDefault();go('home');};
 document.querySelectorAll('.sn-links button,#app_dock button').forEach(b=>b.onclick=()=>go(b.dataset.v));
 if($('nav_profile'))$('nav_profile').onclick=()=>go('profile');
-const syncPwaMode=()=>{const on=!!(window.navigator.standalone||matchMedia('(display-mode:standalone)').matches);document.documentElement.classList.toggle('pwa-app',on);document.documentElement.dataset.standalone=on?'1':'0';};
+const isStandaloneApp=()=>!!(window.navigator.standalone||document.referrer.startsWith('android-app://')||(window.matchMedia&&(window.matchMedia('(display-mode: standalone)').matches||window.matchMedia('(display-mode: window-controls-overlay)').matches||window.matchMedia('(display-mode: minimal-ui)').matches)));
+const syncPwaMode=()=>{const on=isStandaloneApp();document.documentElement.classList.toggle('pwa-app',on);document.documentElement.dataset.standalone=on?'1':'0';};
 syncPwaMode();
-const _pwaMq=window.matchMedia&&window.matchMedia('(display-mode:standalone)');
-if(_pwaMq){if(_pwaMq.addEventListener)_pwaMq.addEventListener('change',syncPwaMode);else if(_pwaMq.addListener)_pwaMq.addListener(syncPwaMode);}
+['(display-mode: standalone)','(display-mode: window-controls-overlay)','(display-mode: minimal-ui)'].forEach(q=>{const mq=window.matchMedia&&window.matchMedia(q);if(mq){if(mq.addEventListener)mq.addEventListener('change',syncPwaMode);else if(mq.addListener)mq.addListener(syncPwaMode);}});
 (function(){
  const qd=$('home_qdrop'),dz=$('hq_dz'),fi=$('hq_f'),fbox=$('hq_file'),nm=$('hq_name'),mt=$('hq_meta'),clr=$('hq_clr'),rt=$('hq_routes'),tip=$('hq_tip');
  if(!qd||!dz)return;
@@ -3090,6 +3090,7 @@ $('go_get').onclick=()=>go('get');
   cur=tgt=null;curIdx=nextIdx=-1;mode=0;dx=0;
  };
  document.addEventListener('touchstart',e=>{
+  if(!isStandaloneApp()&&!document.documentElement.classList.contains('pwa-app')){mode=-1;return;}
   if(e.touches.length!==1||!$('viewer').hidden||!$('pick_modal').hidden||($('drawer')&&$('drawer').classList.contains('open'))){mode=-1;return;}
   const idx=activeTab();if(idx<0||skipTarget(e.target)){mode=-1;return;}
   if(timer)cleanup(pendingHead?tgt:cur);
