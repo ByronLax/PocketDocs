@@ -581,6 +581,36 @@ select,input[type=number]{min-width:0;max-width:100%}
 .auth-box[hidden]{display:none}
 .auth-signed{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .auth-pill{font-size:12.5px;font-weight:600;color:var(--acc-txt)}
+.gsi-material-button{
+ -moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;
+ -webkit-appearance:none;appearance:none;background-color:#ffffff;background-image:none;
+ border:1px solid #747775;border-radius:10px;box-sizing:border-box;color:#1f1f1f;cursor:pointer;
+ font-family:'Roboto',arial,sans-serif;font-size:14px;font-weight:500;height:44px;letter-spacing:.25px;
+ outline:none;overflow:hidden;padding:0 14px;position:relative;text-align:center;
+ transition:background-color .2s,border-color .2s,box-shadow .2s;vertical-align:middle;white-space:nowrap;width:100%;max-width:100%;
+ display:inline-flex;align-items:center;justify-content:center;
+}
+:root[data-theme="dark"] .gsi-material-button{background-color:#131314;border-color:#8e918f;color:#e3e3e3}
+.gsi-material-button .gsi-material-button-icon{height:20px;margin-right:10px;min-width:20px;width:20px;flex:none}
+.gsi-material-button .gsi-material-button-content-wrapper{display:flex;align-items:center;justify-content:center;height:100%;width:100%;position:relative}
+.gsi-material-button .gsi-material-button-contents{flex:0 1 auto;font-weight:500;overflow:hidden;text-overflow:ellipsis;vertical-align:top}
+.gsi-material-button .gsi-material-button-state{transition:opacity .2s;bottom:0;left:0;opacity:0;position:absolute;right:0;top:0}
+.gsi-material-button:hover{box-shadow:0 1px 3px rgba(0,0,0,.22);background-color:#f8f9fa}
+:root[data-theme="dark"] .gsi-material-button:hover{background-color:#1f2023}
+.gsi-material-button:disabled{cursor:default;opacity:.55;box-shadow:none}
+.sync-panel{margin-top:12px;padding:12px;border-radius:12px;background:var(--soft);border:1px solid var(--bd);display:flex;flex-direction:column;gap:10px}
+.sync-panel-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sync-panel-hd b{font-size:13.5px;color:var(--fg)}
+.sync-panel-hd small{display:block;font-size:12px;color:var(--mut)}
+.sync-acts{display:flex;gap:8px;flex-wrap:wrap}
+.sync-acts button{flex:1 1 130px}
+#conf_modal{position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.52);backdrop-filter:blur(4px);display:grid;place-items:center;padding:18px}
+#conf_modal[hidden]{display:none}
+.conf-card{width:min(420px,100%);background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;box-shadow:var(--sh-hv);display:flex;flex-direction:column;gap:12px}
+.conf-card h3{margin:0;font-family:var(--font-disp);font-size:17px;color:var(--fg)}
+.conf-card p{margin:0;font-size:14px;line-height:1.5;color:var(--mut)}
+.conf-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
+.conf-acts button{width:auto;min-height:40px;padding:8px 14px}
 .ocr-area{width:100%;min-height:220px;padding:14px;border-radius:12px;border:1px solid var(--bd);background:var(--soft);color:var(--fg);font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
 .ocr-bar{height:8px;border-radius:999px;background:var(--soft);overflow:hidden;margin:10px 0}
 .ocr-bar>i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
@@ -1394,9 +1424,24 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <div class="card" style="margin-bottom:14px">
 <div class="hd"><h2>Sign in</h2><span class="auth-pill" id="p_provider" hidden></span></div>
 <div id="auth_out">
-<p class="s" style="margin:0 0 12px">Connect an account to prefill your profile on this device.</p>
+<p class="s" style="margin:0 0 12px">Connect your Google account to sync your My Documents vault across devices, or sign in locally to prefill profile details.</p>
 <div class="auth-btns">
-<button type="button" class="auth-btn" id="login_google"><svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 10.2v3.9h5.4c-.2 1.3-1.5 3.8-5.4 3.8-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.8 3.4 14.6 2.5 12 2.5 6.8 2.5 2.5 6.8 2.5 12s4.3 9.5 9.5 9.5c5.5 0 9.1-3.9 9.1-9.3 0-.6-.1-1.1-.2-1.6H12z"/></svg>Gmail / Google</button>
+<button type="button" class="gsi-material-button" id="login_google">
+ <div class="gsi-material-button-state"></div>
+ <div class="gsi-material-button-content-wrapper">
+  <div class="gsi-material-button-icon">
+   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display:block">
+    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+    <path fill="none" d="M0 0h48v48H0z"></path>
+   </svg>
+  </div>
+  <span class="gsi-material-button-contents">Sign in with Google</span>
+  <span style="display:none">Sign in with Google</span>
+ </div>
+</button>
 <button type="button" class="auth-btn" id="login_fb"><svg viewBox="0 0 24 24"><path fill="#1877F2" d="M22 12.1C22 6.5 17.5 2 12 2S2 6.5 2 12.1c0 5 3.7 9.2 8.4 9.9v-7H7.9v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9h2.8l-.4 2.9h-2.4v7c4.8-.8 8.5-4.9 8.5-9.9z"/></svg>Facebook</button>
 <button type="button" class="auth-btn" id="login_email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</button>
 </div>
@@ -1436,6 +1481,37 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <p class="hint" id="theme_hint" style="margin:10px 0 0">System follows your phone or computer appearance.</p></div>
 <div class="card" style="margin-top:14px"><div class="hd"><h2>Defaults</h2></div>
 <label class="swrow"><span>Remember my choices<small>Keeps your last size, paper and file type</small></span><input type="checkbox" class="swi" id="s_remember"></label></div>
+<div class="card" id="sync_card" style="margin-top:14px">
+ <div class="hd"><h2>Cloud Sync &amp; Backup</h2><span id="s_sync_badge" class="tbadge" style="margin:0">Off</span></div>
+ <label class="swrow"><span>Auto-backup My Documents to Google Drive<small id="s_sync_sub">Automatically backs up new vault documents and restores them across devices</small></span><input type="checkbox" class="swi" id="s_drive_sync"></label>
+ <div class="sync-panel" id="s_sync_panel">
+  <div class="sync-panel-hd">
+   <div><b id="s_sync_acct">Google Drive not connected</b><small id="s_sync_st">Enable Cloud Sync and sign in with Google to back up My Documents.</small></div>
+  </div>
+  <div id="s_sync_auth">
+   <button type="button" class="gsi-material-button" id="s_google_btn">
+    <div class="gsi-material-button-state"></div>
+    <div class="gsi-material-button-content-wrapper">
+     <div class="gsi-material-button-icon">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display:block">
+       <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+       <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+       <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+       <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+       <path fill="none" d="M0 0h48v48H0z"></path>
+      </svg>
+     </div>
+     <span class="gsi-material-button-contents">Sign in with Google</span>
+     <span style="display:none">Sign in with Google</span>
+    </div>
+   </button>
+  </div>
+  <div class="sync-acts" id="s_sync_ctrl" hidden>
+   <button type="button" class="sm" id="s_sync_now">Sync &amp; restore now</button>
+   <button type="button" class="g sm" id="s_sync_out">Sign out</button>
+  </div>
+ </div>
+</div>
 <div class="card" id="updcard" style="margin-top:14px"><div class="hd"><h2>App updates</h2></div>
 <p class="s" id="upd_ver" style="margin:0 0 12px"></p>
 <button id="upd_btn" class="g">Check for updates</button>
@@ -1454,7 +1530,7 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <details class="card fold"><summary>Why can I not move the crop?</summary><p class="s">Crops are locked by default so touching the photo while scrolling never changes them. Tap Edit crop to unlock it, and toggle Scroll lock directly on the document card if you want crops to stay unlocked while scrolling.</p></details>
 <details class="card fold"><summary>How do I print at the real size?</summary><p class="s">Create the file and tap Print in the preview, or download the PDF and print it. In the print dialog choose the same paper size you picked here and set scale to 100% or Actual size. Turn off Fit to page, or the documents will print larger or smaller.</p></details>
 <details class="card fold"><summary>Which size will my document be?</summary><p class="s">Auto-detect chooses an ID card or an A4 page from the shape of the document. If it guesses wrong, pick the right type under Choose the output. Sizes for the old voter ID and bank passbook are approximate, so use Custom width × height if yours differs.</p></details>
-<details class="card fold"><summary>Where are my files stored?</summary><p class="s">Only on this device, in this browser. Nothing is uploaded. Clearing your browser data removes the saved documents and your profile.</p></details>
+<details class="card fold"><summary>Where are my files stored?</summary><p class="s">Files are stored locally in this browser by default with zero uploads. If you enable Cloud Sync in Settings and sign in with Google, your My Documents vault also backs up to your personal Google Drive so you can access documents across devices.</p></details>
 <div class="card" style="margin-top:14px"><div class="hd"><h2>Still need help?</h2></div>
 <p class="s" id="supporttext">Support contact has not been set up yet.</p>
 <a class="pick" id="supportlink" href="#" style="display:none">Email support</a></div>
@@ -1484,6 +1560,7 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 </nav>
 <div id="upd" hidden><span>A new version is ready</span><button class="g2" id="upd_later">Later</button><button id="upd_now">Update</button></div>
 <div id="pick_modal" hidden><div class="psheet" role="dialog" aria-label="Choose source"><h3>Choose where to add from</h3><div class="psheet-opts"><button type="button" class="popt" id="pm_photos"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg><span>Photos<small>Google Photos or device gallery</small></span></button><button type="button" class="popt" id="pm_files"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><span>Files<small>Device files and documents</small></span></button><button type="button" class="popt" id="pm_cam"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h5L14.5 6H16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" transform="translate(1 0)"/><circle cx="12" cy="12.5" r="3"/></svg><span>Camera<small>Take a new photo</small></span></button></div><button type="button" class="g sm" id="pm_cancel" style="margin-top:4px;width:100%">Cancel</button></div></div>
+<div id="conf_modal" hidden><div class="conf-card" role="dialog" aria-modal="true" aria-labelledby="conf_title"><h3 id="conf_title">Confirm action</h3><p id="conf_body"></p><div class="conf-acts"><button type="button" class="g sm" id="conf_cancel">Cancel</button><button type="button" class="sm" id="conf_ok">Confirm</button></div></div></div>
 <div id="viewer" hidden><div class="bar"><button id="vp">Print</button><a id="vd" class="pick alt" download="print-ready-docs.pdf" href="#">Download</a><button class="g" id="vs">Share</button><button class="g" id="vc">Close</button></div><div id="pages"></div></div>
 <style id="pst"></style>
 <script src="downloads.js"></script>
@@ -2478,7 +2555,7 @@ async function updatePreview(){
 const BUILD=156;
 const store={get(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
 const CFG=window.APPCFG||{};
-const DEF={autolock:true,loupe:true,remember:true,theme:'auto'};
+const DEF={autolock:true,loupe:true,remember:true,driveSync:false,lastSync:0,theme:'auto'};
 const SET=Object.assign({},DEF,store.get('prd_settings')||{});
 const saveSet=()=>store.set('prd_settings',SET);
 function isSysDark(){
@@ -3247,17 +3324,82 @@ function showProfile(){const p=store.get('prd_profile')||{},n=(p.name||'').trim(
   try{await tx('readwrite',s=>s.put(rec));if(gTok())driveUploadDoc(rec).catch(()=>{});renderHist();setSt('Saved to My documents.',null);}catch(e){setSt('Could not save.',null);}
  };
 })();
-$('p_save').onclick=()=>{const cur=store.get('prd_profile')||{};store.set('prd_profile',{...cur,name:$('p_name').value.trim(),phone:$('p_phone').value.trim(),mail:$('p_mail').value.trim(),org:$('p_org').value.trim()});showProfile();$('p_msg').textContent='Saved on this device.';if(gTok())syncWithDrive();};
+$('p_save').onclick=()=>{const cur=store.get('prd_profile')||{};store.set('prd_profile',{...cur,name:$('p_name').value.trim(),phone:$('p_phone').value.trim(),mail:$('p_mail').value.trim(),org:$('p_org').value.trim()});showProfile();$('p_msg').textContent='Saved on this device.';if(SET.driveSync&&gTok())syncWithDrive({force:true,confirmProfile:true});};
 $('p_clear').onclick=()=>{store.del('prd_profile');$('auth_box').hidden=true;showProfile();$('p_msg').textContent='Profile removed.';};
+const SCOPES=['https://www.googleapis.com/auth/drive.file'];
+const askConfirm=({title='Confirm',body='',okLabel='Confirm',cancelLabel='Cancel'}={})=>new Promise(res=>{
+ const m=$('conf_modal'),t=$('conf_title'),b=$('conf_body'),ok=$('conf_ok'),ca=$('conf_cancel');
+ if(!m){res(false);return;}
+ t.textContent=title;b.textContent=body;ok.textContent=okLabel;ca.textContent=cancelLabel;
+ m.hidden=false;
+ const done=val=>{m.hidden=true;ok.onclick=null;ca.onclick=null;m.onclick=null;document.removeEventListener('keydown',onKey);res(val);};
+ const onKey=e=>{if(e.key==='Escape')done(false);};
+ document.addEventListener('keydown',onKey);
+ ok.onclick=()=>done(true);ca.onclick=()=>done(false);m.onclick=e=>{if(e.target===m)done(false);};
+});
+let cachedAccessToken=null,isSigningIn=false,fbAuthState=null,authInitPromise=null,syncRunning=false;
+const gTok=()=>cachedAccessToken||'';
+const ensureFirebaseAuth=()=>{
+ if(authInitPromise)return authInitPromise;
+ authInitPromise=(async()=>{
+  const cfg=await (await fetch('./firebase-applet-config.json',{cache:'no-store'})).json();
+  const[{initializeApp},{getAuth,signInWithPopup,GoogleAuthProvider,onAuthStateChanged,signOut}]=await Promise.all([
+   import('https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js'),
+   import('https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js')
+  ]);
+  const app=initializeApp(cfg);
+  const auth=getAuth(app);
+  const provider=new GoogleAuthProvider();
+  SCOPES.forEach(s=>provider.addScope(s));
+  fbAuthState={app,auth,provider,signInWithPopup,GoogleAuthProvider,signOut,user:null};
+  onAuthStateChanged(auth,user=>{
+   fbAuthState.user=user||null;
+   if(!user&&!isSigningIn){cachedAccessToken=null;}
+   updSyncUI();
+   if(user&&cachedAccessToken&&SET.driveSync)autoSync();
+  });
+  return fbAuthState;
+ })().catch(e=>{authInitPromise=null;throw e;});
+ return authInitPromise;
+};
+async function googleDriveSignIn(){
+ isSigningIn=true;updSyncUI();
+ try{
+  const fb=await ensureFirebaseAuth();
+  const result=await fb.signInWithPopup(fb.auth,fb.provider);
+  const credential=fb.GoogleAuthProvider.credentialFromResult(result);
+  if(!credential||!credential.accessToken)throw new Error('Could not obtain Google Drive access.');
+  cachedAccessToken=credential.accessToken;
+  fb.user=result.user;
+  const cur=store.get('prd_profile')||{};
+  store.set('prd_profile',{...cur,name:cur.name||result.user.displayName||'',mail:cur.mail||result.user.email||'',provider:'Google'});
+  $('auth_box').hidden=true;
+  showProfile();updSyncUI();
+  $('p_msg').textContent='Connected with Google Drive.';
+  if(SET.driveSync)await syncWithDrive({force:true});
+  return {user:result.user,accessToken:cachedAccessToken};
+ }catch(e){
+  cachedAccessToken=null;
+  updSyncUI();
+  const code=(e&&e.code)||'';
+  const msg=code==='auth/popup-closed-by-user'?'Sign-in cancelled.':('Google sign-in unavailable: '+(e&&e.message?e.message:'check popup permissions.'));
+  if($('s_sync_st'))$('s_sync_st').textContent=msg;
+  if($('p_msg'))$('p_msg').textContent=msg;
+  return null;
+ }finally{isSigningIn=false;updSyncUI();}
+}
+async function googleDriveSignOut(){
+ cachedAccessToken=null;
+ if(fbAuthState&&fbAuthState.auth){try{await fbAuthState.signOut(fbAuthState.auth);}catch(e){}}
+ const cur=store.get('prd_profile')||{};delete cur.provider;store.set('prd_profile',cur);
+ showProfile();updSyncUI();
+}
 (function(){
  let pendingProv='';
  const openLogin=(prov,hint)=>{
   pendingProv=prov;
   const authCfg=(CFG.auth||{});
-  if(prov==='Google'&&authCfg.googleClientId&&location.protocol.startsWith('http')){
-   const u='https://accounts.google.com/o/oauth2/v2/auth?client_id='+encodeURIComponent(authCfg.googleClientId)+'&redirect_uri='+encodeURIComponent(location.origin+location.pathname)+'&response_type=token&include_granted_scopes=true&scope='+encodeURIComponent('openid profile email https://www.googleapis.com/auth/drive.file');
-   location.href=u;return;
-  }
+  if(prov==='Google'){googleDriveSignIn();return;}
   if(prov==='Facebook'&&authCfg.facebookAppId&&location.protocol.startsWith('http')){
    const u='https://www.facebook.com/v19.0/dialog/oauth?client_id='+encodeURIComponent(authCfg.facebookAppId)+'&redirect_uri='+encodeURIComponent(location.origin+location.pathname)+'&response_type=token&state=fb&scope=email,public_profile';
    location.href=u;return;
@@ -3267,7 +3409,7 @@ $('p_clear').onclick=()=>{store.del('prd_profile');$('auth_box').hidden=true;sho
   $('auth_note').textContent=hint;
   $('auth_box').hidden=false;$('a_name').focus();
  };
- $('login_google').onclick=()=>openLogin('Google','Sign in locally with your Gmail details (add googleClientId in downloads.js for live Google OAuth).');
+ $('login_google').onclick=()=>openLogin('Google');
  $('login_fb').onclick=()=>openLogin('Facebook','Sign in locally with your Facebook details (add facebookAppId in downloads.js for live Facebook OAuth).');
  $('login_email').onclick=()=>openLogin('Email','Enter your name and email to sign in on this device.');
  $('a_cancel').onclick=()=>{$('auth_box').hidden=true;};
@@ -3278,77 +3420,177 @@ $('p_clear').onclick=()=>{store.del('prd_profile');$('auth_box').hidden=true;sho
   store.set('prd_profile',{...cur,name:nm||cur.name||ml.split('@')[0],mail:ml||cur.mail||'',provider:pendingProv||'Email'});
   $('auth_box').hidden=true;showProfile();$('p_msg').textContent='Signed in via '+(pendingProv||'Email')+'.';
  };
- $('logout_btn').onclick=()=>{const cur=store.get('prd_profile')||{};delete cur.provider;store.set('prd_profile',cur);try{sessionStorage.removeItem('prd_gtok');}catch(e){}showProfile();$('p_msg').textContent='Signed out.';};
+ $('logout_btn').onclick=async()=>{await googleDriveSignOut();$('p_msg').textContent='Signed out.';};
 })();
-const gTok=()=>{try{const t=JSON.parse(sessionStorage.getItem('prd_gtok')||'null');return t&&t.exp>Date.now()?t.tok:'';}catch(e){return '';}};
-const updSyncUI=()=>{const st=$('sync_st'),bt=$('sync_btn');if(!st||!bt)return;const tok=gTok(),pv=(store.get('prd_profile')||{}).provider||'';const hasId=!!((CFG.auth||{}).googleClientId);st.textContent=tok?'Auto-syncing to Google Drive':(pv==='Facebook'?'Facebook signs in profile only (no cloud file storage)':(pv==='Email'?'Local device only':(hasId?'Sign in with Google to auto-sync':'Local only (add googleClientId in downloads.js for Drive)')));bt.disabled=!tok;};
+function updSyncUI(){
+ const tok=gTok(),cur=store.get('prd_profile')||{},pv=cur.provider||'';
+ const fbUser=fbAuthState&&fbAuthState.user;
+ const acct=(fbUser&&(fbUser.email||fbUser.displayName))||(pv==='Google'?(cur.mail||cur.name):'');
+ const enabled=!!SET.driveSync;
+ const syncChk=$('s_drive_sync');if(syncChk)syncChk.checked=enabled;
+ const sb=$('s_sync_badge'),ss=$('s_sync_st'),sa=$('s_sync_acct'),sAuth=$('s_sync_auth'),sCtrl=$('s_sync_ctrl'),sNow=$('s_sync_now');
+ const lastStr=SET.lastSync?('Last synced '+new Date(SET.lastSync).toLocaleTimeString([],{timeStyle:'short'})):'';
+ if(sb)sb.textContent=syncRunning?'Syncing…':(enabled?(tok?'Active':'Needs sign-in'):(tok?'Paused':'Off'));
+ if(sa)sa.textContent=tok?(acct?'Signed in as '+acct:'Google Drive connected'):(fbUser?'Session reconnect needed ('+(fbUser.email||fbUser.displayName||'Google')+')':'Google Drive not connected');
+ if(ss){
+  if(syncRunning)ss.textContent='Syncing My Documents with Google Drive…';
+  else if(enabled&&tok)ss.textContent='Automated Drive backup is on. '+(lastStr||'New documents sync automatically across devices.');
+  else if(enabled&&!tok)ss.textContent='Cloud sync is enabled — sign in with Google below to activate Drive backups for this session.';
+  else if(!enabled&&tok)ss.textContent='Automated Drive backup is turned off. Existing backups stay safe; enable the toggle to resume auto-sync.';
+  else ss.textContent='Saved documents remain only on this device until you turn on Cloud Sync and sign in with Google.';
+ }
+ if(sAuth)sAuth.hidden=!!tok;
+ if(sCtrl)sCtrl.hidden=!tok;
+ if(sNow)sNow.disabled=!tok||syncRunning;
+ if($('s_google_btn'))$('s_google_btn').disabled=isSigningIn;
+ const st=$('sync_st'),bt=$('sync_btn');
+ if(st&&bt){
+  st.textContent=syncRunning?'Syncing…':(tok?(enabled?('Auto-syncing to Google Drive'+(lastStr?' · '+lastStr:'')):'Connected (auto-backup paused in Settings)'):(pv==='Facebook'?'Profile only (no cloud file storage)':(pv==='Email'?'Local device only':'Sign in with Google for Drive backup')));
+  bt.disabled=!tok||syncRunning;
+ }
+}
 async function driveFolder(tok){
- const q=encodeURIComponent("name='PrintReadyDocs' and mimeType='application/vnd.google-apps.folder' and trashed=false");
- const r=await fetch('https://www.googleapis.com/drive/v3/files?q='+q+'&fields=files(id)',{headers:{Authorization:'Bearer '+tok}});
+ const q=encodeURIComponent("(name='PocketDocs Vault' or name='PrintReadyDocs') and mimeType='application/vnd.google-apps.folder' and trashed=false");
+ const r=await fetch('https://www.googleapis.com/drive/v3/files?q='+q+'&fields=files(id,name)',{headers:{Authorization:'Bearer '+tok}});
+ if(r.status===401){cachedAccessToken=null;updSyncUI();throw new Error('Session expired');}
  const j=await r.json();if(j.files&&j.files.length)return j.files[0].id;
- const c=await fetch('https://www.googleapis.com/drive/v3/files',{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({name:'PrintReadyDocs',mimeType:'application/vnd.google-apps.folder'})});
+ const c=await fetch('https://www.googleapis.com/drive/v3/files',{method:'POST',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({name:'PocketDocs Vault',mimeType:'application/vnd.google-apps.folder'})});
  return (await c.json()).id;
 }
-async function driveUploadDoc(rec){
- const tok=gTok();if(!tok||!rec||!rec.pdf||rec.driveId)return;
+async function driveUploadDoc(rec,opts={}){
+ if(!opts.manual&&!SET.driveSync)return;
+ const tok=gTok();if(!tok||!rec||(!rec.pdf&&rec.text==null)||rec.driveId)return;
  try{
   const fid=await driveFolder(tok);
-  const meta={name:'printfit-'+rec.id+'.'+(rec.ext||'pdf'),parents:[fid],appProperties:{prdId:String(rec.id),prdTool:rec.tool||'PrintFit',prdPaper:rec.paper||'',prdN:String(rec.n||1),prdExt:rec.ext||'pdf'}};
-  const fd=new FormData();fd.append('metadata',new Blob([JSON.stringify(meta)],{type:'application/json'}));fd.append('file',rec.pdf);
+  const blob=rec.pdf||new Blob([rec.text],{type:'text/plain'});
+  const meta={name:'pocketdocs-'+rec.id+'.'+(rec.ext||'pdf'),parents:[fid],appProperties:{prdId:String(rec.id),prdTs:String(rec.ts||rec.id),prdTool:String(rec.tool||'PocketDocs').slice(0,80),prdPaper:String(rec.paper||'').slice(0,80),prdN:String(rec.n||1),prdExt:String(rec.ext||'pdf').slice(0,12)}};
+  const fd=new FormData();fd.append('metadata',new Blob([JSON.stringify(meta)],{type:'application/json'}));fd.append('file',blob);
   const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{method:'POST',headers:{Authorization:'Bearer '+tok},body:fd});
+  if(r.status===401){cachedAccessToken=null;updSyncUI();return;}
   const j=await r.json();if(j.id){rec.driveId=j.id;await tx('readwrite',s=>s.put(rec));renderHist();}
  }catch(e){}
 }
-async function syncWithDrive(){
+async function driveDeleteFile(fileId){
+ const tok=gTok();if(!tok||!fileId)return false;
+ const r=await fetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(fileId),{method:'DELETE',headers:{Authorization:'Bearer '+tok}});
+ if(r.status===401){cachedAccessToken=null;updSyncUI();return false;}
+ return r.ok;
+}
+async function syncWithDrive(opts={}){
  const tok=gTok();if(!tok){updSyncUI();return;}
- $('sync_st').textContent='Syncing…';
+ if(!opts.force&&!SET.driveSync)return;
+ if(syncRunning)return;
+ syncRunning=true;updSyncUI();
+ let uploaded=0,restored=0;
  try{
   const fid=await driveFolder(tok);
-  const prof=store.get('prd_profile')||{};
-  const pq=encodeURIComponent("name='prd_profile.json' and '"+fid+"' in parents and trashed=false");
-  const pr=await (await fetch('https://www.googleapis.com/drive/v3/files?q='+pq+'&fields=files(id)',{headers:{Authorization:'Bearer '+tok}})).json();
-  const pmeta={name:'prd_profile.json',parents:[fid]};const pblob=new Blob([JSON.stringify(prof)],{type:'application/json'});
-  if(pr.files&&pr.files.length){
-   await fetch('https://www.googleapis.com/upload/drive/v3/files/'+pr.files[0].id+'?uploadType=media',{method:'PATCH',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:pblob});
-  }else{
-   const fd=new FormData();fd.append('metadata',new Blob([JSON.stringify(pmeta)],{type:'application/json'}));fd.append('file',pblob);
-   await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{method:'POST',headers:{Authorization:'Bearer '+tok},body:fd});
-  }
   const recs=await tx('readonly',s=>s.getAll());
-  for(const r of recs)if(!r.driveId)await driveUploadDoc(r);
-  $('sync_st').textContent='Synced to Google Drive · '+new Date().toLocaleTimeString([],{timeStyle:'short'});
- }catch(e){$('sync_st').textContent='Sync failed. Check connection and try again.';}
-}
-$('sync_btn').onclick=syncWithDrive;
-(async function handleOAuthReturn(){
- if(!location.hash.includes('access_token='))return;
- const qp=new URLSearchParams(location.hash.slice(1));
- const tok=qp.get('access_token'),st=qp.get('state'),exp=Date.now()+(+(qp.get('expires_in')||3600)*1000)-60000;
- if(tok){
-  if(st==='fb'){
-   try{const u=await (await fetch('https://graph.facebook.com/me?fields=name,email&access_token='+encodeURIComponent(tok))).json();
-    const cur=store.get('prd_profile')||{};
-    store.set('prd_profile',{...cur,name:u.name||cur.name||'',mail:u.email||cur.mail||'',provider:'Facebook'});
-    showProfile();
-   }catch(e){}
-  }else{
-   try{sessionStorage.setItem('prd_gtok',JSON.stringify({tok,exp}));}catch(e){}
-   try{const u=await (await fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+tok}})).json();
-    const cur=store.get('prd_profile')||{};
-    store.set('prd_profile',{...cur,name:u.name||cur.name||'',mail:u.email||cur.mail||'',provider:'Google'});
-    showProfile();syncWithDrive();
-   }catch(e){}
+  for(const r of recs){
+   if(!r.driveId){await driveUploadDoc(r,{manual:true});if(r.driveId)uploaded++;}
   }
+  const lq=encodeURIComponent("'"+fid+"' in parents and trashed=false and mimeType!='application/vnd.google-apps.folder'");
+  const lr=await fetch('https://www.googleapis.com/drive/v3/files?q='+lq+'&fields=files(id,name,mimeType,createdTime,appProperties)&pageSize=50',{headers:{Authorization:'Bearer '+tok}});
+  if(lr.status===401){cachedAccessToken=null;throw new Error('Session expired');}
+  const lj=await lr.json();
+  const remoteFiles=(lj&&lj.files)||[];
+  const profFile=remoteFiles.find(f=>f.name==='prd_profile.json');
+  const localNow=await tx('readonly',s=>s.getAll());
+  const byDrive=new Set(localNow.map(r=>r.driveId).filter(Boolean));
+  const byId=new Set(localNow.map(r=>String(r.id)));
+  for(const rf of remoteFiles){
+   if(rf.name==='prd_profile.json')continue;
+   const ap=rf.appProperties||{};
+   const rid=Number(ap.prdId)||Date.parse(rf.createdTime)||Date.now();
+   if(byDrive.has(rf.id)||byId.has(String(rid)))continue;
+   const fr=await fetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(rf.id)+'?alt=media',{headers:{Authorization:'Bearer '+tok}});
+   if(!fr.ok)continue;
+   const blob=await fr.blob();
+   const ext=(ap.prdExt||(rf.name.includes('.')?rf.name.split('.').pop():'pdf')||'pdf').toLowerCase().slice(0,12);
+   const isTxt=/^(txt|md|csv|json|html?)$/i.test(ext);
+   const rec={
+    id:rid,
+    ts:Number(ap.prdTs)||rid,
+    n:Number(ap.prdN)||1,
+    ext,
+    tool:ap.prdTool||'Google Drive',
+    paper:ap.prdPaper||ext.toUpperCase(),
+    pdf:blob,
+    text:isTxt?(await blob.text().catch(()=>null)):null,
+    pages:[],
+    driveId:rf.id
+   };
+   await tx('readwrite',s=>s.put(rec));
+   byDrive.add(rf.id);byId.add(String(rid));
+   restored++;
+  }
+  const prof=store.get('prd_profile')||{};
+  if(profFile&&!prof.name&&!prof.mail&&!prof.phone&&!prof.org){
+   const prf=await fetch('https://www.googleapis.com/drive/v3/files/'+encodeURIComponent(profFile.id)+'?alt=media',{headers:{Authorization:'Bearer '+tok}});
+   if(prf.ok){try{const rp=await prf.json();if(rp&&typeof rp==='object'){store.set('prd_profile',{...prof,...rp,provider:'Google'});showProfile();}}catch(e){}}
+  }else if(!profFile&&(prof.name||prof.mail||prof.phone||prof.org)){
+   const fd=new FormData();
+   fd.append('metadata',new Blob([JSON.stringify({name:'prd_profile.json',parents:[fid]})],{type:'application/json'}));
+   fd.append('file',new Blob([JSON.stringify(prof)],{type:'application/json'}));
+   await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{method:'POST',headers:{Authorization:'Bearer '+tok},body:fd});
+  }else if(profFile&&opts.confirmProfile&&(prof.name||prof.mail||prof.phone||prof.org)){
+   const ok=await askConfirm({title:'Update profile backup on Google Drive?',body:'Overwrite your saved profile snapshot in Google Drive with your current details?',okLabel:'Update backup',cancelLabel:'Keep existing'});
+   if(ok){
+    await fetch('https://www.googleapis.com/upload/drive/v3/files/'+encodeURIComponent(profFile.id)+'?uploadType=media',{method:'PATCH',headers:{Authorization:'Bearer '+tok,'Content-Type':'application/json'},body:new Blob([JSON.stringify(prof)],{type:'application/json'})});
+   }
+  }
+  SET.lastSync=Date.now();saveSet();
+  await renderHist();
+  const note='Synced with Google Drive'+(uploaded?(' · '+uploaded+' backed up'):'')+(restored?(' · '+restored+' restored'):'')+' · '+new Date().toLocaleTimeString([],{timeStyle:'short'});
+  syncRunning=false;updSyncUI();
+  if($('s_sync_st'))$('s_sync_st').textContent=note;
+  if($('sync_st'))$('sync_st').textContent=note;
+ }catch(e){
+  syncRunning=false;updSyncUI();
+  const msg=(e&&e.message==='Session expired')?'Google session expired — sign in again to resume sync.':'Sync failed. Check connection and try again.';
+  if($('s_sync_st'))$('s_sync_st').textContent=msg;
+  if($('sync_st'))$('sync_st').textContent=msg;
  }
- history.replaceState(null,'',location.pathname+'#profile');
-})();
-let lastAuto=0;const autoSync=()=>{if(gTok()&&Date.now()-lastAuto>120000){lastAuto=Date.now();syncWithDrive();}};
+}
+$('sync_btn').onclick=()=>syncWithDrive({force:true,confirmProfile:true});
+if($('s_google_btn'))$('s_google_btn').onclick=()=>googleDriveSignIn();
+if($('s_sync_now'))$('s_sync_now').onclick=()=>syncWithDrive({force:true,confirmProfile:true});
+if($('s_sync_out'))$('s_sync_out').onclick=async()=>{await googleDriveSignOut();if($('s_msg'))$('s_msg').textContent='Signed out of Google Drive.';};
+if($('s_drive_sync')){
+ $('s_drive_sync').checked=!!SET.driveSync;
+ $('s_drive_sync').onchange=async e=>{
+  const on=!!e.target.checked;
+  SET.driveSync=on;saveSet();
+  if(on){
+   if(!gTok()){updSyncUI();await googleDriveSignIn();}
+   else{await syncWithDrive({force:true});}
+  }else{updSyncUI();}
+ };
+}
+let lastAuto=0;const autoSync=()=>{if(SET.driveSync&&gTok()&&Date.now()-lastAuto>120000){lastAuto=Date.now();syncWithDrive();}};
 window.addEventListener('online',autoSync);document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoSync();});
+ensureFirebaseAuth().catch(()=>{});
 updSyncUI();
 $('me').onclick=()=>go('profile');
 showProfile();
-$('s_clrdocs').onclick=async()=>{if(confirm('Delete all saved documents from this device?')){try{await tx('readwrite',s=>s.clear());}catch(e){}$('s_msg').textContent='Saved documents deleted.';}};
-$('s_reset').onclick=()=>{if(confirm('Reset all settings to their defaults?')){Object.assign(SET,DEF);saveSet();store.del('prd_choices');applyTheme(true);['remember'].forEach(k=>{const el=$('s_'+k);if(el)el.checked=!!SET[k];});if(slots.length)render();$('s_msg').textContent='Settings reset.';}};
+$('s_clrdocs').onclick=async()=>{
+ const ok=await askConfirm({title:'Delete saved documents?',body:'This removes all documents from My Documents on this device.',okLabel:'Delete local vault'});
+ if(!ok)return;
+ let recs=[];try{recs=await tx('readonly',s=>s.getAll());await tx('readwrite',s=>s.clear());}catch(e){}
+ const backed=recs.filter(r=>r.driveId);
+ if(backed.length&&gTok()){
+  const rmDrive=await askConfirm({title:'Also delete Google Drive backups?',body:'You have '+backed.length+' document backup'+(backed.length>1?'s':'')+' stored in Google Drive. Delete them from Google Drive too, or keep them?',okLabel:'Delete from Drive too',cancelLabel:'Keep Drive backups'});
+  if(rmDrive){for(const r of backed){try{await driveDeleteFile(r.driveId);}catch(e){}}}
+ }
+ await renderHist();
+ $('s_msg').textContent='Saved documents deleted.';
+};
+$('s_reset').onclick=async()=>{
+ const ok=await askConfirm({title:'Reset all settings?',body:'Restores appearance, defaults, and Cloud Sync preference to their default settings.',okLabel:'Reset settings'});
+ if(!ok)return;
+ Object.assign(SET,DEF);saveSet();store.del('prd_choices');applyTheme(true);
+ ['remember','drive_sync'].forEach(k=>{const el=$('s_'+k);if(el)el.checked=!!SET[k==='drive_sync'?'driveSync':k];});
+ updSyncUI();if(slots.length)render();$('s_msg').textContent='Settings reset.';
+};
 if(CFG.supportEmail){$('supporttext').textContent='Email us and describe the problem. Please mention your phone or browser.';const a=$('supportlink');a.style.display='flex';a.href='mailto:'+CFG.supportEmail+'?subject='+encodeURIComponent('PocketDocs help')+'&body='+encodeURIComponent('\n\n---\n'+navigator.userAgent);}
 $('dfoot').textContent=(CFG.appName||'PocketDocs')+' · v'+(CFG.version||'1.0')+' (build '+BUILD+')';
 
@@ -3435,28 +3677,53 @@ async function renderHist(){
    const item=document.createElement('div');item.className='hr-item';
    const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
    const u=tb?URL.createObjectURL(tb):'';
-   const tool=r.tool||'PrintFit';
-   const when=new Date(r.ts).toLocaleDateString([],{month:'short',day:'numeric'})+' · '+(r.ext||'pdf').toUpperCase();
-   item.innerHTML='<div class="hr-thumb">'+(u?'<img src="'+u+'" alt="">':'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>')+'</div><div class="hr-meta"><b>'+tool+'</b><span>'+when+(r.paper?' · '+r.paper:'')+'</span></div><button type="button" class="g sm">View</button>';
-   item.querySelector('button').onclick=()=>openDoc(r);
+   const tool=String(r.tool||'PrintFit');
+   const extStr=String(r.ext||'pdf').toUpperCase();
+   const when=new Date(r.ts).toLocaleDateString([],{month:'short',day:'numeric'})+' · '+extStr;
+   const thumb=document.createElement('div');thumb.className='hr-thumb';
+   if(u){const im=document.createElement('img');im.src=u;im.alt='';thumb.appendChild(im);}
+   else{thumb.innerHTML='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg>';}
+   const metaEl=document.createElement('div');metaEl.className='hr-meta';
+   const b=document.createElement('b');b.textContent=tool;
+   const sp=document.createElement('span');sp.textContent=when+(r.paper?' · '+String(r.paper):'');
+   metaEl.append(b,sp);
+   const vb=document.createElement('button');vb.type='button';vb.className='g sm';vb.textContent='View';vb.onclick=()=>openDoc(r);
+   item.append(thumb,metaEl,vb);
    hrg.appendChild(item);
   });
   const filtering=!!(($('tool_q')?.value||'').trim()||document.querySelector('#cat_bar button.on')?.dataset.cat!=='all');
   hr.hidden=!recs.length||filtering;
  }
  if($('hr_all'))$('hr_all').onclick=()=>go('docs');
- h.innerHTML=recs.length?'':'<p class="s" style="margin:0">Nothing yet. Documents created with any tool will appear here.</p>';
+ h.innerHTML='';
+ if(!recs.length){const p=document.createElement('p');p.className='s';p.style.margin='0';p.textContent='Nothing yet. Documents created with any tool will appear here.';h.appendChild(p);}
+ const rmDoc=async r=>{
+  const ok=await askConfirm({title:'Delete saved document?',body:'Remove this document from My Documents on this device?',okLabel:'Delete'});
+  if(!ok)return;
+  try{await tx('readwrite',s=>s.delete(r.id));}catch(e){}
+  if(r.driveId&&gTok()){
+   const rmDrive=await askConfirm({title:'Also delete Google Drive backup?',body:'Keep this document\'s backup in Google Drive, or delete it from Google Drive too?',okLabel:'Delete from Drive too',cancelLabel:'Keep Drive backup'});
+   if(rmDrive){try{await driveDeleteFile(r.driveId);}catch(e){}}
+  }
+  renderHist();
+ };
  recs.forEach(r=>{const d=document.createElement('div');d.className='hi';
   const tb=r.pages&&r.pages[0]&&r.pages[0].items&&r.pages[0].items[0]&&r.pages[0].items[0].blob;
   const u=tb?URL.createObjectURL(tb):'';
-  const tool=r.tool||'PrintFit';
-  const meta=[r.n?(r.n+' document'+(r.n>1?'s':'')):null,r.paper||null,(r.ext||'pdf').toUpperCase()].filter(Boolean).join(' · ');
+  const tool=String(r.tool||'PrintFit');
+  const meta=[r.n?(r.n+' document'+(r.n>1?'s':'')):null,r.paper?String(r.paper):null,String(r.ext||'pdf').toUpperCase()].filter(Boolean).join(' · ');
   const canEdit=!!r.signState;
-  d.innerHTML=(u?'<img src="'+u+'">':'')+'<div class="m"><b>'+new Date(r.ts).toLocaleString([],{dateStyle:'medium',timeStyle:'short'})+'</b><span>'+meta+'</span><span class="tbadge">'+tool+(r.driveId?' · Drive':'')+'</span></div><div class="ab"><button class="sm">View</button>'+(canEdit?'<button class="g sm">Edit</button>':'')+'<button class="g sm">Delete</button></div>';
-  const btns=d.querySelectorAll('button');
-  btns[0].onclick=()=>openDoc(r);
-  if(canEdit){btns[1].onclick=()=>{if(window.editSignedDoc)window.editSignedDoc(r);};btns[2].onclick=async()=>{await tx('readwrite',s=>s.delete(r.id));renderHist();};}
-  else{btns[1].onclick=async()=>{await tx('readwrite',s=>s.delete(r.id));renderHist();};}
+  if(u){const im=document.createElement('img');im.src=u;im.alt='';d.appendChild(im);}
+  const m=document.createElement('div');m.className='m';
+  const b=document.createElement('b');b.textContent=new Date(r.ts).toLocaleString([],{dateStyle:'medium',timeStyle:'short'});
+  const sp=document.createElement('span');sp.textContent=meta;
+  const tbEl=document.createElement('span');tbEl.className='tbadge';tbEl.textContent=tool+(r.driveId?' · Drive':'');
+  m.append(b,sp,tbEl);
+  const ab=document.createElement('div');ab.className='ab';
+  const vb=document.createElement('button');vb.className='sm';vb.textContent='View';vb.onclick=()=>openDoc(r);ab.appendChild(vb);
+  if(canEdit){const eb=document.createElement('button');eb.className='g sm';eb.textContent='Edit';eb.onclick=()=>{if(window.editSignedDoc)window.editSignedDoc(r);};ab.appendChild(eb);}
+  const db=document.createElement('button');db.className='g sm';db.textContent='Delete';db.onclick=()=>rmDoc(r);ab.appendChild(db);
+  d.append(m,ab);
   h.appendChild(d);});
 }
 let urls=[];
@@ -3482,7 +3749,17 @@ function openDoc(r){
 }
 $('vp').onclick=()=>window.print();
 $('vc').onclick=()=>{$('viewer').hidden=true;};
-$('clr').onclick=async()=>{if(confirm('Delete all saved documents from this device?')){try{await tx('readwrite',s=>s.clear());}catch(e){}renderHist();}};
+$('clr').onclick=async()=>{
+ const ok=await askConfirm({title:'Delete saved documents?',body:'This removes all documents from My Documents on this device.',okLabel:'Delete local vault'});
+ if(!ok)return;
+ let recs=[];try{recs=await tx('readonly',s=>s.getAll());await tx('readwrite',s=>s.clear());}catch(e){}
+ const backed=recs.filter(r=>r.driveId);
+ if(backed.length&&gTok()){
+  const rmDrive=await askConfirm({title:'Also delete Google Drive backups?',body:'You have '+backed.length+' document backup'+(backed.length>1?'s':'')+' stored in Google Drive. Delete them from Google Drive too, or keep them?',okLabel:'Delete from Drive too',cancelLabel:'Keep Drive backups'});
+  if(rmDrive){for(const r of backed){try{await driveDeleteFile(r.driveId);}catch(e){}}}
+ }
+ renderHist();
+};
 renderHist();
 go((location.hash||'#home').slice(1));
 ['dragover','drop'].forEach(ev=>document.addEventListener(ev,async e=>{
