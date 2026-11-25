@@ -170,23 +170,25 @@ p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 
 /* Landing Hero & Tool Grid */
 .hero-band{text-align:center;max-width:860px;margin:clamp(8px,2vw,20px) auto clamp(22px,3vw,34px)}
-.hero-kicker{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 10px;letter-spacing:.005em}
+.hero-kicker{font-size:13px;font-weight:500;color:var(--mut);margin:0 0 8px;letter-spacing:.005em;line-height:1.4}
 .hero-kicker .hello-nm{color:var(--acc-txt);font-weight:600}
-.hero-title{font-family:var(--font-disp);font-size:clamp(2rem,3.9vw,3.25rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin:0 auto 14px;max-width:24ch;text-wrap:balance;color:var(--fg)}
-.hero-lead{font-size:clamp(14.5px,1.4vw,16.5px);line-height:1.62;color:var(--mut);max-width:60ch;margin:0 auto 22px}
-.hero-controls{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:740px;margin:0 auto}
+.hero-title{font-family:var(--font-disp);font-size:clamp(1.78rem,3.6vw,3.1rem);font-weight:700;line-height:1.12;letter-spacing:-.025em;margin:0 auto 12px;max-width:24ch;text-wrap:balance;color:var(--fg)}
+.hero-lead{font-size:clamp(14px,1.35vw,16px);line-height:1.58;color:var(--mut);max-width:58ch;margin:0 auto 18px}
+.hero-controls{display:flex;flex-direction:column;align-items:center;gap:11px;max-width:740px;margin:0 auto}
 .tsearch{position:relative;width:100%;max-width:560px}
-.tsearch svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--mut);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:1}
-.tsearch input[type=text]{width:100%;padding:12px 42px 12px 44px;border-radius:12px;border:1px solid var(--bd);background:var(--card);box-shadow:var(--sh);font-size:15px;color:var(--fg)}
+.tsearch svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--mut);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;z-index:1}
+.tsearch input[type=text]{width:100%;padding:11px 40px 11px 42px;border-radius:12px;border:1px solid var(--bd);background:var(--card);box-shadow:var(--sh);font-size:14.5px;color:var(--fg)}
 .tsearch input[type=text]:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 14%,transparent)}
 .tsearch button{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:28px;height:28px;padding:0;border-radius:8px;background:var(--soft);color:var(--mut);font-size:13px;display:grid;place-items:center}
 .tsearch button[hidden]{display:none}
-.cat-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:4px;background:var(--soft);border:1px solid var(--bd);border-radius:12px}
-.cat-bar button{width:auto!important;min-width:0;padding:8px 16px;border-radius:9px;background:transparent;color:var(--mut);font-size:13.5px;font-weight:650;white-space:nowrap;flex-shrink:0;border:0;transition:background .15s,color .15s,box-shadow .15s}
+.cat-bar{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:4px;padding:4px;max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;background:var(--soft);border:1px solid var(--bd);border-radius:11px}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-bar button{width:auto!important;min-width:0;min-height:36px;padding:7px 12px;border-radius:8px;background:transparent;color:var(--mut);font-size:13px;font-weight:650;white-space:nowrap;flex-shrink:0;border:0;transition:background .15s,color .15s,box-shadow .15s}
 .cat-bar button:hover{color:var(--fg);background:transparent}
 .cat-bar button.on{background:var(--card);color:var(--fg);box-shadow:0 1px 3px rgba(15,23,42,.12)}
-.home-sub{margin:2px auto 0;color:var(--mut);font-size:13.5px;line-height:1.45;font-weight:500;max-width:60ch;cursor:pointer;transition:opacity .2s ease}
-.home-sub b{color:var(--acc-txt);font-weight:700}
+.home-sub{margin:2px auto 0;color:var(--mut);font-size:13px;line-height:1.4;font-weight:500;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:opacity .2s ease}
+.home-sub b{color:var(--acc-txt);font-weight:650}
+.home-sub span{color:var(--acc-txt)}
 .home-sub.fade{opacity:0}
 
 .sec-hd{display:flex;align-items:center;justify-content:space-between;margin:0 2px 12px}
@@ -584,23 +586,23 @@ select,input[type=number]{min-width:0;max-width:100%}
 @media (min-width:960px){
  .hero-studio{grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr)}
 }
-.hero-main{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0}
-.hero-main .hero-kicker{margin:0 0 10px;font-size:13px;font-weight:500;color:var(--mut)}
-.hero-main .hero-title{margin:0 0 12px;max-width:19ch;font-size:clamp(1.85rem,3.4vw,2.95rem)}
-.hero-main .hero-lead{margin:0 0 18px;max-width:56ch}
-.hero-main .hero-controls{align-items:flex-start;margin:0;width:100%;max-width:680px}
-.hero-main .tsearch{max-width:100%}
-.hero-main .cat-bar{justify-content:flex-start}
-.hero-main .home-sub{margin:2px 0 0;text-align:left}
+.hero-main{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+.hero-main .hero-kicker{margin:0 0 8px;font-size:13px;font-weight:500;color:var(--mut)}
+.hero-main .hero-title{margin:0 auto 10px;max-width:20ch;font-size:clamp(1.75rem,3.3vw,2.85rem);text-wrap:balance}
+.hero-main .hero-lead{margin:0 auto 16px;max-width:54ch}
+.hero-main .hero-controls{align-items:center;margin:0 auto;width:100%;max-width:620px;gap:11px}
+.hero-main .tsearch{max-width:560px}
+.hero-main .cat-bar{margin-inline:auto;width:fit-content}
+.hero-main .home-sub{margin:2px auto 0;text-align:center}
 
 .qdrop{
- background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:clamp(16px,2vw,22px);
- box-shadow:var(--sh);display:flex;flex-direction:column;gap:12px;min-width:0;
+ background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:clamp(14px,2vw,20px);
+ box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px;min-width:0;
 }
 .qdrop-hd{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .qdrop-hd b{font-family:var(--font-disp);font-size:15.5px;font-weight:700;color:var(--fg)}
-.qdrop-hd span{font-size:12px;font-weight:600;color:var(--mut)}
-.qdrop .pick.big{max-width:100%;width:100%;min-height:136px;padding:20px 16px;margin:0}
+.qdrop-hd span{font-size:12px;font-weight:600;color:var(--mut);white-space:nowrap}
+.qdrop .pick.big{max-width:100%;width:100%;min-height:112px;padding:16px 14px;margin:0}
 .qdrop-file{
  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;
  border-radius:11px;background:var(--soft);border:1px solid var(--bd);
@@ -802,17 +804,17 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 <section class="view" id="v-home">
  <div class="hero-studio">
   <div class="hero-main">
-   <p class="hero-kicker"><span class="hello-nm" id="hello">Private offline workspace</span> · 12 local utilities · Zero file uploads</p>
-   <h1 class="hero-title">Prepare, convert &amp; protect your documents locally</h1>
-   <p class="hero-lead">Straighten ID cards to exact millimeter print sizes, combine or shrink PDFs, redact sensitive text, strip hidden metadata, and generate invoices—without uploading a single byte.</p>
+   <p class="hero-kicker"><span class="hello-nm" id="hello">Your daily document helper</span> · Simple, fast &amp; private</p>
+   <h1 class="hero-title">Everything you need for everyday documents, made simple</h1>
+   <p class="hero-lead">Handle forms, bills, ID prints, and PDFs without any fuss—straighten photos to print size, combine or shrink files, sign pages, and make quick receipts right on your device.</p>
    <div class="hero-controls">
-    <div class="tsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="tool_q" type="text" placeholder="Search 12 tools (e.g. merge, compress, ocr, print, sign, passport, invoice)…"><button type="button" id="tool_q_clr" aria-label="Clear search" hidden>✕</button></div>
-    <div class="cat-bar" id="cat_bar"><button type="button" class="on" data-cat="all">All Tools</button><button type="button" data-cat="pdf">PDF</button><button type="button" data-cat="id">Photos &amp; ID</button><button type="button" data-cat="sec">Privacy</button><button type="button" data-cat="biz">Billing</button></div>
+    <div class="tsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="tool_q" type="text" placeholder="Search tools (merge, print, compress, OCR…)"><button type="button" id="tool_q_clr" aria-label="Clear search" hidden>✕</button></div>
+    <div class="cat-bar" id="cat_bar"><button type="button" class="on" data-cat="all">All</button><button type="button" data-cat="pdf">PDF</button><button type="button" data-cat="id">Photos &amp; ID</button><button type="button" data-cat="sec">Privacy</button><button type="button" data-cat="biz">Billing</button></div>
     <p class="home-sub" id="home_sub" title="Click to open featured tool"></p>
    </div>
   </div>
   <aside class="qdrop" id="home_qdrop" aria-label="Quick drop and launch">
-   <div class="qdrop-hd"><b>Quick Drop &amp; Launch</b><span>Instant local handoff</span></div>
+   <div class="qdrop-hd"><b>Quick Drop &amp; Launch</b><span>Local &amp; instant</span></div>
    <button type="button" class="pick big" id="hq_dz"><svg viewBox="0 0 24 24"><path d="M12 16V5M7.5 9.5 12 5l4.5 4.5"/><path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"/></svg><b>Drop a PDF or photo here</b><small>Drag &amp; drop, paste (Ctrl+V), or tap to launch into any tool</small></button>
    <input id="hq_f" type="file" accept=".pdf,application/pdf,image/*,.docx,.txt,.md,.csv,.json" hidden>
    <div class="qdrop-file" id="hq_file" hidden>
@@ -2865,7 +2867,7 @@ if(_fGrid&&'MutationObserver'in window)new MutationObserver(renderSiteFoot).obse
   sIdx=(i+slides.length)%slides.length;
   const cur=slides[sIdx],el=$('home_sub');
   if(!el)return;
-  const apply=()=>{el.innerHTML='Featured: <b>'+cur.name+'</b>'+(cur.desc?' — '+cur.desc:'')+'&nbsp;→';};
+  const apply=()=>{el.innerHTML='Featured: <b>'+cur.name+'</b> <span aria-hidden="true">→</span>';};
   if(anim){el.classList.add('fade');setTimeout(()=>{apply();el.classList.remove('fade');},180);}
   else apply();
  };
@@ -2995,7 +2997,7 @@ const initials=n=>{const p=(n||'').trim().split(/\s+/).filter(Boolean);return p.
 function showProfile(){const p=store.get('prd_profile')||{},n=(p.name||'').trim(),pv=p.provider||'';
  $('av').textContent=$('av2').textContent=$('bar_av').textContent=initials(n);$('mename').textContent=n||'Guest';
  $('mesub').textContent=n?(p.org||p.mail||p.phone||'Tap to edit profile'):'Tap to set up your profile';
- $('pname2').textContent=n||'Your profile';$('hello').textContent=n?('Welcome back, '+n.split(/\s+/)[0]):'PocketDocs Studio';
+ $('pname2').textContent=n||'Your profile';$('hello').textContent=n?('Welcome back, '+n.split(/\s+/)[0]):'Your daily document helper';
  if($('nav_prof_lbl'))$('nav_prof_lbl').textContent=n?n.split(/\s+/)[0]:'Profile';
  $('p_name').value=p.name||'';$('p_phone').value=p.phone||'';$('p_mail').value=p.mail||'';$('p_org').value=p.org||'';
  $('p_provider').hidden=!pv;$('p_provider').textContent=pv?'Connected via '+pv:'';
