@@ -8,13 +8,14 @@
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#2563eb">
 <meta name="color-scheme" content="light dark">
-<script>(function(){try{var st=JSON.parse(localStorage.getItem("prd_settings")||"{}");var t=st.theme||"auto";var d=t==="dark"||(t==="auto"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(t==="dark"||(t==="auto"&&d))document.documentElement.setAttribute("data-theme","dark");else if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}try{var ua=navigator.userAgent||"";var isMob=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Kindle|Silk/i.test(ua)||(/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1)||(window.matchMedia&&window.matchMedia("(pointer: coarse)").matches&&!window.matchMedia("(any-pointer: fine)").matches);document.documentElement.setAttribute("data-desktop",isMob?"0":"1");}catch(e){}try{var isApp=!!(window.navigator.standalone||(window.matchMedia&&(window.matchMedia("(display-mode: standalone)").matches||window.matchMedia("(display-mode: window-controls-overlay)").matches||window.matchMedia("(display-mode: minimal-ui)").matches)));if(isApp){document.documentElement.classList.add("pwa-app");document.documentElement.setAttribute("data-standalone","1");}}catch(e){}})();</script>
+<script>(function(){try{var st=JSON.parse(localStorage.getItem("prd_settings")||"{}");var t=st.theme==="dark"?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}try{var ua=navigator.userAgent||"";var isMob=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Kindle|Silk/i.test(ua)||(/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1)||(window.matchMedia&&window.matchMedia("(pointer: coarse)").matches&&!window.matchMedia("(any-pointer: fine)").matches);document.documentElement.setAttribute("data-desktop",isMob?"0":"1");}catch(e){}try{var isApp=!!(window.navigator.standalone||(window.matchMedia&&(window.matchMedia("(display-mode: standalone)").matches||window.matchMedia("(display-mode: window-controls-overlay)").matches||window.matchMedia("(display-mode: minimal-ui)").matches)));if(isApp){document.documentElement.classList.add("pwa-app");document.documentElement.setAttribute("data-standalone","1");}}catch(e){}})();</script>
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 :root{
  color-scheme:light dark;--sys-scheme:light;box-sizing:border-box;
@@ -620,10 +621,31 @@ select,input[type=number]{min-width:0;max-width:100%}
 #conf_modal{position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.52);backdrop-filter:blur(4px);display:grid;place-items:center;padding:18px}
 #conf_modal[hidden]{display:none}
 .conf-card{width:min(420px,100%);background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;box-shadow:var(--sh-hv);display:flex;flex-direction:column;gap:12px}
-.conf-card h3{margin:0;font-family:var(--font-disp);font-size:17px;color:var(--fg)}
+.conf-hd{display:flex;align-items:flex-start;gap:12px}
+.conf-ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,#dc2626 14%,transparent);color:#dc2626}
+.conf-ico[hidden]{display:none}
+.conf-ico.warn{background:color-mix(in srgb,#d97706 16%,transparent);color:#d97706}
+.conf-ico.info{background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc-txt)}
+.conf-ico.ok{background:color-mix(in srgb,#059669 15%,transparent);color:#059669}
+:root[data-theme="dark"] .conf-ico{color:#f87171}
+:root[data-theme="dark"] .conf-ico.warn{color:#fbbf24}
+:root[data-theme="dark"] .conf-ico.ok{color:#34d399}
+.conf-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.conf-card h3{margin:0;font-family:var(--font-disp);font-size:17px;line-height:1.3;color:var(--fg)}
 .conf-card p{margin:0;font-size:14px;line-height:1.5;color:var(--mut)}
+.conf-detail{padding:10px 12px;border-radius:10px;background:var(--soft);border:1px solid var(--bd);font-size:12.5px;line-height:1.45;color:var(--fg);word-break:break-word}
+.conf-detail[hidden]{display:none}
 .conf-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:4px}
 .conf-acts button{width:auto;min-height:40px;padding:8px 14px}
+#app_toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(82px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:10px;width:min(420px,calc(100% - 28px));padding:11px 12px 11px 15px;border-radius:14px;background:var(--card);color:var(--fg);border:1px solid var(--bd);border-left:4px solid var(--acc);box-shadow:0 14px 32px -8px rgba(15,23,42,.34);font-size:13.5px;font-weight:500;line-height:1.4}
+#app_toast[hidden]{display:none}
+#app_toast.err{border-left-color:#dc2626}
+#app_toast.warn{border-left-color:#d97706}
+#app_toast.ok{border-left-color:#059669}
+#app_toast span{flex:1;min-width:0}
+#app_toast button{width:auto;min-width:30px;min-height:30px;padding:0;border-radius:8px;background:transparent;color:var(--mut);font-size:18px;line-height:1;display:grid;place-items:center;flex:none}
+#app_toast button:hover{background:var(--soft);color:var(--fg)}
+@media (min-width:820px){#app_toast{bottom:22px}}
 .qrh-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .qrh-hd-acts{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .qrh-hd-acts[hidden]{display:none}
@@ -1664,10 +1686,10 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
 </section>
 
 <section class="view" id="v-settings" hidden>
-<div class="card"><div class="hd"><h2>Appearance</h2><span id="theme_badge" class="tbadge" style="margin:0">System</span></div>
-<div class="seg" id="themeseg"><button type="button" data-t="light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Light</button><button type="button" data-t="dark"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Dark</button><button type="button" data-t="auto"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>System</button></div>
+<div class="card"><div class="hd"><h2>Appearance</h2><span id="theme_badge" class="tbadge" style="margin:0">Light</span></div>
+<div class="seg" id="themeseg"><button type="button" data-t="light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Light</button><button type="button" data-t="dark"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Dark</button></div>
 <button type="button" id="theme_toggle" style="display:flex;align-items:center;justify-content:center;gap:8px"><svg id="theme_toggle_ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="theme_toggle_lbl">Switch to Dark theme</span></button>
-<p class="hint" id="theme_hint" style="margin:10px 0 0">System follows your phone or computer appearance.</p></div>
+<p class="hint" id="theme_hint" style="margin:10px 0 0">Choose between Light and Dark mode.</p></div>
 <div class="card" style="margin-top:14px"><div class="hd"><h2>Defaults</h2></div>
 <label class="swrow"><span>Remember my choices<small>Keeps your last size, paper and file type</small></span><input type="checkbox" class="swi" id="s_remember"></label></div>
 <div class="card" id="sync_card" style="margin-top:14px">
@@ -1751,7 +1773,8 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
 </nav>
 <div id="upd" hidden><span>A new version is ready</span><button class="g2" id="upd_later">Later</button><button id="upd_now">Update</button></div>
 <div id="pick_modal" hidden><div class="psheet" role="dialog" aria-label="Choose source"><h3>Choose where to add from</h3><div class="psheet-opts"><button type="button" class="popt" id="pm_photos"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg><span>Photos<small>Google Photos or device gallery</small></span></button><button type="button" class="popt" id="pm_files"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><span>Files<small>Device files and documents</small></span></button><button type="button" class="popt" id="pm_cam"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h1.5l1-1.5h5L14.5 6H16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" transform="translate(1 0)"/><circle cx="12" cy="12.5" r="3"/></svg><span>Camera<small>Take a new photo</small></span></button></div><button type="button" class="g sm" id="pm_cancel" style="margin-top:4px;width:100%">Cancel</button></div></div>
-<div id="conf_modal" hidden><div class="conf-card" role="dialog" aria-modal="true" aria-labelledby="conf_title"><h3 id="conf_title">Confirm action</h3><p id="conf_body"></p><div class="conf-acts"><button type="button" class="g sm" id="conf_cancel">Cancel</button><button type="button" class="sm" id="conf_ok">Confirm</button></div></div></div>
+<div id="conf_modal" hidden><div class="conf-card" role="dialog" aria-modal="true" aria-labelledby="conf_title"><div class="conf-hd"><span class="conf-ico" id="conf_ico" hidden aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".6" fill="currentColor" stroke="none"/></svg></span><h3 id="conf_title">Confirm action</h3></div><p id="conf_body"></p><div class="conf-detail" id="conf_detail" hidden></div><div class="conf-acts"><button type="button" class="g sm" id="conf_cancel">Cancel</button><button type="button" class="sm" id="conf_ok">Confirm</button></div></div></div>
+<div id="app_toast" hidden role="status" aria-live="polite"><span id="app_toast_msg"></span><button type="button" id="app_toast_x" aria-label="Dismiss notification">×</button></div>
 <div id="viewer" hidden><div class="bar"><button id="vp">Print</button><a id="vd" class="pick alt" download="print-ready-docs.pdf" href="#">Download</a><button class="g" id="vs">Share</button><button class="g" id="vc">Close</button></div><div id="pages"></div></div>
 <style id="pst"></style>
 <script src="downloads.js"></script>
@@ -2767,34 +2790,27 @@ async function updatePreview(){
 const BUILD=156;
 const store={get(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
 const CFG=window.APPCFG||{};
-const DEF={autolock:true,loupe:true,remember:true,driveSync:false,lastSync:0,theme:'auto'};
+const DEF={autolock:true,loupe:true,remember:true,driveSync:false,lastSync:0,theme:'light'};
 const SET=Object.assign({},DEF,store.get('prd_settings')||{});
+if(SET.theme!=='dark'&&SET.theme!=='light')SET.theme='light';
 const saveSet=()=>store.set('prd_settings',SET);
-function isSysDark(){
- const r=document.documentElement,mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)');
- let cssDark=false;try{cssDark=getComputedStyle(r).getPropertyValue('--sys-scheme').trim()==='dark';}catch(e){}
- return !!(mq&&mq.matches)||cssDark;
-}
 let _themeVt=null,_themeTimer=0;
 function applyTheme(animate){
- const r=document.documentElement,sysDark=isSysDark(),dark=SET.theme==='dark'||(SET.theme==='auto'&&sysDark);
- const prevDark=r.getAttribute('data-theme')==='dark'||(!r.hasAttribute('data-theme')&&sysDark);
+ if(SET.theme!=='dark'&&SET.theme!=='light')SET.theme='light';
+ const r=document.documentElement,dark=SET.theme==='dark';
+ const prevDark=r.getAttribute('data-theme')==='dark';
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const commit=()=>{
-  if(SET.theme==='auto'){if(sysDark)r.setAttribute('data-theme','dark');else r.removeAttribute('data-theme');}
-  else r.setAttribute('data-theme',SET.theme);
+  r.setAttribute('data-theme',dark?'dark':'light');
   document.querySelectorAll('#themeseg button').forEach(b=>b.className=b.dataset.t===SET.theme?'on':'');
   const tb=$('theme_badge'),th=$('theme_hint'),tl=$('theme_toggle_lbl'),ti=$('theme_toggle_ic'),nti=$('nav_theme_ic'),ntb=$('nav_theme');
   const iconSvg=dark?'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>':'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
-  if(tb)tb.textContent=SET.theme==='auto'?('System · '+(dark?'Dark':'Light')):('Manual · '+(dark?'Dark':'Light'));
+  if(tb)tb.textContent=dark?'Dark':'Light';
   if(tl)tl.textContent=dark?'Switch to Light theme':'Switch to Dark theme';
   if(ti)ti.innerHTML=iconSvg;
   if(nti)nti.innerHTML=iconSvg;
   if(ntb)ntb.setAttribute('aria-label',dark?'Switch to Light theme':'Switch to Dark theme');
-  if(th){
-   let inFrame=false;try{inFrame=window.self!==window.top;}catch(e){inFrame=true;}
-   th.textContent=SET.theme==='auto'?(inFrame?('Browser reports '+(dark?'Dark':'Light')+' inside this preview frame. Use the button above to override manually.'):('Following browser/system ('+(dark?'Dark':'Light')+'). If this stays Light when phone Dark mode is on, set your browser Theme to System default or use the button above.')):('Manually set to '+(dark?'Dark':'Light')+' theme (overriding system preference).');
-  }
+  if(th)th.textContent=dark?'Using Dark theme.':'Using Light theme.';
   const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=dark?'#080d18':'#2563eb';
  };
  if(animate&&prevDark!==dark&&!document.hidden&&!reduce){
@@ -2824,11 +2840,10 @@ function applyTheme(animate){
  }
  commit();
 }
-document.querySelectorAll('#themeseg button').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.t;saveSet();applyTheme(true);});
-const flipTheme=()=>{const isDark=SET.theme==='dark'||(SET.theme==='auto'&&isSysDark());SET.theme=isDark?'light':'dark';saveSet();applyTheme(true);};
+document.querySelectorAll('#themeseg button').forEach(b=>b.onclick=()=>{SET.theme=b.dataset.t==='dark'?'dark':'light';saveSet();applyTheme(true);});
+const flipTheme=()=>{SET.theme=SET.theme==='dark'?'light':'dark';saveSet();applyTheme(true);};
 const _themeToggle=$('theme_toggle');if(_themeToggle)_themeToggle.onclick=flipTheme;
 const _navTheme=$('nav_theme');if(_navTheme)_navTheme.onclick=flipTheme;
-const _mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)');if(_mq){const onSysChg=()=>applyTheme(true);if(_mq.addEventListener)_mq.addEventListener('change',onSysChg);else if(_mq.addListener)_mq.addListener(onSysChg);}
 window.addEventListener('focus',()=>applyTheme());window.addEventListener('pageshow',()=>applyTheme());document.addEventListener('visibilitychange',()=>{if(!document.hidden)applyTheme();});
 applyTheme();
 const CH=['mode','paper','fmt','cw','ch','cunit'];
@@ -3550,72 +3565,307 @@ function showProfile(){const p=store.get('prd_profile')||{},n=(p.name||'').trim(
 $('p_save').onclick=()=>{const cur=store.get('prd_profile')||{};store.set('prd_profile',{...cur,name:$('p_name').value.trim(),phone:$('p_phone').value.trim(),mail:$('p_mail').value.trim(),org:$('p_org').value.trim()});showProfile();$('p_msg').textContent='Saved on this device.';if(SET.driveSync&&gTok())syncWithDrive({force:true,confirmProfile:true});};
 $('p_clear').onclick=()=>{store.del('prd_profile');$('auth_box').hidden=true;showProfile();$('p_msg').textContent='Profile removed.';};
 const SCOPES=['https://www.googleapis.com/auth/drive.file'];
-const askConfirm=({title='Confirm',body='',okLabel='Confirm',cancelLabel='Cancel'}={})=>new Promise(res=>{
- const m=$('conf_modal'),t=$('conf_title'),b=$('conf_body'),ok=$('conf_ok'),ca=$('conf_cancel');
+let toastTimer=0;
+const showToast=(msg,tone='info',ms=4800)=>{
+ const el=$('app_toast'),tx=$('app_toast_msg');
+ if(!el||!tx)return;
+ clearTimeout(toastTimer);
+ el.className=tone==='err'?'err':(tone==='warn'?'warn':(tone==='ok'?'ok':''));
+ tx.textContent=msg;
+ el.hidden=false;
+ if(ms>0)toastTimer=setTimeout(()=>{el.hidden=true;},ms);
+};
+if($('app_toast_x'))$('app_toast_x').onclick=()=>{clearTimeout(toastTimer);if($('app_toast'))$('app_toast').hidden=true;};
+const askConfirm=({title='Confirm',body='',detail='',okLabel='Confirm',cancelLabel='Cancel',alertOnly=false,tone='info'}={})=>new Promise(res=>{
+ const m=$('conf_modal'),t=$('conf_title'),b=$('conf_body'),d=$('conf_detail'),ic=$('conf_ico'),ok=$('conf_ok'),ca=$('conf_cancel');
  if(!m){res(false);return;}
  t.textContent=title;b.textContent=body;ok.textContent=okLabel;ca.textContent=cancelLabel;
+ ca.hidden=!!alertOnly;
+ if(d){if(detail){d.textContent=detail;d.hidden=false;}else{d.textContent='';d.hidden=true;}}
+ if(ic){
+  if(alertOnly){
+   ic.className='conf-ico '+(tone||'err');
+   ic.innerHTML=tone==='ok'
+    ?'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.4 2.4 4.8-5"/></svg>'
+    :'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".6" fill="currentColor" stroke="none"/></svg>';
+   ic.hidden=false;
+  }else{ic.hidden=true;}
+ }
  m.hidden=false;
  const done=val=>{m.hidden=true;ok.onclick=null;ca.onclick=null;m.onclick=null;document.removeEventListener('keydown',onKey);res(val);};
- const onKey=e=>{if(e.key==='Escape')done(false);};
+ const onKey=e=>{if(e.key==='Escape')done(alertOnly?true:false);};
  document.addEventListener('keydown',onKey);
- ok.onclick=()=>done(true);ca.onclick=()=>done(false);m.onclick=e=>{if(e.target===m)done(false);};
+ ok.onclick=()=>done(true);ca.onclick=()=>done(false);m.onclick=e=>{if(e.target===m)done(alertOnly?true:false);};
 });
-let cachedAccessToken=null,isSigningIn=false,fbAuthState=null,authInitPromise=null,syncRunning=false;
-const gTok=()=>cachedAccessToken||'';
-const ensureFirebaseAuth=()=>{
- if(authInitPromise)return authInitPromise;
- authInitPromise=(async()=>{
-  const cfg=await (await fetch('./firebase-applet-config.json',{cache:'no-store'})).json();
-  const[{initializeApp},{getAuth,signInWithPopup,GoogleAuthProvider,onAuthStateChanged,signOut}]=await Promise.all([
-   import('https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js'),
-   import('https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js')
-  ]);
-  const app=initializeApp(cfg);
-  const auth=getAuth(app);
-  const provider=new GoogleAuthProvider();
-  SCOPES.forEach(s=>provider.addScope(s));
-  fbAuthState={app,auth,provider,signInWithPopup,GoogleAuthProvider,signOut,user:null};
-  onAuthStateChanged(auth,user=>{
-   fbAuthState.user=user||null;
-   if(!user&&!isSigningIn){cachedAccessToken=null;}
-   updSyncUI();
-   if(user&&cachedAccessToken&&SET.driveSync)autoSync();
-  });
-  return fbAuthState;
- })().catch(e=>{authInitPromise=null;throw e;});
- return authInitPromise;
+const showNotice=({title='Notice',body='',detail='',okLabel='Got it',tone='err'}={})=>askConfirm({title,body,detail,okLabel,alertOnly:true,tone});
+let cachedAccessToken=null,tokenExpiresAt=0,isSigningIn=false,syncRunning=false;
+let oauthClientId=String((CFG.auth&&CFG.auth.googleClientId)||'').trim();
+let gisTokenClient=null,gisPending=null,gisLoadPromise=null,oauthCfgPromise=null,signInWatchdog=0,signInStartedAt=0;
+const gTok=()=>(cachedAccessToken&&(!tokenExpiresAt||Date.now()<tokenExpiresAt-15000))?cachedAccessToken:'';
+const setAuthStatusMsg=msg=>{
+ if($('s_sync_st'))$('s_sync_st').textContent=msg;
+ if($('p_msg'))$('p_msg').textContent=msg;
 };
-async function googleDriveSignIn(){
- isSigningIn=true;updSyncUI();
- try{
-  const fb=await ensureFirebaseAuth();
-  const result=await fb.signInWithPopup(fb.auth,fb.provider);
-  const credential=fb.GoogleAuthProvider.credentialFromResult(result);
-  if(!credential||!credential.accessToken)throw new Error('Could not obtain Google Drive access.');
-  cachedAccessToken=credential.accessToken;
-  fb.user=result.user;
-  const cur=store.get('prd_profile')||{};
-  store.set('prd_profile',{...cur,name:cur.name||result.user.displayName||'',mail:cur.mail||result.user.email||'',provider:'Google'});
-  $('auth_box').hidden=true;
-  showProfile();updSyncUI();
-  $('p_msg').textContent='Connected with Google Drive.';
-  if(SET.driveSync)await syncWithDrive({force:true});
-  return {user:result.user,accessToken:cachedAccessToken};
- }catch(e){
-  cachedAccessToken=null;
-  updSyncUI();
-  const code=(e&&e.code)||'';
-  const msg=code==='auth/popup-closed-by-user'?'Sign-in cancelled.':('Google sign-in unavailable: '+(e&&e.message?e.message:'check popup permissions.'));
-  if($('s_sync_st'))$('s_sync_st').textContent=msg;
-  if($('p_msg'))$('p_msg').textContent=msg;
+const loadOAuthClientId=()=>{
+ if(oauthClientId)return Promise.resolve(oauthClientId);
+ if(oauthCfgPromise)return oauthCfgPromise;
+ oauthCfgPromise=(async()=>{
+  try{
+   const r=await fetch('./firebase-applet-config.json',{cache:'no-store'});
+   if(r.ok){
+    const cfg=await r.json();
+    const id=String((cfg&&(cfg.oAuthClientId||cfg.googleClientId))||'').trim();
+    if(id)oauthClientId=id;
+   }
+  }catch(e){}
+  return oauthClientId;
+ })();
+ return oauthCfgPromise;
+};
+const ensureGisScript=()=>{
+ if(window.google&&window.google.accounts&&window.google.accounts.oauth2)return Promise.resolve(true);
+ if(gisLoadPromise)return gisLoadPromise;
+ gisLoadPromise=new Promise((resolve,reject)=>{
+  const deadline=Date.now()+6000;
+  const checkReady=()=>{
+   if(window.google&&window.google.accounts&&window.google.accounts.oauth2){resolve(true);return true;}
+   return false;
+  };
+  if(checkReady())return;
+  let script=document.querySelector('script[src*="accounts.google.com/gsi/client"]');
+  if(!script){
+   script=document.createElement('script');
+   script.src='https://accounts.google.com/gsi/client';
+   script.async=true;script.defer=true;
+   document.head.appendChild(script);
+  }
+  const onErr=()=>{gisLoadPromise=null;reject(new Error('gsi_load_failed'));};
+  script.addEventListener('error',onErr,{once:true});
+  const poll=()=>{
+   if(checkReady())return;
+   if(Date.now()>deadline){gisLoadPromise=null;reject(new Error('gsi_load_timeout'));return;}
+   setTimeout(poll,60);
+  };
+  poll();
+ });
+ return gisLoadPromise;
+};
+const finishPendingSignIn=(val,err)=>{
+ clearTimeout(signInWatchdog);signInWatchdog=0;
+ isSigningIn=false;
+ const pending=gisPending;gisPending=null;
+ updSyncUI();
+ if(pending){
+  if(err)pending.reject(err);
+  else pending.resolve(val);
+ }
+};
+const initTokenClientSync=()=>{
+ if(gisTokenClient)return gisTokenClient;
+ if(!oauthClientId||!(window.google&&window.google.accounts&&window.google.accounts.oauth2))return null;
+ gisTokenClient=window.google.accounts.oauth2.initTokenClient({
+  client_id:oauthClientId,
+  scope:SCOPES.join(' '),
+  callback:async resp=>{
+   if(!resp||resp.error){
+    const code=(resp&&resp.error)||'oauth_error';
+    const desc=(resp&&resp.error_description)||'';
+    const err=new Error(desc||code);
+    err.code=code;
+    finishPendingSignIn(null,err);
+    return;
+   }
+   if(!resp.access_token){
+    const err=new Error('Google did not return an access token.');
+    err.code='missing_token';
+    finishPendingSignIn(null,err);
+    return;
+   }
+   cachedAccessToken=resp.access_token;
+   const sec=Number(resp.expires_in)||3600;
+   tokenExpiresAt=Date.now()+Math.max(60,sec)*1000;
+   let user={displayName:'',emailAddress:'',photoLink:''};
+   try{
+    const ur=await fetch('https://www.googleapis.com/drive/v3/about?fields=user(displayName,emailAddress,photoLink)',{headers:{Authorization:'Bearer '+cachedAccessToken}});
+    if(ur.ok){
+     const uj=await ur.json();
+     if(uj&&uj.user)user=uj.user;
+    }else if(ur.status===401||ur.status===403){
+     let reason='';
+     try{const ej=await ur.json();reason=(ej&&ej.error&&ej.error.message)||'';}catch(_){}
+     const err=new Error(reason||('Google Drive API rejected access ('+ur.status+').'));
+     err.code=ur.status===403?'drive_forbidden':'drive_unauthorized';
+     cachedAccessToken=null;tokenExpiresAt=0;
+     finishPendingSignIn(null,err);
+     return;
+    }
+   }catch(_){}
+   const cur=store.get('prd_profile')||{};
+   store.set('prd_profile',{
+    ...cur,
+    name:cur.name||user.displayName||'',
+    mail:cur.mail||user.emailAddress||'',
+    provider:'Google'
+   });
+   if($('auth_box'))$('auth_box').hidden=true;
+   showProfile();
+   finishPendingSignIn({user:{displayName:user.displayName||'',email:user.emailAddress||''},accessToken:cachedAccessToken},null);
+   setAuthStatusMsg('Connected with Google Drive.');
+   showToast('Signed in'+(user.emailAddress?' as '+user.emailAddress:' with Google')+'.','ok',3800);
+   if(SET.driveSync)syncWithDrive({force:true});
+  },
+  error_callback:err=>{
+   const t=(err&&err.type)||'popup_error';
+   const e=new Error((err&&err.message)||t);
+   e.code=t;
+   finishPendingSignIn(null,e);
+  }
+ });
+ return gisTokenClient;
+};
+const preloadGoogleAuth=()=>{
+ loadOAuthClientId().then(()=>initTokenClientSync()).catch(()=>{});
+ ensureGisScript().then(()=>loadOAuthClientId()).then(()=>initTokenClientSync()).catch(()=>{});
+};
+const describeSignInFailure=err=>{
+ const code=String((err&&err.code)||'');
+ const raw=String((err&&err.message)||'');
+ const elapsed=signInStartedAt?(Date.now()-signInStartedAt):9999;
+ if(!navigator.onLine){
+  return {
+   title:'No internet connection',
+   body:'You are offline right now. Connect to Wi-Fi or mobile data and try signing in with Google again.',
+   detail:'',
+   toast:'Sign-in failed: no internet connection.',
+   tone:'warn'
+  };
+ }
+ if(code==='popup_failed_to_open'||code==='auth/popup-blocked'){
+  return {
+   title:'Sign-in popup was blocked',
+   body:'Your browser prevented the Google Sign-In window from opening. Allow popups for this site in your browser settings, then tap Sign in with Google again.',
+   detail:'In Samsung Internet or Chrome: check Site settings → Pop-ups and redirects → Allow for '+location.host,
+   toast:'Sign-in failed: popup was blocked by your browser.',
+   tone:'warn'
+  };
+ }
+ if(code==='popup_closed'||code==='auth/popup-closed-by-user'){
+  const quick=elapsed<1800;
+  return {
+   title:'Google Sign-In did not complete',
+   body:quick
+    ?'The Google Sign-In window closed immediately before you could choose an account. This usually happens if popups are restricted or if this web address is not yet authorized in Google OAuth settings.'
+    :'The Google Sign-In window was closed before finishing sign-in. Tap Sign in with Google whenever you want to try again.',
+   detail:quick?('Origin: '+location.origin):'',
+   toast:quick?'Google Sign-In closed immediately — check popup or domain permissions.':'Google Sign-In was cancelled.',
+   tone:'warn'
+  };
+ }
+ if(code==='access_denied'){
+  return {
+   title:'Permission declined',
+   body:'Google Sign-In did not finish because access permission was declined. Tap Sign in with Google again and allow access if you want to back up documents to Google Drive.',
+   detail:'',
+   toast:'Google Sign-In permission was declined.',
+   tone:'warn'
+  };
+ }
+ if(code==='gsi_load_failed'||code==='gsi_load_timeout'){
+  return {
+   title:'Google Sign-In could not load',
+   body:'The browser could not reach Google Sign-In services (accounts.google.com). Check your internet connection or disable any content/ad blocker for Google accounts, then try again.',
+   detail:'',
+   toast:'Could not load Google Sign-In service.',
+   tone:'err'
+  };
+ }
+ if(code==='missing_client_id'){
+  return {
+   title:'Google Sign-In not configured',
+   body:'No Google OAuth Client ID was found for this app. Add your Google Web Client ID in downloads.js or ensure firebase-applet-config.json is present.',
+   detail:'',
+   toast:'Google OAuth Client ID is missing.',
+   tone:'err'
+  };
+ }
+ if(code==='drive_forbidden'||code==='drive_unauthorized'){
+  return {
+   title:'Google Drive access was rejected',
+   body:'Google signed you in, but Google Drive refused access for this account or project configuration.',
+   detail:raw,
+   toast:'Google Drive access rejected.',
+   tone:'err'
+  };
+ }
+ if(code==='signin_timeout'){
+  return {
+   title:'Sign-in timed out',
+   body:'Google Sign-In took too long to respond and did not finish. Close any leftover sign-in popup window and try again.',
+   detail:'',
+   toast:'Google Sign-In timed out.',
+   tone:'warn'
+  };
+ }
+ return {
+  title:'Could not sign in with Google',
+  body:'Google Sign-In failed before completing authentication. Review the reason below and try again.',
+  detail:raw||(code?('Error code: '+code):'Unknown authentication error.'),
+  toast:'Google Sign-In failed'+(raw?(': '+raw):'.'),
+  tone:'err'
+ };
+};
+const handleSignInError=async err=>{
+ cachedAccessToken=null;tokenExpiresAt=0;
+ updSyncUI();
+ const info=describeSignInFailure(err);
+ setAuthStatusMsg(info.toast);
+ showToast(info.toast,info.tone,5500);
+ await showNotice({title:info.title,body:info.body,detail:info.detail,tone:info.tone,okLabel:'Got it'});
+};
+function googleDriveSignIn(){
+ if(isSigningIn)return Promise.resolve(null);
+ if(!navigator.onLine){
+  const e=new Error('offline');e.code='offline';
+  return handleSignInError(e).then(()=>null);
+ }
+ isSigningIn=true;signInStartedAt=Date.now();updSyncUI();
+ const runPromise=new Promise((resolve,reject)=>{
+  gisPending={resolve,reject};
+  clearTimeout(signInWatchdog);
+  signInWatchdog=setTimeout(()=>{
+   const e=new Error('Google Sign-In timed out.');e.code='signin_timeout';
+   finishPendingSignIn(null,e);
+  },120000);
+ });
+ const client=initTokenClientSync();
+ if(client){
+  try{
+   client.requestAccessToken({prompt:'select_account'});
+  }catch(e){
+   finishPendingSignIn(null,e);
+  }
+ }else{
+  Promise.all([loadOAuthClientId(),ensureGisScript()]).then(([cid])=>{
+   if(!cid){const e=new Error('Missing Google OAuth Client ID');e.code='missing_client_id';throw e;}
+   const readyClient=initTokenClientSync();
+   if(!readyClient){const e=new Error('Google Sign-In client could not initialize');e.code='gsi_load_failed';throw e;}
+   readyClient.requestAccessToken({prompt:'select_account'});
+  }).catch(err=>finishPendingSignIn(null,err));
+ }
+ return runPromise.catch(async err=>{
+  await handleSignInError(err);
   return null;
- }finally{isSigningIn=false;updSyncUI();}
+ });
 }
 async function googleDriveSignOut(){
- cachedAccessToken=null;
- if(fbAuthState&&fbAuthState.auth){try{await fbAuthState.signOut(fbAuthState.auth);}catch(e){}}
+ const tok=cachedAccessToken;
+ cachedAccessToken=null;tokenExpiresAt=0;
+ if(tok&&window.google&&window.google.accounts&&window.google.accounts.oauth2&&typeof window.google.accounts.oauth2.revoke==='function'){
+  try{window.google.accounts.oauth2.revoke(tok,()=>{});}catch(e){}
+ }
  const cur=store.get('prd_profile')||{};delete cur.provider;store.set('prd_profile',cur);
  showProfile();updSyncUI();
+ showToast('Signed out of Google.','info',3200);
 }
 (function(){
  let pendingProv='';
@@ -3638,23 +3888,28 @@ async function googleDriveSignOut(){
  $('a_cancel').onclick=()=>{$('auth_box').hidden=true;};
  $('a_submit').onclick=()=>{
   const nm=$('a_name').value.trim(),ml=$('a_mail').value.trim();
-  if(!nm&&!ml){$('p_msg').textContent='Enter your name or email to continue.';return;}
+  if(!nm&&!ml){
+   showToast('Enter your name or email address to continue.','warn',3800);
+   showNotice({title:'Details required',body:'Enter at least your name or email address to continue signing in on this device.',tone:'warn',okLabel:'OK'});
+   $('a_name').focus();
+   return;
+  }
   const cur=store.get('prd_profile')||{};
   store.set('prd_profile',{...cur,name:nm||cur.name||ml.split('@')[0],mail:ml||cur.mail||'',provider:pendingProv||'Email'});
   $('auth_box').hidden=true;showProfile();$('p_msg').textContent='Signed in via '+(pendingProv||'Email')+'.';
+  showToast('Signed in via '+(pendingProv||'Email')+'.','ok',3200);
  };
  $('logout_btn').onclick=async()=>{await googleDriveSignOut();$('p_msg').textContent='Signed out.';};
 })();
 function updSyncUI(){
  const tok=gTok(),cur=store.get('prd_profile')||{},pv=cur.provider||'';
- const fbUser=fbAuthState&&fbAuthState.user;
- const acct=(fbUser&&(fbUser.email||fbUser.displayName))||(pv==='Google'?(cur.mail||cur.name):'');
+ const acct=pv==='Google'?(cur.mail||cur.name):'';
  const enabled=!!SET.driveSync;
  const syncChk=$('s_drive_sync');if(syncChk)syncChk.checked=enabled;
  const sb=$('s_sync_badge'),ss=$('s_sync_st'),sa=$('s_sync_acct'),sAuth=$('s_sync_auth'),sCtrl=$('s_sync_ctrl'),sNow=$('s_sync_now');
  const lastStr=SET.lastSync?('Last synced '+new Date(SET.lastSync).toLocaleTimeString([],{timeStyle:'short'})):'';
  if(sb)sb.textContent=syncRunning?'Syncing…':(enabled?(tok?'Active':'Needs sign-in'):(tok?'Paused':'Off'));
- if(sa)sa.textContent=tok?(acct?'Signed in as '+acct:'Google Drive connected'):(fbUser?'Session reconnect needed ('+(fbUser.email||fbUser.displayName||'Google')+')':'Google Drive not connected');
+ if(sa)sa.textContent=tok?(acct?'Signed in as '+acct:'Google Drive connected'):(pv==='Google'?'Session reconnect needed ('+(acct||'Google')+')':'Google Drive not connected');
  if(ss){
   if(syncRunning)ss.textContent='Syncing My Documents with Google Drive…';
   else if(enabled&&tok)ss.textContent='Automated Drive backup is on. '+(lastStr||'New documents sync automatically across devices.');
@@ -3666,10 +3921,12 @@ function updSyncUI(){
  if(sCtrl)sCtrl.hidden=!tok;
  if(sNow)sNow.disabled=!tok||syncRunning;
  if($('s_google_btn'))$('s_google_btn').disabled=isSigningIn;
+ if($('login_google'))$('login_google').disabled=isSigningIn;
  const st=$('sync_st'),bt=$('sync_btn');
  if(st&&bt){
-  st.textContent=syncRunning?'Syncing…':(tok?(enabled?('Auto-syncing to Google Drive'+(lastStr?' · '+lastStr:'')):'Connected (auto-backup paused in Settings)'):(pv==='Facebook'?'Profile only (no cloud file storage)':(pv==='Email'?'Local device only':'Sign in with Google for Drive backup')));
-  bt.disabled=!tok||syncRunning;
+  st.textContent=syncRunning?'Syncing…':(tok?(enabled?('Auto-syncing to Google Drive'+(lastStr?' · '+lastStr:'')):'Connected (auto-backup paused in Settings)'):(pv==='Google'?'Session paused — tap Reconnect Google to sync Drive':(pv==='Facebook'?'Profile only (no cloud file storage)':(pv==='Email'?'Local device only':'Sign in with Google for Drive backup'))));
+  bt.textContent=(!tok&&pv==='Google')?'Reconnect Google':'Sync now';
+  bt.disabled=syncRunning||(!tok&&pv!=='Google');
  }
 }
 async function driveFolder(tok){
@@ -3777,14 +4034,19 @@ async function syncWithDrive(opts={}){
   syncRunning=false;updSyncUI();
   if($('s_sync_st'))$('s_sync_st').textContent=note;
   if($('sync_st'))$('sync_st').textContent=note;
+  if(opts.force)showToast(note,'ok',3800);
  }catch(e){
   syncRunning=false;updSyncUI();
   const msg=(e&&e.message==='Session expired')?'Google session expired — sign in again to resume sync.':'Sync failed. Check connection and try again.';
   if($('s_sync_st'))$('s_sync_st').textContent=msg;
   if($('sync_st'))$('sync_st').textContent=msg;
+  if(opts.force){
+   showToast(msg,'err',4800);
+   showNotice({title:'Google Drive sync failed',body:msg,tone:'warn',okLabel:'Got it'});
+  }
  }
 }
-$('sync_btn').onclick=()=>syncWithDrive({force:true,confirmProfile:true});
+$('sync_btn').onclick=()=>{if(!gTok()){googleDriveSignIn();return;}syncWithDrive({force:true,confirmProfile:true});};
 if($('s_google_btn'))$('s_google_btn').onclick=()=>googleDriveSignIn();
 if($('s_sync_now'))$('s_sync_now').onclick=()=>syncWithDrive({force:true,confirmProfile:true});
 if($('s_sync_out'))$('s_sync_out').onclick=async()=>{await googleDriveSignOut();if($('s_msg'))$('s_msg').textContent='Signed out of Google Drive.';};
@@ -3801,7 +4063,7 @@ if($('s_drive_sync')){
 }
 let lastAuto=0;const autoSync=()=>{if(SET.driveSync&&gTok()&&Date.now()-lastAuto>120000){lastAuto=Date.now();syncWithDrive();}};
 window.addEventListener('online',autoSync);document.addEventListener('visibilitychange',()=>{if(!document.hidden)autoSync();});
-ensureFirebaseAuth().catch(()=>{});
+preloadGoogleAuth();
 updSyncUI();
 $('me').onclick=()=>go('profile');
 showProfile();
