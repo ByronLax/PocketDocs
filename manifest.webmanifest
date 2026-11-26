@@ -2,7 +2,7 @@
   "id": "./",
   "name": "PocketDocs",
   "short_name": "PocketDocs",
-  "description": "Local-first PDF, PrintFit & document studio — merge, split, compress, convert, sign, redact & print at real size.",
+  "description": "Local-first PDF, PrintFit & document studio — merge, split, resize, convert, sign, redact & print at real size.",
   "start_url": "./index.html#home",
   "scope": "./",
   "display": "standalone",
@@ -41,8 +41,8 @@
       "url": "./index.html#ms"
     },
     {
-      "name": "Compress & Resize",
-      "short_name": "Compress",
+      "name": "Resize",
+      "short_name": "Resize",
       "url": "./index.html#comp"
     },
     {
