@@ -163,8 +163,12 @@ body{
 .page-head{max-width:920px;margin:0 auto 24px;text-align:center}
 .page-head[hidden]{display:none!important}
 .page-head.head-in{animation:headIn .22s cubic-bezier(.16,1,.3,1) both}
-.page-crumb{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px}
-.page-crumb button{width:auto;padding:6px 12px;font-size:13px;border-radius:8px;font-weight:600}
+.page-crumb{display:flex;align-items:center;justify-content:flex-start;gap:8px;margin-bottom:12px}
+.page-crumb button{display:inline-flex;align-items:center;gap:6px;width:auto;padding:7px 13px 7px 10px;font-size:13px;line-height:1.2;border-radius:10px;font-weight:600;background:color-mix(in srgb,var(--card) 78%,var(--soft));color:var(--mut);border:1px solid var(--bd);box-shadow:0 1px 2px rgba(15,23,42,.04);transition:color .16s ease,background-color .16s ease,border-color .16s ease,box-shadow .16s ease}
+.page-crumb button[hidden]{display:none!important}
+.page-crumb button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .16s ease}
+.page-crumb button:hover{background:var(--card);color:var(--fg);border-color:color-mix(in srgb,var(--acc) 38%,var(--bd));box-shadow:var(--sh)}
+.page-crumb button:hover svg{transform:translateX(-2px);color:var(--acc-txt)}
 .page-head h1{font-family:var(--font-disp);font-size:clamp(26px,3.6vw,38px);line-height:1.14;margin:0;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
 .page-sub{margin:8px auto 0;color:var(--mut);font-size:15px;line-height:1.55;max-width:60ch}
 h2{font-size:16px;margin:0;font-weight:600;letter-spacing:-.01em}
@@ -188,6 +192,10 @@ p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 .cat-bar button{width:auto!important;min-width:0;min-height:36px;padding:7px 12px;border-radius:8px;background:transparent;color:var(--mut);font-size:13px;font-weight:650;white-space:nowrap;flex-shrink:0;border:0;transition:background .15s,color .15s,box-shadow .15s}
 .cat-bar button:hover{color:var(--fg);background:transparent}
 .cat-bar button.on{background:var(--card);color:var(--fg);box-shadow:0 1px 3px rgba(15,23,42,.12)}
+@media (max-width:520px){
+ .hero-main .cat-bar{width:100%!important;justify-content:space-between;gap:2px;padding:3px}
+ .cat-bar button{padding:7px clamp(6px,2.2vw,11px);font-size:clamp(11.5px,3.15vw,13px)}
+}
 .home-sub{margin:2px auto 0;color:var(--mut);font-size:13px;line-height:1.4;font-weight:500;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:opacity .2s ease}
 .home-sub b{color:var(--acc-txt);font-weight:650}
 .home-sub span{color:var(--acc-txt)}
@@ -882,13 +890,19 @@ html.pwa-app .sn-inner{height:max(54px,env(titlebar-area-height,54px));padding-l
 }
 .done-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .done-bar button{width:auto}
-.done-hero{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--sh);margin-bottom:16px}
-.done-ok{width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,#16a34a 14%,transparent);color:#16a34a;display:grid;place-items:center;flex:none}
+.done-hero{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--sh);margin-bottom:16px;opacity:1;transform:translateY(0) scale(1);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .42s cubic-bezier(.22,1,.36,1),border-color .45s ease,box-shadow .45s ease}
+.done-hero.is-entering{opacity:0;transform:translateY(14px) scale(.985);border-color:color-mix(in srgb,#16a34a 45%,var(--bd));box-shadow:0 12px 28px -12px rgba(22,163,74,.22)}
+.done-ok{width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,#16a34a 14%,transparent);color:#16a34a;display:grid;place-items:center;flex:none;transform:scale(1);opacity:1;transition:transform .46s cubic-bezier(.34,1.56,.64,1) .08s,opacity .32s ease .06s,background-color .35s ease}
+.done-hero.is-entering .done-ok{transform:scale(.72);opacity:0}
 html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transparent);color:#4ade80}
 .done-ok svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.done-hero-txt{min-width:0;flex:1}
+.done-ok svg path{stroke-dasharray:26;stroke-dashoffset:0;transition:stroke-dashoffset .42s cubic-bezier(.22,1,.36,1) .16s}
+.done-hero.is-entering .done-ok svg path{stroke-dashoffset:26}
+.done-hero-txt{min-width:0;flex:1;opacity:1;transform:translateY(0);transition:opacity .38s cubic-bezier(.22,1,.36,1) .1s,transform .38s cubic-bezier(.22,1,.36,1) .1s}
+.done-hero.is-entering .done-hero-txt{opacity:0;transform:translateY(6px)}
 .done-hero-txt h2{margin:0 0 4px;font-size:clamp(19px,2.2vw,23px);letter-spacing:-.015em;text-wrap:balance}
 .done-meta{margin:0;font-size:13.5px;color:var(--mut);font-variant-numeric:tabular-nums;line-height:1.45;word-break:break-word}
+@media (prefers-reduced-motion:reduce){.done-hero,.done-ok,.done-ok svg path,.done-hero-txt{transition:none!important}}
 .done-grid{display:grid;gap:16px;align-items:start}
 @media (min-width:860px){.done-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:18px}}
 .done-name-row{display:flex;align-items:center;border:1px solid var(--bd);background:var(--soft);border-radius:10px;overflow:hidden}
@@ -962,8 +976,8 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
 <div id="tab_stage">
 <div class="page-head" id="page_head" hidden>
  <div class="page-crumb">
-  <button class="g sm" id="backhome" hidden>← All tools</button>
-  <button class="g sm" id="backset" hidden>← Settings</button>
+  <button type="button" id="backhome" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>All tools</span></button>
+  <button type="button" id="backset" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Settings</span></button>
  </div>
  <h1 id="vtitle">Home</h1>
  <p class="page-sub" id="vsub"></p>
@@ -984,7 +998,7 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
    <h1 class="hero-title">Everything you need for everyday documents, made simple</h1>
    <p class="hero-lead">Handle forms, bills, ID prints, and PDFs without any fuss—straighten photos to print size, combine or shrink files, sign pages, and make quick receipts right on your device.</p>
    <div class="hero-controls">
-    <div class="tsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="tool_q" type="text" placeholder="Search tools (merge, print, resize, OCR…)"><button type="button" id="tool_q_clr" aria-label="Clear search" hidden>✕</button></div>
+    <div class="tsearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input id="tool_q" type="text" placeholder="Search tools (merge, print, resize…)"><button type="button" id="tool_q_clr" aria-label="Clear search" hidden>✕</button></div>
     <div class="cat-bar" id="cat_bar"><button type="button" class="on" data-cat="all">All</button><button type="button" data-cat="pdf">PDF</button><button type="button" data-cat="id">Photos &amp; ID</button><button type="button" data-cat="sec">Privacy</button><button type="button" data-cat="biz">Billing</button></div>
     <p class="home-sub" id="home_sub" title="Click to open featured tool"></p>
    </div>
@@ -3618,6 +3632,7 @@ const loadOAuthClientId=()=>{
     if(id)oauthClientId=id;
    }
   }catch(e){}
+  if(!oauthClientId)oauthCfgPromise=null;
   return oauthClientId;
  })();
  return oauthCfgPromise;
@@ -3731,7 +3746,7 @@ const describeSignInFailure=err=>{
  const code=String((err&&err.code)||'');
  const raw=String((err&&err.message)||'');
  const elapsed=signInStartedAt?(Date.now()-signInStartedAt):9999;
- if(!navigator.onLine){
+ if(!navigator.onLine||code==='offline'){
   return {
    title:'No internet connection',
    body:'You are offline right now. Connect to Wi-Fi or mobile data and try signing in with Google again.',
@@ -3744,7 +3759,7 @@ const describeSignInFailure=err=>{
   return {
    title:'Sign-in popup was blocked',
    body:'Your browser prevented the Google Sign-In window from opening. Allow popups for this site in your browser settings, then tap Sign in with Google again.',
-   detail:'In Samsung Internet or Chrome: check Site settings → Pop-ups and redirects → Allow for '+location.host,
+   detail:'In Samsung Internet or Chrome: Site settings → Pop-ups and redirects → Allow for '+location.host,
    toast:'Sign-in failed: popup was blocked by your browser.',
    tone:'warn'
   };
@@ -3754,10 +3769,10 @@ const describeSignInFailure=err=>{
   return {
    title:'Google Sign-In did not complete',
    body:quick
-    ?'The Google Sign-In window closed immediately before you could choose an account. This usually happens if popups are restricted or if this web address is not yet authorized in Google OAuth settings.'
+    ?'The Google Sign-In window closed right away before an account could be selected. This usually happens if popups are blocked or if this site address ('+location.origin+') is not added to Authorized JavaScript origins for your Google OAuth Client ID.'
     :'The Google Sign-In window was closed before finishing sign-in. Tap Sign in with Google whenever you want to try again.',
    detail:quick?('Origin: '+location.origin):'',
-   toast:quick?'Google Sign-In closed immediately — check popup or domain permissions.':'Google Sign-In was cancelled.',
+   toast:quick?'Google Sign-In closed immediately — check popup or origin permissions.':'Google Sign-In was cancelled.',
    tone:'warn'
   };
  }
@@ -3770,10 +3785,37 @@ const describeSignInFailure=err=>{
    tone:'warn'
   };
  }
+ if(code==='origin_mismatch'||code==='redirect_uri_mismatch'||code==='unauthorized_client'||code==='invalid_client'){
+  return {
+   title:'App domain not authorized for Google Sign-In',
+   body:'Google rejected the OAuth request because this web address is not registered in Google Cloud OAuth Authorized JavaScript origins, or the Client ID is invalid.',
+   detail:'Add '+location.origin+' to Authorized JavaScript origins (or configure googleClientId in downloads.js). Code: '+code,
+   toast:'Google Sign-In failed: domain not authorized ('+code+').',
+   tone:'err'
+  };
+ }
+ if(code==='invalid_scope'){
+  return {
+   title:'Requested Google Drive scope rejected',
+   body:'The Google OAuth client could not grant the requested Google Drive permission scope. Check that Google Drive API is enabled and drive.file scope is configured on the OAuth consent screen.',
+   detail:raw||code,
+   toast:'Google Sign-In failed: invalid OAuth scope.',
+   tone:'err'
+  };
+ }
+ if(code==='server_error'||code==='temporarily_unavailable'){
+  return {
+   title:'Google Sign-In temporarily unavailable',
+   body:'Google authentication servers returned a temporary error. Wait a moment and try signing in again.',
+   detail:raw||code,
+   toast:'Google Sign-In is temporarily unavailable.',
+   tone:'warn'
+  };
+ }
  if(code==='gsi_load_failed'||code==='gsi_load_timeout'){
   return {
    title:'Google Sign-In could not load',
-   body:'The browser could not reach Google Sign-In services (accounts.google.com). Check your internet connection or disable any content/ad blocker for Google accounts, then try again.',
+   body:'The browser could not reach Google Sign-In services (accounts.google.com). Check your internet connection or disable any content/ad blocker blocking Google accounts, then try again.',
    detail:'',
    toast:'Could not load Google Sign-In service.',
    tone:'err'
@@ -3823,7 +3865,14 @@ const handleSignInError=async err=>{
  await showNotice({title:info.title,body:info.body,detail:info.detail,tone:info.tone,okLabel:'Got it'});
 };
 function googleDriveSignIn(){
- if(isSigningIn)return Promise.resolve(null);
+ if(isSigningIn){
+  if(signInStartedAt&&Date.now()-signInStartedAt>8000){
+   const e=new Error('Previous sign-in attempt was replaced.');e.code='popup_closed';
+   finishPendingSignIn(null,e);
+  }else{
+   return Promise.resolve(null);
+  }
+ }
  if(!navigator.onLine){
   const e=new Error('offline');e.code='offline';
   return handleSignInError(e).then(()=>null);
@@ -3835,7 +3884,7 @@ function googleDriveSignIn(){
   signInWatchdog=setTimeout(()=>{
    const e=new Error('Google Sign-In timed out.');e.code='signin_timeout';
    finishPendingSignIn(null,e);
-  },120000);
+  },60000);
  });
  const client=initTokenClientSync();
  if(client){
@@ -4718,7 +4767,15 @@ $('vc').onclick=()=>{$('viewer').hidden=true;};
   }else{
    nextWrap.hidden=true;
   }
-  go('done');
+  const hero=$('v-done')&&$('v-done').querySelector('.done-hero');
+  if(hero){
+   hero.classList.add('is-entering');
+   go('done');
+   void hero.offsetWidth;
+   requestAnimationFrame(()=>requestAnimationFrame(()=>hero.classList.remove('is-entering')));
+  }else{
+   go('done');
+  }
  };
  $('done_name').addEventListener('input',syncNameUI);
  $('done_back').onclick=()=>{if(curRes&&curRes.toolId)go(curRes.toolId);else go('home');};
