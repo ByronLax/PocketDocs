@@ -306,7 +306,9 @@ p.s{color:var(--mut);margin:0 0 12px;font-size:14px}
 .proof-hd{max-width:620px;margin-bottom:26px}
 .proof-hd h2{font-family:var(--font-disp);font-size:clamp(22px,2.6vw,29px);font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
 .proof-hd p{margin:0;color:var(--mut);font-size:15px;line-height:1.55}
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px 28px}
+.proof-grid{display:grid;grid-template-columns:1fr;gap:18px 24px}
+@media (min-width:540px){.proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}}
+@media (min-width:980px){.proof-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .proof-stat b{display:block;font-family:var(--font-disp);font-size:clamp(24px,2.5vw,31px);font-weight:700;letter-spacing:-.02em;color:var(--acc-txt);font-variant-numeric:tabular-nums;margin-bottom:4px}
 .proof-stat span{display:block;font-size:14.5px;font-weight:600;color:var(--fg);margin-bottom:4px}
 .proof-stat small{display:block;font-size:13.5px;color:var(--mut);line-height:1.5}
@@ -1199,11 +1201,11 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
     <div class="wb-media-fb"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg><b>Digital &amp; Print Document Studio</b></div>
    </div>
    <div class="wb-copy">
-    <h2>One workbench for print-ready IDs, clean PDFs, and everyday paperwork</h2>
-    <p>Instead of juggling half a dozen single-purpose sites, PocketDocs brings real-size PrintFit layouts, OCR, redaction, signing, metadata editing, and invoicing together right inside your browser.</p>
+    <h2>One workbench for print-ready IDs, clean PDFs, and everyday photo edits</h2>
+    <p id="wb_intro">Instead of juggling dozens of single-purpose sites, PocketDocs brings 18 browser-local tools together—covering PDF editing, real-size PrintFit layouts, background removal, collage, cropping, OCR, ZIP archives, and privacy utilities.</p>
     <div class="wb-list">
-     <div class="wb-item"><b>01. Real-Size PrintFit &amp; Passport Sheets</b><span>Straighten crooked camera photos of ID cards, certificates, or portraits to exact millimeter dimensions ready for A4, Letter, or 4×6 printing.</span></div>
-     <div class="wb-item"><b>02. Multi-Page PDF Inspection &amp; Searchable OCR</b><span>Preview every page before merging, splitting, signing, or redacting—or convert scanned documents into searchable PDFs with selectable text.</span></div>
+     <div class="wb-item"><b>01. Real-Size PrintFit, Photo Studio &amp; Background Cutouts</b><span>Straighten IDs to exact millimeter sheets, retouch or collage photos, crop with perspective warp, and lift crisp subject cutouts right in your browser.</span></div>
+     <div class="wb-item"><b>02. Full PDF Editor, Multi-Page Merge &amp; Searchable OCR</b><span>Edit PDF text, sign, redact, lock, convert formats, compress or extract ZIP folders, and run offline OCR on scanned documents.</span></div>
      <div class="wb-item"><b>03. Zero-Upload Browser Processing</b><span>Your sensitive documents stay in local browser memory and IndexedDB. Nothing is ever transmitted to remote conversion servers.</span></div>
     </div>
     <div class="wb-acts">
@@ -1216,13 +1218,13 @@ html[data-theme="dark"] .done-ok{background:color-mix(in srgb,#22c55e 16%,transp
   <section class="proof-band" aria-label="Platform capabilities and privacy standards">
    <div class="proof-hd">
     <h2>Private by architecture, verified on your device</h2>
-    <p>Every PDF transformation, image warp, OCR pass, and redaction runs locally inside modern browser engines.</p>
+    <p id="proof_sub">Every PDF edit, background cutout, image warp, OCR pass, archive extract, and redaction runs locally inside modern browser engines.</p>
    </div>
    <div class="proof-grid">
-    <div class="proof-stat"><b>12 Tools</b><span>Complete PDF &amp; utility suite</span><small>Merge, split, resize, convert, OCR, sign, redact, lock, strip EXIF, passport sheets, QR codes, and invoices.</small></div>
+    <div class="proof-stat"><b id="proof_tools_cnt">18 Tools</b><span id="proof_tools_sub">Complete PDF, photo &amp; utility suite</span><small id="proof_tools_list">Merge &amp; Split PDF, Resize, File Converter, PrintFit, OCR Scanner, Sign &amp; Stamp, Passport Photo, Redact &amp; Mask, PDF Lock &amp; Unlock, Metadata Stripper, QR Studio, Invoice &amp; Receipt, Advanced Crop, PDF Editor, Image Collage, Image Editor, ZIP Compress &amp; Unzip, and Background Remover.</small></div>
     <div class="proof-stat"><b>0 Bytes</b><span>Sent to external servers</span><small>Ideal for Aadhaar, PAN, passports, contracts, bank passbooks, and confidential receipts.</small></div>
     <div class="proof-stat"><b>300–600 DPI</b><span>Print-accurate scaling</span><small>Exact millimeter layout math for A4, Letter, Legal, and photo paper without distortion.</small></div>
-    <div class="proof-stat"><b>Offline Ready</b><span>Local Document Vault</span><small>Save finished PDFs in IndexedDB under My Documents, or optionally back up to your own Google Drive.</small></div>
+    <div class="proof-stat"><b>Offline Ready</b><span>Local Document Vault</span><small>Save finished files in IndexedDB under My Documents, or optionally back up to your own Google Drive.</small></div>
    </div>
   </section>
 
@@ -3840,10 +3842,24 @@ syncPwaMode();
  wireDropZone(qd,fs=>{if(fs&&fs[0])setQFile(fs[0]);},null,'hq_dz');
 })();
 const syncFootCols=()=>{const desk=matchMedia('(min-width:820px)').matches;document.querySelectorAll('#site_foot .sf-col').forEach(d=>{if(desk)d.open=true;});};
-const renderSiteFoot=()=>{
- const box=$('sf_cols');if(!box)return;
+const syncToolShowcase=()=>{
  const cards=[...document.querySelectorAll('#v-home .tgrid .tcard[id^="open_"]')];
- if($('sf_tag'))$('sf_tag').textContent=cards.length+' client-side tools for documents, IDs, PDFs, privacy & billing—running 100% locally in your browser with zero uploads.';
+ const n=cards.length;
+ if($('proof_tools_cnt'))$('proof_tools_cnt').textContent=n+' Tool'+(n===1?'':'s');
+ if($('wb_intro'))$('wb_intro').textContent='Instead of juggling dozens of single-purpose sites, PocketDocs brings '+n+' browser-local tools together—covering PDF editing, real-size PrintFit layouts, background removal, collage, cropping, OCR, ZIP archives, and privacy utilities.';
+ if($('proof_tools_list')){
+  const names=cards.map(c=>(c.querySelector('b')?.textContent||'').trim()).filter(Boolean);
+  if(names.length<=1)$('proof_tools_list').textContent=(names[0]||'Browser-local document tools')+'.';
+  else if(names.length<=24)$('proof_tools_list').textContent=names.slice(0,-1).join(', ')+', and '+names[names.length-1]+'.';
+  else $('proof_tools_list').textContent=names.slice(0,22).join(', ')+', plus '+(names.length-22)+' more.';
+ }
+};
+const renderSiteFoot=()=>{
+ const box=$('sf_cols');
+ const cards=[...document.querySelectorAll('#v-home .tgrid .tcard[id^="open_"]')];
+ if($('sf_tag'))$('sf_tag').textContent=cards.length+' client-side tools for documents, IDs, PDFs, photo editing, archives, privacy & billing—running 100% locally in your browser with zero uploads.';
+ syncToolShowcase();
+ if(!box)return;
  const groups=[
   {title:'PDF Tools',match:c=>(c.dataset.cat||'').includes('pdf')},
   {title:'ID & Photos',match:c=>(c.dataset.cat||'').includes('id')},
